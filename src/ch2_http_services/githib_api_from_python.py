@@ -4,7 +4,7 @@ import requests
 def main():
     # mikeckennedy
     # consuming_services_python_demos
-    
+
     user, repo = get_repo_info()
 
     url = 'https://api.github.com/repos/{}/{}'.format(
