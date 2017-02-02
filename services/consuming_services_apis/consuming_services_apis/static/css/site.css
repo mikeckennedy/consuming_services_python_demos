@@ -1,0 +1,24 @@
+body {
+    background: white;
+    color: black;
+    font-size: 18px;
+    line-height: 1.5em;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+a.navbar-brand {
+    text-decoration: none;
+    font-size: 24px;
+}
+a:hover {
+    color: black;
+}
+
+.starter-template .links ul li a, a {
+    color: #2b669a;
+}
+
+.content {
+    padding: 20px;
+    margin-top: 30px;
+}

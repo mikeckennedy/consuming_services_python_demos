@@ -1,0 +1,3 @@
+[run]
+source = consuming_services_apis
+omit = consuming_services_apis/test*

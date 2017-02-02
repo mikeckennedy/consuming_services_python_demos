@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Michael Kennedy">
+    <link rel="shortcut icon" href="/static/img/pyramid-16x16.png">
+
+    <title>APIs for Consuming Web Services in Python</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/bower_components/bootstrap-css/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this scaffold -->
+    <link href="/static/css/theme.css" rel="stylesheet">
+    <link href="/static/css/site.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/static/bower_components/html5shiv/dist/html5shiv.js"></script>
+    <script src="/static/bower_components/respond/dest/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="/" class="navbar-brand">APIs for Consuming Web Services in Python</a>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    <h2>Services</h2>
+    <div>
+        <h3>
+            <strong>Blog HTTP / REST service</strong>: <a href="/api/blog">
+            <strong>/api/blog</strong>
+        </a><br/>
+        </h3>
+
+        <div>
+            Secured version: <a href="/api/restricted/blog">/api/restricted/blog</a><br/>
+            Username: <strong>kennedy</strong> and Password: <strong>super_lockdown</strong>
+        </div>
+        <br/>
+        Operations:<br/>
+        <ul>
+            <li>
+                <strong>GET: /api/blog</strong><br/>
+                returns all blog posts for a given client.
+            </li>
+            <li>
+                <strong>
+                    GET: /api/blog/{id}
+                </strong><br/>
+                returns a single blog post for that id (per client data).
+            </li>
+            <li>
+                <strong>
+                    POST: /api/blog/
+                </strong><br/>
+                Creates a new blog post (per client data).
+            </li>
+            <li>
+                <strong>
+                    PUT: /api/blog/{id}
+                </strong><br/>
+                Updates a single blog post for that id (per client data).
+            </li>
+            <li>
+                <strong>
+                    DELETE: /api/blog/{id}
+                </strong><br/>
+                Deletes a single blog post for that id (per client data).
+            </li>
+        </ul>
+    </div>
+
+
+    <div>
+        <h3>
+            <strong>Blog SOAP service</strong>: <a href="/soap?wsdl">
+            <strong>/soap?wsdl</strong>
+        </a><br/>
+        </h3>
+
+        <br/>
+        Operations:<br/>
+        <ul>
+            <li>
+                <strong>Post[] AllPosts()</strong><br/>
+                returns all blog posts for a given client.
+            </li>
+            <li>
+                <strong>
+                    Post GetPost(string id)
+                </strong><br/>
+                returns a single blog post for that id (per client data).
+            </li>
+            <li>
+                <strong>
+                    Post CreatePost(string title, string content, int viewCount)
+                </strong><br/>
+                Creates a new blog post (per client data).
+            </li>
+            <li>
+                <strong>
+                    Post UpdatePost(string id, string title, string content, int viewCount)
+                </strong><br/>
+                Updates a single blog post for that id (per client data).
+            </li>
+            <li>
+                <strong>
+                    void DeletePost(string id)
+                </strong><br/>
+                Delete a single blog post for that id (per client data).
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/static/bower_components/jquery-dist/jquery.min.js"></script>
+<script src="/static/bower_components/bootstrap-css/js/bootstrap.min.js"></script>
+</body>
+</html>
