@@ -8,6 +8,8 @@ base_url = 'http://consumer_services_api.talkpython.fm/'
 
 
 def main():
+    print("Blog explorer (requests version)")
+
     while True:
         action = input('What to do with this blog api? [l]ist, [a]dd, [u]pdate, [d]elete, e[x]it: ')
         if action == 'x':
@@ -61,9 +63,8 @@ def add_post():
 
     post_data = dict(title=title, content=content, view_count=view_count, published=published_text)
     url = base_url + 'api/blog'
-    headers = {'content-type': 'application/json'}
 
-    resp = requests.post(url, json=post_data, headers=headers)
+    resp = requests.post(url, json=post_data)
 
     if resp.status_code != 201:
         print("Error creating post: {} {}".format(resp.status_code, resp.text))
@@ -94,10 +95,9 @@ def update_post():
     post_data = dict(title=title, content=content, view_count=view_count, published=post.published)
 
     url = base_url + 'api/blog/' + post.id
-    headers = {'content-type': 'application/json'}
 
     # turns out json as a keyword works even though it's not in the signature. ;)
-    resp = requests.put(url, json=post_data, headers=headers)
+    resp = requests.put(url, json=post_data)
 
     if resp.status_code != 204:
         print("Error updating post: {} {}".format(resp.status_code, resp.text))
