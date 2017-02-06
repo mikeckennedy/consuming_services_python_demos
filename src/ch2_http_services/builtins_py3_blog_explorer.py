@@ -1,12 +1,14 @@
 import datetime
 import collections
 import json
-import urllib2
+import urllib.request
+import urllib.error
 import sys
 
 Post = collections.namedtuple("Post", 'id title content published view_count')
 
 base_url = 'http://consumer_services_api.talkpython.fm/'
+
 
 def main():
     print("Blog explorer (Python 3 builtins version)")
@@ -45,20 +47,18 @@ def show_posts(posts):
 
 def get_posts():
     url = base_url + 'api/blog'
-    resp = urllib2.urlopen(url)
 
-    if resp.getcode() != 200:
-        print("Error downloading posts: {} {}".format(resp.getcode(), resp.read()))
+    with urllib.request.urlopen(url) as resp:
+        if resp.getcode() != 200:
+            print("Error downloading posts: {} {}".format(resp.getcode(), resp.read()))
 
-    text = resp.read()
-    resp.close()  # don't forget this!
+        text = resp.read()
+        post_data = json.loads(text)
 
-    post_data = json.loads(text)
-
-    return [
-        Post(**post)
-        for post in post_data
-        ]
+        return [
+            Post(**post)
+            for post in post_data
+            ]
 
 
 def add_post():
@@ -73,16 +73,16 @@ def add_post():
     url = base_url + 'api/blog'
     headers = {'content-type': 'application/json'}
 
-    req = urllib2.Request(url, data=json.dumps(post_data), headers=headers)
-    resp = urllib2.urlopen(req)
+    data = json.dumps(post_data).encode('utf-8')
 
-    if resp.getcode() != 201:
-        print("Error creating post: {} {}".format(resp.getcode(), resp.read()))
-        resp.close()
-        return
+    req = urllib.request.Request(url, data=data, headers=headers, method='POST')
+    with urllib.request.urlopen(req) as resp:
+        if resp.getcode() != 201:
+            print("Error creating post: {} {}".format(resp.getcode(), resp.read()))
+            return
 
-    text = resp.read()
-    resp.close()
+        text = resp.read()
+
     post = json.loads(text)
 
     print("Created this: ")
@@ -90,16 +90,59 @@ def add_post():
 
 
 def update_post():
-    print("THIS METHOD DOES NOT WORK WITH URLLIB 2")
-    print("You can only specify GET or POST, this method requires PUT")
+    print("To update a post, choose the number from the list below:")
+    posts = get_posts()
+    show_posts(posts)
     print()
+
+    post = posts[int(input('Enter number of post to edit: ')) - 1]
+
+    title = input('title: [' + post.title + '] ')
+    title = title if title else post.title
+
+    content = input('content: [' + post.content + '] ')
+    content = content if content else post.content
+
+    view_count = input('view count: [' + str(post.view_count) + '] ')
+    view_count = int(view_count if view_count else post.view_count)
+
+    post_data = json.dumps(
+        dict(title=title, content=content,
+             view_count=view_count, published=post.published)) \
+        .encode('utf-8')
+
+    url = base_url + 'api/blog/' + post.id
+
+    req = urllib.request.Request(url, data=post_data, method='PUT')
+    with urllib.request.urlopen(req) as resp:
+        if resp.getcode() != 204:
+            print("Error updating post: {} {}".format(resp.getcode(), resp.read()))
+            return
+
+        print("Successfully updated {}.".format(post.title))
 
 
 def delete_post():
-    print("THIS METHOD DOES NOT WORK WITH URLLIB 2")
-    print("You can only specify GET or POST, this method requires DELETE")
+    print("To delete a post, choose the number from the list below:")
+    posts = get_posts()
+    show_posts(posts)
     print()
 
+    post = posts[int(input('number of post to delete: ')) - 1]
+
+    print("Deleting {} ...".format(post.title))
+
+    url = base_url + 'api/blog/' + post.id
+    req = urllib.request.Request(url, method='DELETE')
+    try:
+        with urllib.request.urlopen(req) as resp:
+            if resp.getcode() != 202:
+                print('Error deleting post: {} {}'.format(resp.getcode(), resp.read()))
+                return
+
+            print('Deleted {}'.format(post.title))
+    except urllib.error.HTTPError as he:
+        print("Error: {} {}".format(he.code, he.msg))
 
 if __name__ == '__main__':
     main()
