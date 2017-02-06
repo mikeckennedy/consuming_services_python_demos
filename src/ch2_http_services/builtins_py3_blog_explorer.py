@@ -144,5 +144,6 @@ def delete_post():
     except urllib.error.HTTPError as he:
         print("Error: {} {}".format(he.code, he.msg))
 
+
 if __name__ == '__main__':
     main()
