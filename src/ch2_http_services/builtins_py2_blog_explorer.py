@@ -1,6 +1,7 @@
 import datetime
 import collections
-
+import json
+import urllib2
 import sys
 
 Post = collections.namedtuple("Post", 'id title content published view_count')
@@ -45,14 +46,19 @@ def show_posts(posts):
 
 def get_posts():
     url = base_url + 'api/blog'
-    resp = None  # ????
+    resp = urllib2.urlopen(url)
 
-    if resp.status_code != 200:
-        print "Error downloading posts: {} {}".format(resp.status_code, resp.text)
+    if resp.getcode() != 200:
+        print "Error downloading posts: {} {}".format(resp.getcode(), resp.read())
+
+    text = resp.read()
+    resp.close()  # don't forget this!
+
+    post_data = json.loads(text)
 
     return [
         Post(**post)
-        for post in resp.json()
+        for post in post_data
         ]
 
 
@@ -68,26 +74,31 @@ def add_post():
     url = base_url + 'api/blog'
     headers = {'content-type': 'application/json'}
 
-    resp = None  # ????
+    req = urllib2.Request(url, data=json.dumps(post_data), headers=headers)
+    resp = urllib2.urlopen(req)
 
-    if resp.status_code != 201:
-        print "Error creating post: {} {}".format(resp.status_code, resp.text)
+    if resp.getcode() != 201:
+        print "Error creating post: {} {}".format(resp.getcode(), resp.read())
+        resp.close()
         return
 
-    post = None  # ????
+    text = resp.read()
+    resp.close()
+    post = json.loads(text)
+
     print "Created this: "
     print post
 
 
 def update_post():
-    print("THIS METHOD DOES NOT WORK WITH URLLIB 2")
-    print("You can only specify GET or POST, this method requires PUT")
+    print "THIS METHOD DOES NOT WORK WITH URLLIB 2"
+    print "You can only specify GET or POST, this method requires PUT"
     print
 
 
 def delete_post():
-    print("THIS METHOD DOES NOT WORK WITH URLLIB 2")
-    print("You can only specify GET or POST, this method requires DELETE")
+    print "THIS METHOD DOES NOT WORK WITH URLLIB 2"
+    print "You can only specify GET or POST, this method requires DELETE"
     print
 
 
