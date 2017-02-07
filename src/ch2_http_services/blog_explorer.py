@@ -46,6 +46,7 @@ def get_posts():
 
     if resp.status_code != 200:
         print("Error downloading posts: {} {}".format(resp.status_code, resp.text))
+        return
 
     return [
         Post(**post)
