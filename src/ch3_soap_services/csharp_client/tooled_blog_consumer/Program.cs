@@ -17,7 +17,6 @@ namespace tooled_blog_consumer
 			{
 				Console.WriteLine("* {0} has {1:N0} of views.", post.Title, post.ViewCount);
 			}
-
 		}
 	}
 }
