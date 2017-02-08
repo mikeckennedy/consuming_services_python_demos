@@ -1,3 +1,5 @@
 requests
 python-dateutil
 suds-jurko
+lxml
+beautifulsoup4

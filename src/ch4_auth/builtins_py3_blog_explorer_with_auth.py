@@ -8,6 +8,18 @@ import sys
 Post = collections.namedtuple("Post", 'id title content published view_count')
 
 base_url = 'http://consumer_services_api.talkpython.fm/api/restricted/blog/'
+user = 'kennedy'
+password = 'super_lockdown'
+
+
+def register_auth():
+    password_manager = urllib.request.HTTPPasswordMgrWithDefaultRealm()
+    password_manager.add_password(None, base_url, user, password)
+
+    authenticated_handler = urllib.request.HTTPBasicAuthHandler(password_manager)
+    opener = urllib.request.build_opener(authenticated_handler)
+
+    urllib.request.install_opener(opener)
 
 
 def main():
@@ -15,6 +27,8 @@ def main():
     if sys.version_info.major == 2:
         print("This sample requires at least Python 3, exiting...")
         return
+
+    register_auth()
 
     while True:
         action = input('What to do with this blog api? [l]ist, [a]dd, [u]pdate, [d]elete, e[x]it: ')

@@ -34,7 +34,7 @@ def create_client():
         return __suds_client
 
     wsdl = 'http://consumer_services_api.talkpython.fm/soap?wsdl'
-    __suds_client = Client(wsdl)
+    __suds_client = Client(wsdl, transport=trans)
 
     return __suds_client
 
