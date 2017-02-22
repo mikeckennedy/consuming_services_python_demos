@@ -27,8 +27,8 @@ def main():
 
 
 def get_repo_info():
-    user = input("What is the username? ")
-    repo = input("What is the repo name? ")
+    user = input("What is the username? ").strip()
+    repo = input("What is the repo name? ").strip()
 
     return user, repo
 
