@@ -1,0 +1,17 @@
+00:01 So that was simple, right, the whole promise of Requests 
+00:04 is that it makes doing simple operations simple and easy and straightforward,
+00:08 I certainly think that that operation fit the bill. 
+00:11 We start by importing Requests, and then we just do get url
+00:16 to actually download the response, now this is a blocking call, 
+00:20 it's not going to return it's we've actually gone to the server, 
+00:22 looked up the dns for talkpython.fm done the get, got the response, 
+00:26 entirely downloaded it so this is a blocking call, and we have response 
+00:29 and it has both the status code set so we also have headers and cookies 
+00:33 and things like that and we can access the text property, 
+00:36 so here we are just printing out, here is the first 500 characters that we got, 
+00:40 just see what this was all about, 
+00:42 now this was really cool that we could go do this simple get against the website, 
+00:46 but what we want to work with are actually services, 
+00:48 things that are meant to talk, computer to computer, 
+00:51 program to program, not program to humans or program to browser to humans, 
+00:56 however you want to think about it, so that is what we are going to do next. 

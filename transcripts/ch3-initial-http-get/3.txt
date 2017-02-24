@@ -1,0 +1,30 @@
+00:01 So we've been able to create this virtual environment, that's great, 
+00:04 however, let's get this into PyCharm, let's load up our project
+00:08 and let's actually register this environment as the one that we are going to use 
+00:11 to execute all of our code. 
+00:13 So over here, I actually get cloned the service demos, 
+00:17 these are the demos that you have access to on github, 
+00:20 and I've actually just renamed them so the name isn't so super long. 
+00:24 And on OS 10 or Mac OS you can just drag and drop this 
+00:27 into PyCharm or even Sublime text or Visual Studio Code,
+00:31 lots of these editors support that. And it will open the project. 
+00:35 Okay, cool, so here we are, now how do we take our virtual environment 
+00:40 which is over here in this python/environments/consuming_svc/bin, 
+00:45 this executable and make it the python that we are going to use in PyCharm. 
+00:49 Well, we can come over here and we go to settings, 
+00:55 and there is a project interpreter,
+00:57 notice right now, it's just the system wide 3.6.0 so what I want to do is 
+01:00 add a local virtual environment. If you want to do this entirely from PyCharm 
+01:04 and not use the command line to create the virtual environment, that's fine, 
+01:07 you can just use create virtual env, but because we already have one,
+01:11 we are going to go and do add local, now over here, 
+01:14 I am already in this directory, because you can see here is the Python 
+01:17 so I can just say open. on windows it's start. 
+01:20 And I could take this over here and say okay, I want to use this, 
+01:23 and let's go and drag it down here and say whatever that is that is the path. 
+01:30 So now you can see it's a virtual env at python/environments/consuming_svc_env, 
+01:36 and everything looks good, it looks like we technically could upgrade this here, 
+01:41 so we can go ahead and upgrade setup tools 
+01:45 and that will happen in a second, great, install a few other things.
+01:49 Alright, now, when we run some code, 
+01:51 PyCharm will now use our virtual environment. 

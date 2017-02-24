@@ -1,0 +1,23 @@
+00:01 So you've seen Json parsing and serialization in action in Python, 
+00:04 let's review the key concepts that were in play;
+00:08 so this is more or less the same code that we just wrote 
+00:10 and remember we started with importing of the Json module, 
+00:13 this is a built in thing in the standard libraries, 
+00:16 this is a built in thing in the Python standard library 
+00:19 so we didn't have to install an external package to get this support, 
+00:22 we just import Json and we're off to the races, so we started with Json text 
+00:25 which is just an in memory version of some Json string representation, 
+00:31 and we want to turn that into something that we could actually work with in Python, 
+00:34 so what we did is we called the load s, load from sting, 
+00:37 and we passed the Json text in to be parsed, we got back data, 
+00:41 which we saw was a dictionary, so we have this dictionary,
+00:44 we work with it however you work with dictionaries in Python using get, 
+00:48 assigning to a key to change the values, 
+00:51 things like that and then to get the data back out, to send it off to somewhere 
+00:54 to save it to a file of course we just did a dump s, dump to string 
+00:58 and what we get back is more text, 
+01:00 now, it's worth noting that the thing that came out here
+01:03 is sort of somewhat minified Json,
+01:06 there is no like line breaks or indentation or anything pretty about it, 
+01:09 you can set an indentation setting on the dump s method 
+01:13 and it will be a little bit nicer text if you care about readability. 

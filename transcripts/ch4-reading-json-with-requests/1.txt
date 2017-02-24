@@ -1,0 +1,15 @@
+00:00 While HTML and text is really made for humans, 
+00:03 that is not the focus of this course, a focus of this course is 
+00:06 to consume data and formats meant for programs and computers. 
+00:10 So, what does that include, well, Json is the most popular 
+00:15 exchange format these days, especially around HTTP restful services, 
+00:18 back when Soap was popular XML was really important 
+00:22 and we saw how XML being passed around or take things like rss feeds, 
+00:26 there is a number of older services that still use xml so we are going to work with that,
+00:31 obviously binary data is very often something we want to access and download, 
+00:35 think of a zip file or an image or something and then.
+00:38 Soap, we are also going to come back and look at Soap, 
+00:41 but for now, let's focus on Json, so we are going to look at 
+00:44 how we consume Json services, obviously, but before we do that, 
+00:48 I think the right place to start is for us actually 
+00:51 to just do a little bit of work with Json in Python and leave the network out of it. 

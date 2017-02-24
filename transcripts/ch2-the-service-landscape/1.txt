@@ -1,0 +1,46 @@
+00:00 Let's begin our exploration of services and consuming services in Python 
+00:04 by taking a survey of the various types of services
+00:07 that we might encounter out there in the world. 
+00:10 We are going to do this by focusing on the lowest level services 
+00:13 and moving up in abstractions. 
+00:16 So the lowest level service that we could have, 
+00:19 the way that we could talk to the service
+00:21 is with using just raw network sockets and just sending bytes on the wire. 
+00:26 So we would open up a socket with bidirectional communication 
+00:30 and we would send 00101 over the service and it knows what that means, 
+00:34 they will say great, 1101 and so on. 
+00:37 This is the fastest, lowest level, lowest latency way to interact with services, 
+00:42 so there are benefits here, it's super fast and it's responsive 
+00:45 because we can actually send custom messages tailor made 
+00:50 for the types of messages that these two apps exchange, 
+00:53 it can be extremely low overhead in terms of bandwidth, 
+00:56 do you need to send four bytes as an integer? 
+00:59 Well, maybe you just send four bytes and it just knows an integer is coming, 
+01:02 so literally, there is no wasted sort of packaging on the messages, 
+01:05 so why aren't all of our services like this, well, 
+01:09 there is usually way more drawbacks than there are benefits. 
+01:12 many time this means there is special protocols, you have some app, 
+01:17 in order to talk to it you have to use an entirely unique protocol just to speak to that. 
+01:21 And often those don't have standards around them, 
+01:25 often those are brittle and just not easy to work with, not easy to get started. 
+01:30 Another problem is proxies and firewalls, especially firewalls. 
+01:34 So packet inspecting firewalls really hate letting traffic out of the firewall, 
+01:41 if it's some sort of binary blob. 
+01:44 They would much rather see some kind of HTTP traffic
+01:46 where they can inspect it and make sure that it's all legit and good. 
+01:49 Also, these often run on non standard ports 
+01:52 and there can be problems with firewalls as well. 
+01:55 There are some platform specific issues you run into as well, 
+01:59 like just above raw sockets, but still more or less sending raw bytes 
+02:02 are things like on the Windows platform DCOM or .NET remoting, 
+02:07 on Java we have RMI, remote method invocation 
+02:12 and these might be sending like in memory representations of some kind of object 
+02:15 from one .NET app to a .NET server for example, 
+02:19 and that means it's extremely fragile and really inaccessible 
+02:23 to Python or Javascript or other things like that, 
+02:26 it's like you have to basically have the same technology on both sides. 
+02:29 And also, if you look at the network traffic, can you make sense of it? 
+02:33 I can't, not usually anyway, it's very hard to read just binary blobs, 
+02:36 it's also hard to debug if things go wrong because you cannot read it, 
+02:40 okay, but we do have low latency, low bandwidth, high speed raw sockets, 
+02:46 and that is possible of course in Python. 

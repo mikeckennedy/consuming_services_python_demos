@@ -1,0 +1,88 @@
+00:00 Another thing that we might run into, especially little bit older services, 
+00:05 especially inside enterprises, inside these big companies, 
+00:09 they built a bunch of internet apps that they can connect together, 
+00:13 it's very likely that what you are going to run into is a Soap web service. 
+00:18 Now, in the early days of the 2000s, 2001, 2002, 
+00:22 Soap services were fairly ubiquitous for intranet communication. 
+00:28 And, of course, as Javascript grew and the internet grew in popularity 
+00:32 especially with regard to services, the HTTP services and Json Restful services 
+00:39 more or less edged Soap out, but it's very likely that you are going to run into 
+00:42 a Soap service if you are working with older systems inside of a company. 
+00:47 So it's really important that we talk about them here 
+00:50 because you don't want to have to switch technologies 
+00:53 just because you are talking to a old service, right, 
+00:56 so what's the deal with these Soap services, how does that work? 
+00:59 Well, it's basically HTTP traffic, the thing that is kind of an unusual is 
+01:02 every request, regardless of whether you are getting something 
+01:05 or you are updating something, 
+01:07 every request is a post which indicates some kind of action, 
+01:10 so here let's suppose we want to login and we are going to post to a single location 
+01:14 and this action header actually tells the service what to do, 
+01:18 and what we are going to send is a big blob of XML. It looks like this. 
+01:21 And the service is going to respond with another big blob of XML, 
+01:25 we are going to parse that apart back in our app. 
+01:28 Now, what are the benefits?
+01:32 One of the things that is nice about these Soap services is they typically have
+01:35 some kind of UI describing them, 
+01:38 and they also have UI that describes them for tooling, 
+01:41 so they are really built with the expectation, it's basically required 
+01:45 that at least one side of these, the fence, either your app or the Soap service 
+01:50 have some really strong tooling support to generate the stuff. 
+01:53 I go so far to say these are the easiest services to create and consume if, 
+01:58 and this is a huge if- if both sides of these arrows, your app and the service 
+02:05 have excellent tooling support for Soap services. 
+02:09 that's not the case with Python, and these are certainly not the best services, 
+02:14 that's why they are not very popular anymore,
+02:17 but they do have a button press generate the server side, and client side tooling support, 
+02:21 and that way they make them easy but like I said, I don't think they are the best 
+02:25 and I definitely don't recommend using them if you can avoid them. 
+02:28 So what else is a drawback about Soap services, we talked about post, 
+02:31 and this post only behavior means that it basically breaks the architecture of the internet, 
+02:36 the internet is built around get, post, put, various HTTP verbs, 
+02:41 and only HTTP get is allowed to be cashed, and that makes proxies work better, 
+02:48 that makes local cashing work better, there is all sorts of scaleability benefits, 
+02:52 and other semantics around being able to support HTTP get 
+02:56 the most common way to access resources on the internet but Soap services 
+03:00 just entirely missed this, they just didn't even understand that HTTP verbs 
+03:06 meant a thing on the internet when they were created, 
+03:10 so everything is post which means a lot of the infrastructure benefits 
+03:13 of being an HTTP service are lost. 
+03:17 It requires tooling, so things like Javascript and Python 
+03:20 are the real disadvantage in working with these services, but that said, 
+03:23 we are going to cover some pretty cool stuff on working with them from Python if you must,
+03:27 they are often focused on remote methods instead of remote resources, 
+03:32 so here we have a log in method rather than accessing something about our user 
+03:36 and that can lead to poorly designed services. 
+03:39 These Soap messages they exchange obviously they are bandwidth heavy 
+03:43 and while you technically can read them, if you must, 
+03:46 they are not really friendly to human beings, they are friendly to computers, 
+03:50 and they can be read by humans, but they are not what I would call readable. 
+03:55 Let's look at this Soap exchange, in detail. 
+03:58 So here I have an operation, imagine this is going to be called on a web service 
+04:03 that is a Soap service, so I want to take a number,
+04:05 and I want to take a number and I want to double it, 
+04:09 I want to take an integer and double that integer, so how does this work? 
+04:11 Well, of course we want to send this as an HTTP post, 
+04:14 so what we are going to do when we call this, the tooling that we would have had to use
+04:18 to somehow generate this service, would convert this action and this data 
+04:22 into what is called a Soap envelop.
+04:25 So the Soap envelop is an XML namespace laden bit of XML 
+04:30 that is quite dreadful and you should stay away from it if you can. 
+04:34 But like I said, if you have to call these services, 
+04:36 being able to do it in Python is cool, so here you can see we have a Soap envelop, 
+04:40 and there is a Soap header and a Soap body, 
+04:43 the Soap body contains some parameter, 
+04:46 and that parameter's value you can see is 123. 
+04:49 So we are going to want to double the number 123. 
+04:52 It's going to go off to the server, via post, via HTTP, some parts you don't see here, 
+04:57 the action is actually stored in the header, it's going to process that, 
+05:01 and generate a response that comes back to us that is also a Soap envelope. 
+05:05 And this time the Soap body contains a double an integer response 
+05:09 which also has an integer and that integer's value is 246. 
+05:14 So you can see, yes, awesome, we doubled the number 
+05:17 and you can bet that the value returned from this function 
+05:22 very much returned 246 when we gave a 123. 
+05:25 But it took almost a kilobyte of data exchange just send the four bytes over, 
+05:31 the 123, and return the four bytes back, 246. 
+05:35 So, this is not very friendly to people, to the network, 
+05:39 there is lots of problems with it, but this is how Soap works. 

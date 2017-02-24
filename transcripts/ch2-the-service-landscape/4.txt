@@ -1,0 +1,15 @@
+00:01 Finally, let's talk about queuing. 
+00:03 We are not going to cover queuing in this class, 
+00:06 but if we are taking the survey of the range of possible ways 
+00:10 of communicating with services, queuing probably shouldn't be left out. 
+00:13 So queuing is typically done sort of behind the firewall, right, 
+00:16 so I've got a set of apps they are running behind the firewall, 
+00:20 one of them is going to get some sort of operation, 
+00:23 it's going to add some kind of work or message to the queue 
+00:27 later on asynchronously another app that might pick that up and do something, 
+00:32 so for example, hey I am a web server, will you send an email to this person, 
+00:35 and I am going to carry on serving at my web pages. 
+00:38 Some other sort of email work or process might grab that go yeah sure, 
+00:42 I will start the outbound email campaign to this person. 
+00:45 That is queuing, we are not going to cover queuing in this class, 
+00:48 but just to round down the spectrum there you have it. 
