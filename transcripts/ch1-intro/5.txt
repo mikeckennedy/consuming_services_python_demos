@@ -1,0 +1,16 @@
+00:00 Finally, we are going to write a lot of code in this course.
+00:03 Well, I am going to write a lot of code in this course, and hopefully you follow along,
+00:07 it would be great when you see me doing these demos, for you to say 
+00:10 okay, I am going to take basically the idea that I saw Michael do there, 
+00:13 and I am going to write that, 
+00:17 all of the APIs in fact that we are working with are public and out in the open. 
+00:20 So, even the ones where we have to modify data are publicly accessible, 
+00:23 I've created some special ones for this course, 
+00:26 so you should be able to write the code and follow along in examples. 
+00:30 So I strongly encourage you to have your own little projects, 
+00:34 your own set of Python apps that is more or less replicating what I am doing here, 
+00:39 but I do have the source code of exactly what I typed 
+00:43 on the screen available to you here at github, 
+00:46 it's consuming_services_python_demos on my github account,
+00:50 and I encourage you right now to go star and/ or fork that repository 
+00:55 so you have it as part of your record.  

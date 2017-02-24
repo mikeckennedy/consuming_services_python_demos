@@ -1,0 +1,71 @@
+00:02 As you know, it's a services world out there, 
+00:05 almost anything you need to interact with 
+00:08 has an API and if there is no API, there is probably a webpage 
+00:11 and I am going to show you that the combination of APIs 
+00:14 and web pages allow you to connect your app to almost anything. 
+00:18 So we might want to talk to github to work with source code, repositories, 
+00:22 automated builds, maybe we want to use Twilio 
+00:25 for adding telephony and text services to our app, 
+00:29 of course we want to update people through their Slack channel, 
+00:32 send and subscribe people to our mailing list via MailChimp 
+00:37 charge them money over their credit cards using the Stripe APIs, 
+00:41 query some backend business data using Salesforce, 
+00:45 send out some emails with SendGrid 
+00:47 or even manage and work with our projects offline through Basecamp. 
+00:50 So if we want to connect our app to these types of services, and many more, 
+00:55 we are going to need to learn how to work with services in Python. 
+00:59 And that's what consuming HTTP and Soap services in Python is all about. 
+01:04 So, whether you want to talk to github, Stripe, Basecamp 
+01:07 or even that old fashioned Soap service that runs the backend of your business, 
+01:13 you are going to learn how to do that here, 
+01:15 And by working with all this services, 
+01:17 you'll see that you can give your app super powers. 
+01:20 I hope you are very excited to explore the world of services from Python with me. 
+01:24 What are we going to cover in this course? 
+01:27 Well, we are going to talk primarily about transports that run over HTTP, 
+01:32 Rest, Json over Rest or XML, or a variety of other things, 
+01:39 and we are even going to talk about Soap. 
+01:42 So we are going to use Requests, we are going to use urllib2 
+01:46 and we are going to use urllib.requests. 
+01:48 Now, if you are unfamiliar with these, Requests is the most popular way 
+01:51 to write Python clients for services,  
+01:54 however, sometimes we want to use stuff that is in the box if you will 
+01:57 that comes with your Python distribution that everybody already has, 
+02:00 because Requests you have to install separately. 
+02:03 So we are going to talk about Python 2's urllib2 and Python 3's urllib 
+02:08 and associated submodules like Requests and error and so on. 
+02:13 Now, many of these services are going to require us to authenticate, to log in, 
+02:16 so we are going to see how we can do username, 
+02:19 and password authentication to access restricted services, 
+02:23 we are going to work with a variety of different data formats. 
+02:25 When we talk to these HTTP services, they might want to send us data 
+02:29 back in the form of Json, or xml, or super complicated xml in the form of Soap 
+02:35 or even binary data, so, we are going to look at how each one of these data formats 
+02:40 is managed and worked with in Python 
+02:42 and how to use that kind of data from a service, 
+02:45 and finally, if there is no service, we are also going to talk about screen scraping.
+02:50 Often we'll have a direct end point that we can contact and use 
+02:54 a well known API against, but if the data is on a webpage and there is no API, 
+02:58 what do you do? Well, you do screen scraping, and screen scraping will let you go 
+03:03 to a standard HTML page and more or less turn that HTML page into an API 
+03:08 or series of HTML pages, so at the end of the course, the final chapter 
+03:12 that we are going to cover is doing basically adding services to websites
+03:16 that don't have services by making their webpage themselves 
+03:20 the thing that provides data to our app.
+03:22 So that is what we are going to cover, and who am I anyway? 
+03:25 Well, my name is Michael Kennedy, thank you so much for taking my class, 
+03:29 hey, that's what I look like, it's nice to meet you, 
+03:32 you can follow me on twitter at @mkennedy and why should I be teaching this course? 
+03:36 Well, I've been working with Python for quite a while, I run Talk Python To Me, 
+03:39 the number one Python podcast with over three million downloads, 
+03:42 so I've had the unique opportunity to interview hundreds of people 
+03:47 who are doing amazing things in Python and many of them 
+03:51 have written the libraries that we are actually going to cover here, 
+03:54 so when it makes sense, I am going to actually give you a look behind the scenes, 
+03:57 at the people behind some of these technologies 
+04:01 that we are actually going to cover in this course. 
+04:03 I am also the creator and founder of Talk Python Training, 
+04:06 I've written many of the courses and I have over ten years experience
+04:09 teaching hundreds of in person and online courses throughout the world, 
+04:14 so I am super excited you are at my class, it's great to meet you 
+04:18 and we are going to have a great time working with all of these services. 
