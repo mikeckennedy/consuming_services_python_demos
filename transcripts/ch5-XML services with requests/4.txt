@@ -1,0 +1,101 @@
+00:02 Alright let's put this xml concept together with requests 
+00:05 and work with some real live xml data on the internet. 
+00:08 Real canonical case for xml these days is rss, 
+00:11 so we are going to go and get the rss feed from talkpython.fm, 
+00:15 pull back and answer a few questions about the state of the podcast.
+00:20 Back over here in PyCharm I've got a new file consume_xml_service 
+00:25 and we are going to start by finding a way to get the data off the internet, 
+00:29 you can bet that that is request. 
+00:32 We are also going to need to work with xml itself 
+00:35 so we'll do a from xml.etree import ElementTree, 
+00:41 now we are also going to do some interesting work with dates, 
+00:43 and I am going to need to parse dates, and parsing dates is always super not fun, 
+00:47 but, we are going to use this package called python dateutil, 
+00:51 so check this out, I can come down here at the terminal, 
+00:54 and notice, that it already has the virtual environment activated, that is super cool, 
+00:58 so then we can say pip install python dateutil 
+01:03 and that is going to install it for us and from that, 
+01:05 we can say from dateutil.parser import parse 
+01:11 and this is going to allow us to parse some dates in a little bit. 
+01:14 Okay, everything is set up, let's add a little structure, 
+01:17 we'll have a little main method for now, we'll figure out what to do with that, 
+01:20 and like so, there we go, so first we are going to start by getting the xml, 
+01:25 and let's write a function this time, so we'll call it dom,
+01:29 say get_xml_dom and we are going to give it url, so let's put that up here, 
+01:34 and this is just going to be https://talkpython.fm/rss, 
+01:39 okay, let's write this function rather than have PyCharm write it, 
+01:43 so here we are going to go and do a get, 
+01:45 we will get a response=request.get_url nothing fancy here, 
+01:49 and we probably should check the response code, 
+01:52 so we'll say if resp.status_code ! =  200, return none, 
+01:56 maybe you want to log it or something but for now we are just going to do that,
+01:59 and now we are going to say dom=ElementTree.fromstring, 
+02:04 and we are going to give it the response.text 
+02:08 and we are just going to return the dom, okay so this little function here, we can put it below, 
+02:12 I like having the main method at the top, it kind of orchestrates everything, 
+02:16 so we are going to get that, we could even inline this, like so, 
+02:19 okay, so we want to get the dom here and then we would like to do some kind of query, 
+02:24 and to be honest, this really so far actually this point right here is 
+02:29 really whole service story and the rest of it becomes like an exercise in straight xml, 
+02:35 let's go ahead and run this, rss element, excellent, okay, 
+02:39 so the next thing we want to do is let's define an episode 
+02:42 and we are going to do that with my friend collection.namedtuple. 
+02:4802:55 okay so I'll just throw in fields title, link and pubdate, 
+02:57 and then here we'll have an episode, we'll say get episodes and we'll give it the dom, 
+03:03 alright so this function we are also going to write and what it's going to do is given a dom, 
+03:07 it's going to go find all he episodes, so the way this works, 
+03:11 we have rss and then inside there we have this thing called the channel 
+03:14 and inside there we have an item for each episode, 
+03:18 so in xpath you don't name the top element, and we don't need the star, 
+03:22 we just going to get more than one back, so we'll get item nodes
+03:26 it's going to be dom a find all, with some parenthesis, with some quotes, 
+03:31 and then let's just print out how many items we have, I think if this comes back correctly,
+03:37 we should have 97, let's see, do we have 97- server says 97, fantastic.
+03:42 It looks like this is working, so now what we can do is we can just return a list of episodes,
+03:48 so we'll say episode of and for something, we'll say for n in item_nodes okay great, 
+03:56 so now we are just going to need to do some queries, we can say n.find_title, 
+04:03 we have link, and I think it's pubDate, it's the way they say it there and that looks good, 
+04:09 let's go back and get our episodes and we'll just print episodes. 
+04:13 Now because these are named tuples we should see the data, bam, 
+04:17 actually close but no cigar, so we actually found all these 
+04:20 but what we gave as field values is the actual nodes, 
+04:26 we just want the text from these. 
+04:28 Okay, very cool, look publish date looks reasonable, the length looks reasonable, 
+04:31 the title looks reasonable, super. 
+04:34 So there is another thing we'd like to so is like if we look at the publish date, 
+04:37 this is just a string in a certain format that is required in rss, it's not really time, 
+04:42 so that is where our parser is going to come in, 
+04:45 now normally parsing dates is super hard, because all of the various formats, 
+04:50 there is like over 700 different ways to represent dates, it's insane, 
+04:54 but this Python dateutils we'll try to parse them and it knows quite a bit of them, 
+04:58 so let's just give it a parse and see if it will take it. 
+05:02 Oh sweet, it's a datetime, look at that,
+05:05 so we got the parsing of the date working, and yeah, that looks right to me, 
+05:08 let's check the next one, yeah, these are good. 
+05:11 Okay, so here we have our episodes and technically, 
+05:14 we have these episodes in reverse chronological order, 
+05:18 if we wanted them in another order, we could now sort on this 
+05:22 like suppose we want them oldest to newest, like in increasing order, 
+05:25 so I'll say episodes = this and then we could return sorted episodes 
+05:30 and then we want to give it the key it's going to be a function, a lambda function,
+05:34 that takes an episode and it return the pubDate 
+05:38 and that will sort it the way we want it, so we should see one right here at the top, 
+05:44 episode zero, here we go over, episode one, episode two, perfect. 
+05:49 Because we were able to turn these into real dates easily, 
+05:52 we can actually run sort algorithms and not just do string sorting 
+05:56 which wouldn't really help us, okay, let's put that character down here, 
+06:00 do a little cleanup, okay, so now we have our episodes, 
+06:03 let's just print out the first three episodes, so for e in episodes, 
+06:08 and we are going to print out, let's print the number 
+06:12 and let's print out the episode title. 
+06:16 Now, let's do an enumerate here so we can get the index 
+06:21 and while normally the index would be off by one, we do want to add one to it, 
+06:25 my show numbers also start at zero because it's a zero based podcast, 
+06:29 come on, so the index itself will work perfectly and here we can say title, 
+06:33 and this should give us some kind of report on all of them, 
+06:36 let's just do the first five so we can see them on the screen.
+06:40 Boom, number one, notice, number zero introducing the show, 
+06:44 number one- Eve, number two- Python and Mongo 
+06:46 and so on, and so on, how cool is that?
+06:49 So, here we are, pulling live xml off of the site, 
+06:53 and processing it in real time using these xml techniques.

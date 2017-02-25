@@ -1,0 +1,45 @@
+00:02 Let's review working with xml in Python. 
+00:05 We're not yet to the services part, but that's actually the easy part, 
+00:08 it's working with xml itself that can sometimes be tricky; 
+00:12 so here we've got a little fragment of the data that came 
+00:15 from that Reed college course catalogue that was reed.xml, 
+00:18 you can see we have a title, we have days, we have building, and room, 
+00:21 and if we want to work with this, we go and import ElementTree, 
+00:25 and just to make our lives easier, it wasn't technically necessary 
+00:28 but it is better to create a named tuple 
+00:31 which is more or less a class with fields only and no functions, 
+00:35 which was all we really needed it was little data containers, 
+00:38 and then we are going to parse that from the string representation of xml 
+00:43 into the DOM, the object model, 
+00:46 we are going to use the from string method on the ElementTree, 
+00:49 and then we start writing xpath, queries against it, 
+00:52 so here we are looping over the find all of the courses, and for each course,
+00:57 or each really node that we find in the xml document, we are going to run 
+01:01 a set of subqueries on that document, so we are going to query for the title, 
+01:04 for the place/building, place/room, 
+01:07 and then in this example we're also getting the days that it runs. 
+01:10 Then if we want the courses that are held in Eliot hall, or a building,
+01:13 all we have to do is write a little list comprehension 
+01:16 say give me the course for course in courses, 
+01:19 these are the transformed named tuple types, where the building=eliot. 
+01:23 Boom, it's done, it's worth considering the trade-off of xml versus json 
+01:29 and how it relates back to Soap services. 
+01:33 So Soap is a much more strict and honestly convoluted protocol 
+01:38 than simple xml exchange. 
+01:41 So Soap has envelops and headers and a bunch of namespaces, 
+01:45 and certain ways in which things must be structured, 
+01:48 and xml is just much more general, there can be simple xml or complicated xml. 
+01:52 So what we are doing and what we are going to do, for this section, 
+01:55 is all about just working with plain xml data, not Soap services,
+02:00 Soap services require tons of tooling and we'll work on that later, right, 
+02:06 we'll see that Python actually has some decent answers to the Soap story 
+02:09 if you must use those services, 
+02:11 but in this case, we are just working with straight xml. 
+02:14 So, we are just focused on working with xml by itself, now, if you get the choice, 
+02:18 if you get to decide whether you have an xml service or a Json service, 
+02:22 choose, Json, it much more closely matches the way data is represented in Python 
+02:28 and the way it's represented in Javascript, 
+02:31 so if you are building a web app and it's got a Javascript front end 
+02:34 and a Python back end, Json all the way, 
+02:37 but, consuming xml is still not too bad as we've seen. 
+02:39 So, let's go look at another example. 

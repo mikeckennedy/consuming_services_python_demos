@@ -1,0 +1,7 @@
+00:01 Now let's focus on xml as a data exchange format, 
+00:05 we are still going to be using HTTP clients, 
+00:08 we are going to be using rest in particular 
+00:11 although this equally applies to urllib once you get the text representation of xml downloaded,
+00:16 we are going to focus on how to work with xml for basic read only services. 
+00:21 Now this is not Soap, this is just straight up xml, 
+00:24 things like rss feed and other xml data sources out on the internet. 

@@ -1,0 +1,12 @@
+00:01 So to review, working with xml from services is pretty straightforward. 
+00:04 Again, because it's the easiest way to do stuff on http, 
+00:07 we are going to work with requests, 
+00:10 and then, we are also going to use the ElementTree,
+00:12 and we are going to call request.get given url, 
+00:15 that is going to get us the response, remember, 
+00:17 check the status code, make sure everything worked out okay 
+00:20 and then we can get a hold of the actual xml as a string, via response.text 
+00:23 and then we are going to use ElementTree and parse it as fromstring, 
+00:27 and once we have that, we are off to the races, 
+00:30 we now have an xml dom in memory and we just do xpath queries against it 
+00:34 as we saw in the previous section. 

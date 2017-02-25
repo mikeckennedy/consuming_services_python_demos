@@ -1,0 +1,11 @@
+00:01 Now that you've seen how we can download binary data, 
+00:05 like mp3s and whatnot, with request, let's review he core concepts. 
+00:08 Of course, we are going to have to import requests, 
+00:11 and then we saw that we had to enable streaming for this to work, 
+00:15 we got weird results, it looked like it was downloading but not really, 
+00:19 so we had to enable streaming and turn on decode binary content to true; 
+00:23 we also saw that we can save a lot of stream juggling work, 
+00:27 that we might have to do, if we use the shell utility copy file object 
+00:33 which takes one stream and copies to another 
+00:36 so it reads right of the network and writes straight to the file system 
+00:38 and everything is taken care of, it's beautiful. 
