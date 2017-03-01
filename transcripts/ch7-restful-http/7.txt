@@ -1,0 +1,60 @@
+00:01 We've seen that our blog explorer is really not very interesting
+00:04 if it can't get the post, so we've already seen how to get http json based data, 
+00:09 but let's go and do it just one more time so you become familiar 
+00:13 with what the service expects you to send and receive 
+00:16 and just to start this project from scratch. 
+00:19 So we are over here in Postman, you can see I am pointing at the public API, 
+00:22 we could do a little send here and see what comes back, 
+00:25 so notice that we have a list of json objects which we will become very easily 
+00:29 Python dictionaries and that the 
+00:31 title publish, content, id and view count precisely match 
+00:36 id, title, content, published and view count that are in our named tuple. 
+00:41 This is going to save us some work, so let's go down here to get post 
+00:45 and it just says to do get post so let's return that, let's get rid of that, 
+00:51 let's go over here and what we are going to do is 
+00:53 we are going to create the url that we got a colon, 
+00:55 it's going to be base url plus api/blog, we'are just going to do a get request 
+00:59 of that that will give us what we saw in Postman, 
+01:02 so we'll have our response=request.get(url)now, 
+01:05 maybe we should indicate in our header that we are expecting a response type of json, 
+01:10 but the service only returns that so we are going to roll with this for now. 
+01:14 We'll say if response.status_code ! = 200, 
+01:19 we want to print, there is some kind of error, 404, or whatever, 
+01:26 something to that effect, and now if we do, if we do have the post, 
+01:30 what we want to do is we want to return a list 
+01:33 and we can use a nice little list comprehension here 
+01:36 because I've created the elements of this dictionary, 
+01:41 well that is what we are getting from this service, there is no debating that, 
+01:44 but I've created this post thing up here this named tuple, 
+01:49 think of it as a class without  behaviors, just data, with exactly the same name here, 
+01:53 so that lets us write something like I am going to put a thing here for a minute 
+01:57 and then we'll say for p in response.json, right
+02:03 remember what we get back here is a list of these dictionaries, 
+02:05 so p we could call it post is going to be one of those elements, 
+02:09 and what we want to do, we really want to return a post 
+02:13 and I'd like to set title=post.get ('title'), and then id=post.get('id') etc, 
+02:22 but we can do it just like this, 
+02:26 we can take that dictionary and unpack it as keyword values in the post 
+02:29 and because there should be if I did this right, 
+02:32 a one to one mapping between keys and post and keys and the named tuple 
+02:35 it's expecting, we should get exactly what we are looking for, let's find out. 
+02:38 Alright, moment of truth, list, boom, look at that, this crazy number is the id, 
+02:44 this is the number of views and then this is the title; if you look at Postman, 
+02:50 you see we actually get more data back, we also get the content, 
+02:53 now this is really short because I just didn't want to put a lot into it, 
+02:56 but this is basically meant to be the body of the blog post, 
+02:59 where it's got the title and the publish text and view count and so on. 
+03:02 We are of course working to simplify data model here but I think it's working pretty well, 
+03:06 now look how cool that was, like nice little dictionary unpacking, this is great, 
+03:10 so we got our data and we are reading it from the service, 
+03:16 let's go ahead and go back and tell the service 
+03:19 hey I would actually like to be very explicit about 
+03:21 that I am expecting you to send me json, 
+03:24 so you could do that over in postman here if we go to headers 
+03:27 and we could add and accept here 
+03:32 and it says the value could be application json right there, application/json, 
+03:37 so how do we do that in code, we just go over here and say headers, 
+03:40 and we make a dictionary and we say accept
+03:43 and the value is going to be application/json 
+03:47 and we say headers = there is headers variable here.
+03:50 so we can run this one more time, it should work the same, beautiful. 

@@ -1,0 +1,78 @@
+00:02 So we can see the post, that is not really new for us 
+00:05 although I do feel like this is a pretty sleek little trick with the dictionary unpacking, 
+00:08 it's time to add the post, so over here we are going to do a few things, 
+00:13 I've already created the publish date text 
+00:15 because that is just not worth you watching me type that, 
+00:19 but we still need to get some additional information, from the user. 
+00:22 So, we are going to need to get the title, so we could say just input, okay, 
+00:26 once we have all of this information we will be able to create 
+00:31 a dictionary on the Python side here, called post data, 
+00:36 exactly like the thing we are working with, so we could say like title=title,
+00:40 content=content, we know this is what it's going to expect, 
+00:45 view_count=view_count, and published=published_text okay, 
+00:52 so you might think that we can just send this over directly as it is but it turns out 
+00:57 we got to do one more little step here, we are going to need the url to submit it too 
+01:01 so it will be base url plus, remember our API is if we do a post 
+01:06 to the general blog collection that will create one and actually even return it 
+01:10 as the response body, so that is cool and let's go ahead and add some headers, 
+01:15 and earlier we said we'd accept application json 
+01:17 but now we are telling it I am sending you application json right, 
+01:21 we are going to turn that into json and send that as the body so on the server side, 
+01:26 it knows it's not like form encoded data or something to that effect, 
+01:30 and now we can send it so we can say the response=request. not get, but post, 
+01:35 right, there is also a put and there is also a delete. 
+01:38 So we'll say post and it takes the url the data, the json and so on, 
+01:42 so we'll say url, we'll say json=post data, and headers=headers, 
+01:51 okay, that is pretty cool, let's go ahead and try sending this to the server, 
+01:54 I think this actually might work, so we'll say if response, 
+01:57 now, you got to be a little careful, what does success mean for a post, 
+02:01 if you look at the http protocol, it says there is a specific success status code 201 
+02:09 which means created and that is the ideal status code for here
+02:13 so we are going to assume that this service is working right, 
+02:16 if you get a 200 back that might also mean it worked, 
+02:19 they just aren't being super careful with their status codes, 
+02:23 so let's say if it's not over here we'll say print error creating post, 
+02:29 and any text that we get back, right, it could be hey like this was not found 
+02:35 or it could be access denied you must log in or something to that effect. 
+02:40 Now, if we do see it let's go ahead and do a print, created this, 
+02:45 and I am going to do a print whatever we got back, so we should have a post, 
+02:49 I am going to actually capture that post, and say response.json, 
+02:53 now, if we just sent the data to the server, 
+02:56 why would it send it back, that's weird, right, 
+02:59 well, remember, there is 5 pieces of data in every blog post in our data model, 
+03:03 there is the title, content, view count, published and id, 
+03:06 the id is server generated and maybe they also do other normalization 
+03:10 like set this to be at least zero, not negative, maybe they do cleanup on this,
+03:15 all sorts of things could have been modified 
+03:18 and we want what the server believes it created, not what we asked it to create. 
+03:21 So this post is going to represent that. 
+03:24 Alright, you want to see if it works- let's give it a shot. 
+03:28 Alright, so let's see what's you first, we have three, 
+03:31 there is always these three that are static when you get started, 
+03:34 I didn't want you to start with an empty set of data, 
+03:37 then I am going to add so this is our first attempt to create a post, 
+03:43 the title is this is the body, I don't want to write the whole blog post, 
+03:48 and the view count is going to be 10. 
+03:51 Here we go, boom, that worked beautifully, now it's important to notice here 
+03:55 that we set the json, another possibility up here, is we could set the data, 
+04:00 if we set the data we have to set a string representation of the json, 
+04:05 if we set the json itself and not the data, 
+04:08 it's going to basically stringify that json, so be careful here. 
+04:12 Alright, now let's see how this works, let's list and see if our post is actually there, 
+04:17 oh awesome, this is our first attempt to create a post, 
+04:20 let's just add one more because we can.
+04:24 This one has got a lot of views folks, 
+04:27 boom, we got it back and then notice right here, 
+04:30 the id that we got back from the server it ends in 48 a 
+04:33 so when I list this is our success story it ends in 48 a, 
+04:38 that is a direct call to the server, we are not holding onto that data. 
+04:41 So that is how we create data using our API, remember, we knew that over here, 
+04:46 because it said the way you create a new post is you do a post against /api/blog 
+04:53 where it doesn't actually say it here, but I am telling you 
+04:57 the body is the actual post content minus the id. 
+05:00 Now we have a much more interesting little blog explorer, 
+05:04 we can both list the existing post and create new ones for ourselves, 
+05:07 up next, we are going to want to update the post, 
+05:10 what if we made a type error or something and maybe even delete the post 
+05:13 like no this is old, this is outdated, I'm done with it, goodbye. 
+05:17 Much less common, but still, we want to have all the crud operations in our little explorer. 

@@ -1,0 +1,43 @@
+00:02 Let's take a moment and discuss the http and restful building blocks. 
+00:06 So where are we in our course, we are back sort of focused generally on the http clients, 
+00:10 so what are the building blocks that make up these http services 
+00:14 and to even larger degree restful services? 
+00:17 You'll see that restful services technically are like a specialization of http services,
+00:22 they are basically http services with a certain number of criteria not all http services, 
+00:28 maybe most don't actually support every restful principle let's say. 
+00:33 So what are the building block? Well, obviously, the http or https protocol, 
+00:37 these are things that transfer over the internet, 
+00:41 over the same protocol that web browsers use.
+00:44 And they focus on resources, so the way that you describe stuff in your API 
+00:49 often is some kind of noun, or set of nouns 
+00:53 and we have resources or urls that point at these resources, 
+00:57 so imagine we're basecamp, we might have users /api/users, 
+01:02 we might have projects /api/projects, 
+01:06 maybe a particular project so /api/project/7 or whatever, 
+01:11 and then unlike the traditional remote method in vocation type or services 
+01:15 that are made up of verbs and actions, so things like get users, log in, and so on, 
+01:20 we'll see that these http services are built upon nouns. 
+01:24 And the way that we perform actions on them is with the http verbs, 
+01:28 so we might do a get again, /users/one, 
+01:31 that means give me the details about user number one. 
+01:34 Maybe we want to create a new user, so we do a post against /users, things like that, 
+01:38 so it's the http verbs plus the nouns that are the resources, 
+01:41 that together make up our http services. 
+01:44 Now, most services you run into, kind of stop there, 
+01:47 if you are talking about restful services there is a couple more levels 
+01:50 we got to go into so you might have resource discovery, 
+01:54 so APIs like basecamp and other sort of well known APIs github and so on,
+01:59 they list exactly what their resources are, but certain types of restful services don't, 
+02:04 the just say start here and we'll give you a bunch of urls 
+02:08 and then you can explore further, using those urls, so that is resource discovery.
+02:13 The other thing that we could do but many services don't,
+02:17 is content negotiation, at a super low level,
+02:19 maybe you've got a /users/one and you have the ability to either access that
+02:25 and get the result back as json or as xml, 
+02:28 so if you set the accept type header either in your client or your browser,
+02:33 you are going to get whatever you put there, 
+02:36 so json gives you json, xml gives you xml, you could even go so far to say 
+02:40 I accept an image and it will give you the profile image back. 
+02:42 But, most services really say you do this request, "you get some json,
+02:47 you do that request, you get some xml", it's a little less dynamic 
+02:50 but if you talk full restful services, this is typically part of what is included.  

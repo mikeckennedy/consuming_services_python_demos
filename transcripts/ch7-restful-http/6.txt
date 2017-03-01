@@ -1,0 +1,30 @@
+00:01 Let me introduce you to the application that we are going to be using
+00:04 throughout this whole modifying data section and even a little bit afterwards. 
+00:08 And I am calling this the blog explorer. 
+00:11 So it's using this service that we've already seen in the previous video, 
+00:15 and this is our blog service and notice I am defining this base url, 
+00:19 the reason is we can also run this locally and we could switch this out 
+00:23 like a local host version which is included in the github repository with instructions 
+00:27 how to set it up and run it and all those kinds of things. 
+00:30 So if you are somewhere without internet, 
+00:33 you can replace this with the local version and run that, 
+00:36 So the idea basically is it's going to work around this concept of posts 
+00:39 and a post is going to have id, title, content, 
+00:42 it's going to have a published date, as a string and it's going to have a view count, 
+00:46 so what we are going to do is we are going to write a little app, 
+00:49 here you can see the made method and it's going to give you four basic options, 
+00:52 you can show the post with a list command, 
+00:55 you can add a new post with the "a" command, 
+00:58 you can update a post with the "u" command 
+01:02 and you can delete a post with the "d" command. 
+01:04 Now, just be aware there is some pre existing posts 
+01:06 which are shared by everybody who uses the service, 
+01:09 and those you can't update, you'll get a message about that, 
+01:11 but the ones you create you can update those and delete them, 
+01:14 so what we are going to do next is we are going to work on getting this list post to work, 
+01:19 you can see there is no real implementation other than this show bit here. 
+01:23 So I'll go and run it and show you we can say I would like to list 
+01:26 and it says to do get post soap because the get post is not implemented, 
+01:29 there are posts to show, if I do update, or delete, all of those just say look, 
+01:34 you got to write this, but this structure is in place for us to go to in the next set of videos, 
+01:39 the one thing that totally works right now, you can exit. 

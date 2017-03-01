@@ -1,0 +1,17 @@
+00:01 It probably won't surprise you to hear that to delete a blog post 
+00:04 we are going to issue an http request to the blog post url with the delete verb. 
+00:10 So this is a very simple request, we are just going to say delete/api/blog/id 
+00:14 and the response is not going to be any data just 202 that worked. 
+00:19 In code, again, this is probably the simplest of the 4 operations that we're doing, 
+00:24 with working with data here, including get. 
+00:27 So we come up with the url, api/blog/post id 
+00:31 and then we're going to issue an http request with a delete verb 
+00:35 and we're just going to issue it straight to that url, nothing else is required, 
+00:39 and all that is left is to determine did that work, or did it not work, 
+00:42 so in our case, the right response code, or the expected response code is 202 
+00:46 from the server, you may also want to be on the lookout for 200s
+00:50 if whoever wrote the API is not super careful about status codes, 
+00:53 or 204 is another reasonable response code that could mean success, 
+00:57 it's unlikely this will vary over time for particular API, 
+01:01 it's just that they may have made a different choice than 202.
+01:04 So you want to check here and then if you get pass that, that post should be deleted. 
