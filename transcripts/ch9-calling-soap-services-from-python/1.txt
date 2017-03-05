@@ -1,0 +1,51 @@
+00:03 So we are in a new place in this course,
+00:05 now we've made our way over to the data format section, 
+00:07 and we are going to be talking about soap clients. 
+00:10 We are going to see how to consume Soap services from Python, 
+00:13 and the answer is actually not to bad there, there are some pretty cool projects 
+00:17 that we are going to be using. 
+00:19 So I talked at the beginning of this course a little bit about the network,
+00:24 the spectrum of network services, and we put Soap in there, 
+00:28 in the really nice to work with if you have the tooling in some ways 
+00:32 but also kind of old school and very burningsome if you don't. 
+00:36 So, I just want to reiterate that, if you get a choice 
+00:39 between making an http restful service and a Soap service, 
+00:44 choose the rest service, if you got to consume one, 
+00:47 choose the rest service but we are going to talk about Soap 
+00:50 because there are many internal Soap services, 
+00:53 if you work in large companies, there are probably Soap services all over the place, 
+00:58 and what you'll learn here is how you can work with the existing code, 
+01:03 okay, this is not an advocation of Soap,
+01:06 this is just a- we live in a world where there used to be many Soap services, 
+01:10 and you may still run across them so how do we work with them, 
+01:13 alright, and just to remind you how this went, recall we had this function, 
+01:16 doubleAnInteger which we were calling on a Soap service, 
+01:19 and what happens is we come in, we call this function, 
+01:23 it generates a Soap envelope and the Soap envelope contains things like 
+01:28 it's going to run, what the values are, and it's very name space laden 
+01:33 to describe all of its types, so we are going to get a message like this, 
+01:37 and all of this is really to send two pieces of information, 
+01:41 we want to call the thing, doubleAnInteger, and we want to pass the number 1, 2, 3, 
+01:47 the server is going to do the work, it will pull this all apart, 
+01:50 it will run that operation and it's going to, not surprisingly double that number 
+01:53 and send the message back that looks similar, like this. 
+01:56 And here you can see the response came back and the response is 2,4,6. 
+02:01 Okay, so this is the Soap world, and what are the properties 
+02:04 benefits and drawbacks really of Soap services, all data is exchanged via http post, 
+02:11 now on one hand, you might not really care, 
+02:14 like you might not be really into exactly matching the architecture of the internet and the web,
+02:19 and that's fine, but one of the challenges you have with everything 
+02:23 being tunneled if you will over http post is that nothing is cashable out, 
+02:28 outside of maybe the server in memory cashing in, 
+02:32 but the verb post is not cashable and this causes many problems 
+02:35 on the public internet. 
+02:38 Next, all the operations target single url, so they might go against server/service 
+02:42 and then the action header tells you which operation on that service to run, 
+02:48 so it's not again, just kind of not really working the way the internet works, 
+02:52 because we're using post, nothing is cashable, xml format 
+02:56 especially with all those name spaces is really ---
+03:01 and we don't want to use it, right, we've seen json as better from a bandwidth perspective,
+03:04 better from a human readability perspective and it's just simpler 
+03:08 for most clients especially Python because dictionaries and json match 
+03:12 so closely to each other. 
+03:14 However, with tooling support, Soap does lead to pretty quick development. 

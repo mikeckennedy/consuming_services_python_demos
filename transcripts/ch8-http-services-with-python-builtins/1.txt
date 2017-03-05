@@ -1,0 +1,63 @@
+00:02 Where are we in the course? Well, we are still in the http client area, 
+00:05 but we are going to be focusing on the builtins, that is urllib2 and urllib 
+00:11 depending on whether you are on Python 2 or Python 3.
+00:15 Actually, there is a little bit of confusion about that, which is better, 
+00:18 should I use urllib or should I use urllib2, 
+00:21 well, that kind of depends on whether you are working with Python 2 or Python 3, 
+00:25 so here we are in the documentation for Python 2 and notice that we have a urllib, 
+00:31 it says open an arbitrary network resource by url, okay, that's cool, 
+00:35 maybe I should use this to talk to services if I want to just use the built in, 
+00:39 oh wait, there is also urllib2 which is urllib but even better, maybe twice as good, 
+00:46 I don't know, what the 2 stands for, just the next generation, urllib opening library. 
+00:50 So, this is a weird sort of historical confusion that you might run into 
+00:56 just if you are doing Python 2, so we are going to focus on urllib 2 
+01:00 and we are going to basically disregard urllib from Python 2. 
+01:04 Okay, well that said, we are going to see that 
+01:07 we are actually going to use urllib in Python 3, 
+01:10 so let's compare these side by side to make sense of this. 
+01:14 Python 2 has two versions an older version urllib 
+01:17 and the new version you just saw urllib 2, 
+01:19 so that is what we should work with, if we are doing Python 2;
+01:22 In Python 3, they made a number of breaking changes 
+01:25 from going from  2 to 3, one  of them was that is kind of crazy, 
+01:28 why do we have all these versions of urllib, 
+01:30 we are just going to create a new even better urllib that is the Python 3 urllib, 
+01:35 and along that path they actually decided to refactor 
+01:39 and break apart the urllib module into a number of pieces, 
+01:44 this included urllib.request where you actually will use that 
+01:47 to do the request and urllib error for checking for errors 
+01:51 and there is a few other urllib submodules as well in Python 3. 
+01:56 Now, the question you might ask is why would I use either of these 
+02:00 when I could use requests, what you are going to see, not so much here, 
+02:04 but dramatically so as we get in farther down the line, 
+02:09 is that these APIs are not as clean and simple and intuitive as the request APIs, 
+02:15 so if you got to choose, use request, there is absolutely no doubt about use request, 
+02:21 use request, like so many people are making that choice, 
+02:25 that is why it's downloaded seven million times a month, 
+02:27 but, if you are going to write a Python app or script, 
+02:31 and you need to do a little bit of network work, http work or something like this, 
+02:36 and it has no dependencies whatsoever, except if you use request 
+02:40 that now has a dependency, getting it installed is trickier and so on, 
+02:44 if you want to write a script that literally has no dependencies, 
+02:47 you might consider using urllib if that is the one thing 
+02:52 that would have pushed you into having external dependencies. 
+02:55 That said, it's up to you whether or not you use request or you use this style, 
+02:58 I'll show you this in Python 2, I'll show you in Python 3, but if you got a choice, 
+03:02 absolutely use request, it's a better API. 
+03:05 Finally, before we dig into the details of these two different APIs, 
+03:09 it's worth pointing out that the Python core developers 
+03:12 and the language team met and considered whether they might make request 
+03:17 actually part of the standard library, they might bring request into here 
+03:21 to basically replace urllib in Python 3 and they decided not to, 
+03:27 not because it wasn't important enough to sort of stand parallel 
+03:32 to the urllib story in Python 3, 
+03:36 but they said look we only ship new Python distributions infrequently, 
+03:40 and we don't want to hobble the package request 
+03:44 and tie it down to these various slow release dates 
+03:46 especially because you are working on the network, 
+03:49 there might be network security issues or voulnerabilities 
+03:52 that you need to quickly roll out a new version of request for 
+03:55 and you don't want to wait for CPython to rev entirely. 
+03:57 So it's just interesting to think that the Python team 
+04:00 actually considered making request part of the builtins of Python 
+04:04 and choose not to so as to keep request live and vibrant. 

@@ -1,0 +1,144 @@
+00:02 I think it's time to start calling some soap services from Python, what do you think?
+00:06 Over here in the service, if we scroll down we can get to the soap section. 
+00:09 there you can see our operations here, and we have our wsdl, 
+00:12 so let me copy our wsdl here, and let's go over to PyCharm here
+00:16 and write the soap suds version of the blog explorer. 
+00:20 Okay, first thing we have to do to get started is 
+00:23 we are going to have to import this thing called a client, 
+00:26 so let's import like this, from suds.client, 
+00:30 we are going to import this thing called client like so, 
+00:33 and then we are going to use that and this little function 
+00:36 that we are going to use to create the client, 
+00:38 and we are going to do a little local cashing because we are not going to want to 
+00:42 regenerate this service description or pull down that service description 
+00:46 and parse it each time, okay, 
+00:49 so this sort of global suds client and if we've already got it, 
+00:53 we are just going to roll with that, but we are going to use this wsdl here, 
+00:56 that's the same url I just copied, and it's going to be super easy, 
+01:00 watch this, client wsdl, let's not allocate that string if we don't have to and for now, 
+01:06 let's just print out, well, let's just print out up here, we want to do print client, 
+01:13 like so, call create_client, now let's see what we get when we run this,
+01:20 oh cool, look at that, first of all, we're running in Python 3 in our virtual environment, 
+01:25 and here is the client that says okay, it's this fedora hosted thing, 
+01:29 with this temp uri that comes from the service description, 
+01:31 and it says we have two ports, we can talk on BlogSoap or BlogSoap version 1.2, 
+01:38 it doesn't really matter which one, and we'll come in and we have 5 methods, 
+01:41 check this out, all posts create posts, 
+01:45 which takes a title, which is string, content and view count, 
+01:48 it has a delete post, it just takes an id, 
+01:50 a get post it just takes and id,
+01:52 and an update post, which takes all of the values like this, 
+01:54 it also has two types that it exchanges, 
+01:57 for example, all posts returns this thing called an array of posts which is super annoying, 
+02:02 I'd really like it to return just an array but it does what it does, 
+02:05 and then, that's going to contain a bunch of posts which is actually what we want; 
+02:09 so, we can actually discover the details about this client by just creating it, 
+02:15 pointing at the wsdl and then print it out, okay, so that's pretty cool, 
+02:19 let's comment that out, I'll leave it for a moment, I'll comment it out in the end,
+02:22 okay, so let's go ahead and implement one of these, 
+02:25 so we are going to go down here to show posts, noting to say there, 
+02:28 for get post notice, this is the requests version, this is the http restful version, 
+02:33 we are going to construct the url, construct the headers, construct the response, 
+02:37 check the status code, and then we are going to need to actually parse these ourselves, 
+02:42 I mean, it's not much work because it's a named tuple, 
+02:45 and we're doing dictionary unpacking but still, all of that stuff we had to do ourselves, 
+02:48 let's do it this way, so we are going to call create client and then, 
+02:54 the way we call functions I'll call this like so, we'll say client. service 
+03:00 and then it's going to have all those operations that we saw listed down here, 
+03:04 so for example all posts, I come down here and do all posts like this, 
+03:08 let me just print out post of zero, okay because what you are going to see, 
+03:12 let's just print out post for a minute, first of all, this should work straight away, 
+03:16 let me comment out this part right here, and tell it just for now, return something empty, 
+03:21 let's see what we get, I want a list so that should call all posts, and check that out, 
+03:25 it worked perfectly, it says sorry no posts, because we haven't parsed it yet, 
+03:29 so this looks great, post, post, post, rich data type- we have an array of posts, 
+03:34 which then has a thing which is posts, 
+03:37 so if we are actually going to get a hold of that array right there, 
+03:42 we are going to access it like this, which is too bad, let's do a list, 
+03:45 alright, so now what we got, it's basically like a tuple the first value 
+03:49 that we are going to get is actually the array, so this array is kind of a weird thing,
+03:54 but, what we get back is an array of these post objects, 
+03:58 and it's great that they have a nice string representation as well, 
+04:00 so what that means is what we really want to do is
+04:04 we want to kind of say posts= posts [0]
+04:07 we should probably do some error handling to make sure
+04:10 that this came back like we expected, but, we could do that, 
+04:11 we could also even go like so but that seems a bit too much, right, 
+04:16 so if this doesn't work out, I think we are going to get an exception, 
+04:19 and then we want to return this array, so what we return is posts, right, 
+04:24 that's it, create the client, call the function, return. 
+04:29 Alright, now this is actually pretty clean, right, the network level stuff is nasty, 
+04:33 no doubt about it, the fact you can't cash it is nasty, but this, 
+04:37 like this is the best version we've seen yet, isn't it? 
+04:40 Okay, so let's go over here and do a list, and it has no attribute id, 
+04:45 that is true, because in the wsdl, if you go over here, where is out thing, 
+04:51 we have a capital Id, capital Title, capital Publish, this is not a Python service, 
+04:56 it's not a Python class so its naming is non Pythonic 
+04:59 and so we just have to be aware of that right there, let's to this again, 
+05:02 list, ta- da, now we are back in business, updating for the various case differences, 
+05:08 working like this, we are going to go like that, okay, 
+05:12 so nice and clean create the client, get the post, and return it. 
+05:16 Well that worked pretty well actually, didn't it, let's see what happens 
+05:19 if we want to do add a post, okay, so down here, again we want to create the client,
+05:23 the client.service.AddPost, let's see what this is called, it's actually CreatePost, 
+05:31 and I am just going to copy this, right here, so we  know what to do, 
+05:34 this is all runtime, so PyCharm is not going to be able to help us out here, 
+05:38 so we are going to call CreatePost and it's going to take a title, 
+05:41 it's going to take the content and it's going to take the view count, 
+05:46 alright, and what comes back is an actual post object, and this particular API 
+05:51 we're not sending that along, but I am going to leave it here 
+05:54 just because I want it to be comparable to the size of what you saw before, 
+05:57 deleting that would kind of be unfair, okay, so this should add a post, 
+06:01 let's see, if we can add a post, 
+06:03 the title would be "My service is shiny and clean, it uses Soap!", 
+06:10 and the view count is 101, boom, look at that , 
+06:15 we created the service, My service is shiny and clean, it uses Soap, 
+06:19 and now let's list My service is shiny and clean it uses Soap, 101, okay. 
+06:24 Very cool, right, there is something to these Soap services, 
+06:27 even if they are not great in a lot of ways, there is something to be said for the simplicity. 
+06:31 Okay, so we are going to get the post, show the post, update the post, 
+06:34 and here we are just going to do this thing again, we are going to say 
+06:37 client=create_client, and then I just need to update this, 
+06:40 so client.UpdatePost and again, let me get this signature from up here,
+06:45 so it's going to be id, title, content, view count, 
+06:53 alright, so that is going to update it, and let's run and update our post here, 
+06:57 so if I do a list, we'll see my service is shiny and clean that's number 3, 
+07:01 so let's do an update on number 3, and of course post has no title, does it, too bad, 
+07:08 let's try it again. I want to do a list, let's do an update, let's update number 3, 
+07:16 and of course I forgot my service thing here, service.UpdatePost, 
+07:23 okay, so we have to again adjust for the fact that 
+07:26 now our post objects have capital T title not lower case t title, alright, 
+07:31 let's run update, we'll do My shiny Soap service take the same title, same content, 
+07:36 but now it's pretty popular, let's say it's been viewed that many times. 
+07:39 Well, that didn't work so well, did it, I think maybe 
+07:43 because of what I am actually passing here is not the post id, 
+07:47 I am actually updating, I am actually sending the function id and of course, 
+07:53 it's not going to be able to find a post by that, 
+07:56 so last time let's do this update number 3, 
+07:59 same title same id but lots of views now. 
+08:02 Ta- da, it's updated that post successfully, do we believe it, 
+08:05 let's see, it's had 10 million views, ok, apparently it did
+08:09 take that crazy number I typed into it, 
+08:12 cool, so my service is shiny and clean, it uses Soap.
+08:16 Alright, last thing, if we want to delete a post, 
+08:19 okay, so we need to delete the post by id so again,
+08:22 client=create_client() client.service.DeletePost(post.Id) 
+08:33 and again the title here, we'll say print delete it, let's create another doomed post, 
+08:42 so we'll say add your doomed Soapy, alright, so we can list it, 
+08:48 we can see that your doomed soapy is number 3, 
+08:51 and it's not getting too many views it's not a good sign, I think it's time to delete it, 
+08:54 it says which one do you want how about we delete number 3, deleting Soapy, 
+08:59 should be gone and of course, it is. 
+09:03 So that is how we use suds, and the real essence of it is we go down here, 
+09:07 we grab the wsdl, we call client and create an instance of the client, 
+09:11 passing the wsdl and then we just use that throughout our application, 
+09:15 object style as they say, so once we have this object, 
+09:18 we say client.service and we start calling functions 
+09:20 and it could take even a post object here as a parameter 
+09:24 but it doesn't and it just takes basic types like string string and int, 
+09:29 but it does return in our particular example a rich type which is the post, 
+09:33 alright, I am actually going to leave, this little print thing up here 
+09:36 because I think that is helpful for you as you explore this, but that's suds, 
+09:40 you see how you can use it to work with Soap services 
+09:43 and you can even set up authentication inside of your Soap service 
+09:47 and I'll show you that in the concept section. 

@@ -1,0 +1,73 @@
+00:01 Now, let's do something that might be a little bit unexpected for this Python class, 
+00:04 what I want to do is I want to show you what the expected experience is 
+00:08 for the people that created Soap services, like how is this suppose to go, 
+00:14 and then we'll see how Python sort of fits into this world 
+00:18 that was created for a place that is all about tooling driven infrastructure. 
+00:24 So here we are at the consumer services API talkpython,fm 
+00:28 and we have our Soap service and it shows us these operations, 
+00:31 although you'll see that we are not really going to need to look at this list 
+00:35 because it will completely describe them to us with the tooling, 
+00:38 so what you do in Soap is you start out with this thing 
+00:41 called a wsdl a web service description language, 
+00:45 and let me just pull this up for you here, you can see here 
+00:49 that we have here is what all post looks like, this is, 
+00:51 it takes nothing as a parameter, for the response it is going to return 
+00:57 an array of posts, well an array of posts is a sequence of these things 
+01:01 called posts and then where is the post, here is the post right, 
+01:04 so you can see this is like well not pretty and full of namespaces and junk like that,
+01:10 it does describe to us basically what is suppose to happen in this exchange, 
+01:16 and this is not meant for people, it's meant for tooling 
+01:19 so notice I am over here in Windows 10 and one of the frameworks
+01:22 that really popularized this is CSharp and .Net 
+01:25 so let me show you what people who created web services 
+01:29 expected to happen, and then we'll go actually do this in Python, 
+01:32 so I am going to create a super simple little app here, 
+01:35 if you don't know CSharp don't worry, 
+01:38 we are going to spend five lines of code on it and then we are going to be done, 
+01:41 alright, here is our super simple application, 
+01:44 and this is what the people who made the Soap expected to happen, 
+01:47 you right click and you say add service reference, 
+01:49 and this is something called wsf it's kind of nasty 
+01:52 so I am going to go to this older add web reference variant here, 
+01:56 and I am going to just paste in that wsdl 
+01:58 and say show me what you think this wsdl is, 
+02:01 okay we found this service, called Soap and actually if we go back here, 
+02:04 let me cancel this, if we put it in here we'll even get like a little description of it, 
+02:08 so here we have this service and it's a blog, it has a blog service, 
+02:12 and here is those pieces I told you about, right, 
+02:15 so let's go back and not mess with that wsf stuff like I said, 
+02:18 it's overly complicated, it's not necessary, 
+02:21 so here I am going to put for the service reference, notice it tries to reverse this,
+02:24 I'll just say this will be service, or svc, something like that.
+02:28 So, when I press this button it's going to read the wsdl 
+02:31 and generate a type from there, it's happening in here, 
+02:34 and you can see there is this web service, 
+02:37 if I say show everything we can look in here 
+02:39 and there is actually this reference thing okay, 
+02:42 so somewhere in here we are going to have a blog and this, 
+02:47 it turns out it's actually the name of the class that has all the operations on it, 
+02:51 so don't worry about that, we are just going to come over here, 
+02:54 and let's just suppose we want to get and list the blog post, 
+02:57 so I'll say var client=svc.blog, and we create one of those 
+03:03 and it knows where the service came from, so it knows how to get back there, 
+03:08 so of course new, this is not Python is it, and then I'll say var post=client
+03:14 and then here are all of our operations, get post, 
+03:17 get post async, we'll have all posts and so on, 
+03:20 right, so we are going to call that and then we'll just say for each 
+03:24 and then let's just do a console writeline which is equivalent to print, 
+03:28 we'll say something about the post as certain number of views 
+03:35 and then here we can just pass in post.title, 
+03:38 notice that the thing knows all the stuff that is being passed around, 
+03:42 because it looked at that wsdl and it generated it,
+03:46 now this doesn't work in CSharp, but we got to put the numbers here, 
+03:50 let me put g0 so we get some comma separated pieces here 
+03:54 and I'll just do one more right line here, all blog posts, like this, 
+03:57 so let's go and run this and see what we get. 
+04:00 Boom, so look at that, it goes put and it talks to the service
+04:04 easy breezy python clients has this many number of views, and so on, 
+04:07 maybe I wanted an N here, yeah, there is our comma separator. 
+04:14 Okay, so that is the expected experience right, we go over here 
+04:18 we run the tooling, the tooling generates all the rich types 
+04:21 and then we call them and they kind of look like their local functions 
+04:24 that we're calling like client.allpost but in fact, those go to the server. 
+04:28 Next up, we're going to see how Python fits into this world. 

@@ -1,0 +1,23 @@
+00:01 Now I don't always do examples of how to install things, like pip install the thing, 
+00:04 or go to PyCharm and hit command or alt enter 
+00:08 and it will say do you want to install this, you say yes, okay, 
+00:10 but, working with suds-jurko is a little bit different, 
+00:13 it's not entirely intuitive, so let me just give you this quick rundown,
+00:17 so if we say, first of all which pip are we working with, notice, 
+00:20 I've activated our virtual environment and just for kicks 
+00:25 we'll say which version this is from Python 3, okay, so Python 3.6. great, 
+00:30 now, if I say pip list what do we have installed, requests, 
+00:33 a few other random things that came along with the packaging tools, 
+00:37 and that's about it, we have no suds, clearly, suds is not in that list, 
+00:42 so if I say pip install suds, and hit enter that would be super wrong, 
+00:47 because that is going to install the five year old Python 2 only version, 
+00:50 it probably won't even install it actually, but if it does, it's still going to be wrong, 
+00:54 so what we install is suds-jurko, okay, so the name of the package is suds-jurko.
+01:01 Successfully installed, suds-jurko, version .6. 
+01:06 Cool, so let's go over here and run Python, that is my virtual environment Python, 
+01:11 if I come down here and say import suds_jurko or something, 
+01:15 that would be wrong, I just import suds, 
+01:18 okay, the package name has to be non conflicting with regular suds, 
+01:21 but other than that, the API and everything is basically old school suds, 
+01:24 just made for Python 3 so now we have all the things 
+01:27 we want to do with this thing right here. 

@@ -1,0 +1,39 @@
+00:01 So let's look at how we work with Soap services from suds in Python. 
+00:06 It all begins with the wsdl, as we've seen and then we can use the wsdl 
+00:10 plus the suds package to generate a suds proxy or suds client. 
+00:15 Now, this suds proxy knows all he structure and schema and operations 
+00:20 that the Soap web service wants to call, that the Soap web service provides. 
+00:25 So once we have the proxy, it knows how to do the Soap exchange 
+00:29 basically seamlessly to us and afterwards, we just work with this local class 
+00:33 that is created at runtime with suds and everything looks pretty easy, in code, 
+00:38 we just import the client from suds.client, we have our url to the wsdl, 
+00:43 and we just allocate an instance of the client class
+00:48 and provided the wsdl, boom, we're done. 
+00:51 Now it's parsed and understood that web service description language 
+00:54 it gives us this client which has a service property, and on there, 
+00:58 we can call functions which will map dynamically to the operations on the server. 
+01:02 Now, you may want to know exactly what this client thinks the operations are, 
+01:08 so we've seen that we can just print it out and we get a really nice listing 
+01:13 of what the operations and rich types are, so if we print this, 
+01:18 we get something like this, service blog and it's going to have a couple of ports, 
+01:22 these are actually the various soap 1 and soap 1.2 formats 
+01:28 that it supports but typically they are identical, 
+01:31 and here our example had 5 methods and 2 rich types, 
+01:35 that array of posts I'd really like to see that just come back as a list 
+01:38 but hey, it's not that big of a deal, alright, so we have our all post,
+01:42 create post, delete post, and these are normally verbs, 
+01:45 not nouns like we have in the http restful services, 
+01:48 where the verbs are actually the actions we take on the nouns, 
+01:51 here these are things like delete post 
+01:54 or create post or get me the post, stuff like that. 
+01:57 Once you know what the operations are and the signatures of them, 
+02:00 you are going to want to call those functions, right, 
+02:02 so we are going to make sure we've already got the client, 
+02:05 we've got the client created from the wsdl, 
+02:08 and then we just say client.service and we start calling these operations, 
+02:11 any time you see an array of thing, you know, 
+02:14 the arrays actually contained in the first element of that tuple that comes back there, 
+02:18 and then these come back already parsed into post objects, 
+02:22 so we can say post.Title and post.ViewCount. 
+02:25 We can also call functions that take parameters so client.service.UpdatePost 
+02:29 it takes a post id, title, content and a view count. 

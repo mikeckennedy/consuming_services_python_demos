@@ -1,0 +1,25 @@
+00:01 In Python, the best way to access Soap services, 
+00:05 is to use this package called Suds, you got to love the name, right, 
+00:09 Soap Suds, it's beautiful, so it's a great name and you can see, 
+00:13 Suds is a lightweight, Soap Python client for consuming web services, 
+00:17 and it has things like no class generation, you can just do this in runtime, 
+00:22 in runtime it will read the wsdl and it will actually generate 
+00:26 all the information it needs for you to work with, it provides an object API 
+00:29 which means you create classes and interact with it by calling functions 
+00:33 on those classes just like we saw in the tooling example,
+00:36 and it supports a bunch of Soap protocols, so this is great, right, 
+00:39 well, if you look a little carefully here and- hm, not so great. 
+00:43 Modified five years ago. Now, technically it still works but it has problems 
+00:48 namely it only supports Python 2 and because Python 2 is end of life, 
+00:53 in 3 years, this is unfortunate, so are we just out of luck, well, 
+00:58  I mean, obviously this is open source, somebody could come along 
+01:02 and fix this problem because whoever created it has kind of left it to wither over here. 
+01:06 But luckily, a guy named Jurko already did, so thank you very much for that Jurko,
+01:11 you can see over here on bitbucket.org/jurko/suds 
+01:15 that now we have a Python 3 compatible version of this, 
+01:20 it said it's hopefully a temporary fork 
+01:22 but given that other one was updated 5 years ago, 
+01:25 I think temporary is becoming permanent. 
+01:28 So nonetheless, thank you Jurko, we're going to use the suds-jurko package
+01:32 rather than the straight up suds for working with Soap services in Python 
+01:36 especially in Python 3 right. 

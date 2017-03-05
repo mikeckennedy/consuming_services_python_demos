@@ -1,0 +1,35 @@
+00:01 How do we use Python 3's urllib set of submodules
+00:05 to do basic get request against servers
+00:08 and even more advanced ones like post, put and delete? 
+00:11 Well, if we are going to do a get request we simply create 
+00:14 a get request against api/blog and this is going to give us all the blogs back as a json body;
+00:19 In code, we are going to need to import two modules, 
+00:23 urllib.request and json and then of course, we construct the url 
+00:27 that we are going to work with, and we are going to call url open, 
+00:30 just like before, but this time, it's urllib.request.open 
+00:34 and the response now supports working with context managers that is the with blocks, 
+00:41 so we don't have to be very careful about how and when we close the response, 
+00:45 so again, we are going to check the response code, 
+00:48 read the text and there is no json feature 
+00:50 so we are going to have to use the json module
+00:53 to load that back into a Python dictionary, 
+00:56 after that, we're done with the service, 
+00:59 we are off to the races with plain old Python data. 
+01:02 So it gets pretty straightforward, but what about put or other modifying data operations, 
+01:07 so here we want to update a blog post, we want to do a put against api/blog/the id of the blog 
+01:13 and we are going to post as the body the changes we'd like to make to the post
+01:17 and what we'll get back is confirmation details, so in code again, 
+01:21 urllib request and json url but now we are going to create a dictionary 
+01:25 that has all he data title, content and view count, 
+01:29 we are going to convert that to a json string via dump s and then, 
+01:33 we need to pass actual bytes not a string, 
+01:35 so we are going to give it the utf8 representation of that string as bytes, 
+01:41 okay, so that is the post data, let's go an throw in some headers, 
+01:45 so that we can say this is json you are going to be getting, 
+01:48 and now, this time, instead of actually just calling url open and passing some values, 
+01:52 we are going to create a urllib.request.request object give it the url, 
+01:57 the data, the headers, and now we can set in Python 3 the method to put,
+02:00 so that is excellent, and then we carry on like before, 
+02:04 we issue the request, check the response code read the text, 
+02:08 and turn that back into a dictionary, so this is how you work 
+02:12 with urllib and Python 3's builtin http capabilities. 

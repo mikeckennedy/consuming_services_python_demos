@@ -1,0 +1,21 @@
+00:01 Let's review the core concepts around calling a Soap service 
+00:04 with a tool driven generated approach, 
+00:08 so what you are going to do is we'll have a Soap web service out there, 
+00:11 and it will have a service url and a wsdl url, we'll point some tooling at it, 
+00:16 it will generate a proxy, typically this is like generating source code 
+00:20 that will be compiled and then, those two things know how to do Soap exchange 
+00:24 and you treat the generated proxy or client more or less just like it's a local class, 
+00:28 it just happens to be that it needs a network 
+00:32 and it does this crazy Soap exchange to get there. 
+00:34 So the expected experience that people created this wsdl soap world was 
+00:39 you go to your tool, you'd say add service reference or something to that effect, 
+00:42 it would pull up some kind of dialogue, some tooling, that would read the wsdl, 
+00:47 and generate a type which knows about all the operations 
+00:50 including all the rich type exchange. 
+00:53 Okay, and then we just use this like standard local code, 
+00:58 so we'll say blog service=new blog, we'll say create a post 
+01:02 and we give it the data that it's going to take, then we can say
+01:05 give me all the posts and for each over those and print them out, 
+01:09 we can even update the post, get me the last one of all of them, 
+01:12 increment the view count and then update that back to the server, 
+01:15 okay so this is what Soap was created for let's see how we can use it in Python. 

@@ -1,0 +1,37 @@
+00:01 Well a read only blog explorer is kind of interesting, 
+00:04 but really the idea was that we could do all he crud operations, right, 
+00:07 so let's work on add post. 
+00:09 So just like we saw before, there is no urllib, 
+00:11 but there is a urllib.request which has a request class in it, 
+00:15 and here we are going to allocate some data, let's go look at the signature of this one, 
+00:19 so you can see we can pass url the data, the headers, 
+00:21 the origin host and most importantly, because there is a lot of flexibility
+00:26 we can now pass an explicit method, okay, great. 
+00:30 So we are going to come over here, we are going to do the url, 
+00:33 we are going to do the json string, we are going to do the headers 
+00:36 but we are also going to set the method to post, explicitly and then again, 
+00:41 like before request.url open and it's going to go along more or less the same. 
+00:45 So let's go and create a post, we're going to see what's here, 
+00:51 okay, and we have this post comes from Python 2, 
+00:54 let's do one it's says that this post comes from Python 3,
+00:59 content, it's going to be viewed 100 times, 
+01:02 oh yes, okay so the post data should be bytes, 
+01:04 not iterable strings, so that is pretty interesting, how are we going to solve that? 
+01:11 Well, let me take a step back here, and we are going to say data, 
+01:16 let's just call it data for now so let's go over here 
+01:19 and say data= and this is what we had before,
+01:22 in Python 2 the difference between bytes and strings was not very strong, 
+01:26 what we can do though is we can say I'd like to take this string 
+01:29 and turn it into a particular byte array based on the encoding that we are expecting, 
+01:34 so probably he best choice here is to say I want to encode this using utf8 
+01:40 that is probably our best shot for the right encoding for this server, let's try it again. 
+01:44 Okay, just make sure that we got only our Python 2 one here, 
+01:49 so we are going to say something like this, from Python 3 
+01:53 so we are going to add Python 3, this is going to be new content 
+01:57 and this is going to be 1002. 
+01:59 Great, so now that we sent a byte array for our data,
+02:02 everything worked great and we got back our newly created object 
+02:05 with the server side generated id and we can even list it, 
+02:08 we should see it right there along with the other one. 
+02:11 Perfect, and it seems to be turning a little bit higher 
+02:14 than the Python 2 version of this post which is kind of cool, right?

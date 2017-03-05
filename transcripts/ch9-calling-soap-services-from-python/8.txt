@@ -1,0 +1,23 @@
+00:01 All of the operations that we worked with in our soap service, 
+00:04 took fundamental types, strings, integers, that sort of thing, 
+00:08 what if the operation, not only returned its own internal complex types, 
+00:13 but actually took them as parameters, it's easy to work with them 
+00:16 when they come back from functions, they are already allocated 
+00:19 you just start treating them as objects in memory, 
+00:22 but if you have to allocate one to input it into this method for example, how do you do that?
+00:26 You can't just call some kind of initializer on it because well, it's created a runtime,
+00:31 what are you going to do, okay, so if we want to use this post object
+00:35 back in this operation, now remember, this is not how ours works 
+00:40 but if this were the case, suds has an answer for this as well.
+00:43 Okay, so what do we do, again, we create the client just like before, 
+00:47 but now instead of going to client.service we go to client.factory, 
+00:50 and it can create these objects so we say client.factory.CreatePost
+00:55 and that does all the internal runtime stuff to allocate one of those 
+00:58 with basically none values for all of the properties, 
+01:01 and then we can just set the properties, creating posts from suds is fun, 
+01:04 it works in Python 2 or Python 3, and of course, it hasn't been seen yet, 
+01:08 it's brand new so ViewCount=0. 
+01:11 Now once we have this rich type, we can use it as parts of our parameters, 
+01:15 and our operation so client.service.CreatePost 
+01:19 and we are going to pass this rich object which will be serialized 
+01:22 into the Soap message just like the contract in this example.

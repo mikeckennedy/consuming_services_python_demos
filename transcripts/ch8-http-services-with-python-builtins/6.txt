@@ -1,0 +1,54 @@
+00:01 Alright, with our new found power in Python 3's urllib we can get rid of this, 
+00:06 sorry you can't do this because it requires web features, 
+00:09 we can come over here and copy across the original request version
+00:14 and let's just fix it up so all we have to do here
+00:17 is we are going to use our context manager, right away, 
+00:20 we'll say urllib.request.urlopen this url, and the method, 
+00:26 again, we are going to need our request, sorry, because we got to set the method, 
+00:32 
+00:37 and we are going to set this to delete, now we are going to pass that over, 
+00:40 we'll say as response and this can go, that was just older version, 
+00:45 of course this is get code, and read, and then, we're done,
+00:55 so let's just do an indent here, 
+00:59 alright, beautiful, let's run this and see that it's working, 
+01:02 so let's see what's here, alright, let's try to delete something, 
+01:05 well, what post is not very popular, I could try to delete two, 
+01:10 but that actually should come back with an error saying 
+01:12 that one is read only, let's give it a shot. 
+01:15 No, 403, forbidden, okay, that didn't work our very well, 
+01:18 let's try a different one, let's try delete, well, actually, 
+01:22 let's go and delete that Python 2 version, okay, delete, 
+01:25 and did it go away, it did, okay, excellent. 
+01:29 Now, one thing to notice is we actually got an error, 
+01:32 we got an error there when we tried to delete that 
+01:35 and so just checking the response code, that totally didn't work for us, 
+01:38 let's try this again, let's try to delete number 2, and see where the error is,
+01:44 the error is right here, it says no, no, this is not working, 
+01:49 what type of error was it, it is a urllib.error.http error, 
+01:53 so let's go ahead and add that error handling in here, 
+01:56 we have our import here, let's do error as well, 
+02:00 so even though we have our cool context manager not enough, 
+02:09 we got to do add an exception, and http error as he and then we'll print error, 
+02:17 see if we can get out of this, get the message and get the code, 
+02:24 maybe switch the word there, huh? Okay, let's try to delete this, 
+02:29 one more time, let's try to delete number one, 
+02:33 error, we cannot delete it, it's forbidden, so I don't know, 
+02:36 this is kind if annoying, that it doesn't let us even look at the error code,
+02:41 right, the exception is thrown right here, 
+02:44 so maybe it's better to use a try finally to clean this up, 
+02:47 if it gets created, I don't know, it's a little bit funky 
+02:49 but we should add the same error handling to update as well, 
+02:52 because we will run into the same type of errors. 
+02:56 Alright, I think we have our blog explorer written in Python 3 builtins working great. 
+03:01 Now, as you'll see, you might think well that's not so different, 
+03:04 I am just going to say for get request, well,
+03:06 we are going to talk about authentication as well, 
+03:09 and authentications adds some pretty silly jurations to the builtins, 
+03:14 whereas it's super simple inside of request. 
+03:17 So, the benefits of requests are still going to build up in a crew 
+03:21 over the whole course or this course here, 
+03:24 and this is just some of the funkiness like that 
+03:27 we have to do a try and then a context manager and so on and so on, 
+03:31 and check codes here, check codes there, etc, 
+03:34 it's kind of just why does it need to be so complicated, right? 
+03:38 That said, it's not too bad, if you want to use the builtins. 

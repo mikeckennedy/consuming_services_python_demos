@@ -1,0 +1,48 @@
+00:01 Doing a get to get the post from the API was actually pretty straight forward, 
+00:05 so let's see how this works for adding a post.
+00:08 We're going to use a lot of the same structure that we had before, 
+00:11 we are going to get the same user interaction, we are going to get the same data, 
+00:15 this time we do need to explicitly set the content type 
+00:18 because it's not going to do that for us, 
+00:21 so then we're going to come down here and we would like to do something like this, 
+00:24 urllib2.urlopen() and we can pass in data, but we can't like pass our headers for example, 
+00:31 so in order to do that, we have to create a request type object 
+00:35 and I am going to call it req so you don't confuse it with the request, 
+00:38 the other external package, so we'll create urllib2.request object, 
+00:44 and in here we can pass the url, the data, the headers and so on. 
+00:49 So we'll say url and we'll say data= and I am going to hold off for a second there 
+00:53 we'll say headers=headers, so this is not going to jsonify this for us, 
+00:57 so we have to say json.dump s of our post  data dictionary, like so. 
+01:03 Okay, so then we're going to do that, we're going to post this down here, 
+01:07 we'll do a few things down here, say we want to response.close
+01:10 because remember we don't want to forget that, 
+01:13 and down here we want to do response.close actually let's do it right here, 
+01:16 we could do a try, finally, but we are just going to avoid that for a second, 
+01:20 so this should have a p in it, excellent, okay, so this is going to work 
+01:23 and it's going to do a post request, how do I know, I am just opening it, 
+01:27 well, check this out, down here, we can get the method, if it has data, 
+01:33 it's a post, if it doesn't have data, it's a get. 
+01:37 Okay, so the fact that we add this data means we're doing a post request, 
+01:41 we can do a get request with data, and we can do a post request only with it, 
+01:47 so we can't do a post request without data, I guess that doesn't make any sense, 
+01:51 but it's pretty constraining, as we'll see here in just a moment, 
+01:54 okay, so we can't do the status code, afterwards,
+01:57 this is more or less the same, we'll say response.get code 
+02:01 and we'll say read like so, 
+02:04 okay so if it doesn't work we're going to get that, and remember, 
+02:08 we have to close it straight away, and then here let's say, 
+02:11 or we'll better do this before text=response.read and then here 
+02:16 we can say json.load from string the text and that will be our post 
+02:22 and hopefully it worked, let's go and run it, let's do a list, 
+02:27 alright good, let's add a new post, this post comes from Python 2, 
+02:32 Python 2, and the view count is going to be one, how it's going to work, 
+02:37 here we go, boom, created, alright, beautiful, let's list it again, 
+02:42 alright, now this post comes from Python 2, okay so that worked,
+02:47 let's just really quickly look at the two other options, update and delete. 
+02:51 They are not going to go so well, well, update says in order to update a post 
+02:56 we have to do a put to url, well, with urllib2 we can only do a get or a post, 
+03:01 so okay call that function, can you, delete similarly, 
+03:05 we have to pass the delete verb, we can do a get or a post 
+03:08 it has data or doesn't have data, too bad, you won't be able to call that either, 
+03:12 well, there is some really string reasons 
+03:14 to work with requests from Python 2, right there, huh? 

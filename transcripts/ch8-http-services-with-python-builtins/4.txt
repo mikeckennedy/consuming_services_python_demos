@@ -1,0 +1,22 @@
+00:01 So we've seen Python 2 and urllib2 in action, 
+00:05 let's look at the builtins for Python 3, 
+00:08 so here we can see that we've got basically 
+00:12 the same code that we use for Python 2 
+00:14 and I am going to just upgrade it to the Python 3 version. 
+00:17 So the first error, well, let me just show you actually, first of all, 
+00:21 that we are running the Python 3 virtual environment 
+00:24 that we have been for most of this class 
+00:27 so the first thing to notice is urllib2 is no longer a thing, 
+00:30 now there is a couple of choices, we have the errors that you might encounter, 
+00:34 we have the request, we have the url parser, 
+00:37 and we have the robot parser as well as responses, 
+00:40 what we are going to work with is just urllib.request for now, 
+00:44 alright, just like before, the first thing that we had to do was get the post 
+00:47 so let's come down here and you can see get post is not looking so hot right now, 
+00:52 because there is no urllib2 but let's look inside urllib.request,  
+00:55 there is a url opener, it is similar, it's not the same, it's similar, 
+01:00 it has more or less the same signature here, 
+01:05 and we can open the url, there we go, 
+01:10 okay so we want to open it like this and from here on, 
+01:14 it looks pretty much the same, so get post is not going to be that different, 
+01:19 let's go and do a list here and look, we still have our post and everything, great. 

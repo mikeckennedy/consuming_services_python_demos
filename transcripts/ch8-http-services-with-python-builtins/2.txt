@@ -1,0 +1,44 @@
+00:01 Here we are back in PyCharm, and this is something like 
+00:05 the blog explorer that we just wrote in request in Python 3, 
+00:09 now, we are going to run this in Python 2 and we are going to use the builtins, 
+00:13 so we are going to need to do import urllib, there is the two versions, 
+00:17 this is absolutely Python 2, so I am going to go with this here, 
+00:21 and notice we are even checking to make sure it's running on Python 2 
+00:24 and if I go and run this, you'll see that I've created 
+00:28 a separate virtual environment based on Python 2 that we can use here. 
+00:33 Okay, so let's look through the app is basically the same, 
+00:36 of course we had to switch raw input for input and print no longer takes parenthesis,
+00:40 but other than that, you'll find there is not whole lot different factors,
+00:43 I don't think there is anything different in this code, so we go down here, 
+00:47 what we are going to do is we are going do is we are going to wrote get post again, 
+00:51 so we are going to come down, and we are going to create a response 
+00:54 just like we did with requests, 
+00:57 so we are going to come down here and do something a little less obvious 
+01:01 but it's not too bad, so we'll say for this basic get case unauthenticated 
+01:04 don't have to do too much, so urllib2, url open, and we are going to pass url, 
+01:08 we could pass the data and things like that but we're not going to do that, 
+01:11 we're just going to pass the url because this is a get request, 
+01:14 now it doesn't have a status code, this is more function driven, 
+01:17 there is no properties or anything like that, but we can come over here, 
+01:20 and call get code as a function, okay and then again, if an error happens, 
+01:24 we'll leave it like it is now, it's going to end up in a big bad crash, 
+01:28 so we also don't get the text this way,
+01:30 we say read it's kind of like a stream sort of thing, 
+01:33 so if that works, we should be able to get the data, now this didn't look too bad, right, 
+01:37 so let's go ahead and try running this. 
+01:40 That is running in Python 2 and let's go ahead and list, oh it has no attribute json, 
+01:46 let's jump a little bit ahead, so this is going to have to be post data 
+01:49 and we are going to need to do a little bit of work, 
+01:52 there is no builtin json here so we need to go and use the json module 
+01:56 which we have to import and then we have to have this say load s to parse a string, 
+02:01 we've already talked about this in previous videos, 
+02:04 and then we give it the response.read text and maybe it's even worth writing this 
+02:07 as a separate variable so we can check it out if we need to. 
+02:10 Okay, try again, let's go list boom, easy breezy back to good, 
+02:14 well, that seems pretty cool, maybe we can go and write the next one 
+02:19 without too much trouble, now one more thing that can be tricky 
+02:22 about working with this library is it can keep these sockets open, 
+02:26 so it's really important that we close 
+02:29 even though it's not in the auto-completion here that we close the socket. 
+02:33 Now wouldn't it be cool if this could be used in the context manager? 
+02:38 Well, it will be, shortly. But only in Python 3.  
