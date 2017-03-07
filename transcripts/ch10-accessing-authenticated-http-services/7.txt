@@ -1,0 +1,14 @@
+00:01 Let's look at the concepts behind authenticated basic auth request with urllib, 
+00:05 so again, we import urllib.request, this is the Python 3 version, 
+00:10 we have our url, and what we did is globally, one time we ran this code, 
+00:15 we said we want to set up a password manager, 
+00:18 so an http password manager with default realm and then, 
+00:22 we came along and added a password, no realm register the base url, 
+00:27 and said kennedy and super_lockdown, those are the username and the password, 
+00:31 and we created an http basic auth handler with that password manager, 
+00:35 and then we created an opener based on that handler, 
+00:40 and finally, we installed that opener,
+00:42 and then any time there was a request going to that url through urllib, 
+00:46 it used this authenticated http basic auth handler that we had registered here. 
+00:51 We compose this and globally install it and it's done, so that is kind of nice, 
+00:58 but, it seems like there should be a simpler way to do this huh?

@@ -1,0 +1,54 @@
+00:01 We've made our way to the authentication section of this course, 
+00:04 so most of the services that we want to work with that are really interesting 
+00:09 are about personal data or private data, think of the Basecamp example 
+00:14 that we looked at, or github or something like that,
+00:17 maybe some of that data is public but the really interesting stuff, 
+00:19 especially if you want to make modifications 
+00:22 require some sort of sign in and authentication. 
+00:24 So we are going to talk about that throughout this chapter, 
+00:26 now, what are the options, for authentication, 
+00:29 well, we've seen some really simple ones, we could do nothing 
+00:33 that works pretty well, provided that the service didn't require us to log in. 
+00:37 We are going to see how we can do username, password, 
+00:40 authentication which is a very common type of authentication, 
+00:44 maybe another that is worth mentioning, although it's really simple, 
+00:48 we probably won't cover too much on it, 
+00:51 is just adding like an access token as a header value as well, 
+00:55 so I kind of consider that close to username and passwords, 
+00:57 so they are similar but not exactly the same, 
+01:00 and then we have other types of authentication as well, 
+01:04 we've got oauth, open id, we have certificate based authentication 
+01:07 so you can take like an x509 certificate type thing and send that 
+01:11 as a client certificate and the server might only let you in if it trusts your certificate, 
+01:16 we even have like custom authentication scheme, 
+01:19 let's call this function with your username and password, 
+01:22 you got a token back and you use that token for the rest of the request or whatever,
+01:25 right, I don't really know how to tell you to work with that one, 
+01:28 because that is totally custom, but we've done none, 
+01:30 now we are going to focus on usernames and passwords, 
+01:33 if you want to look at these other ones, there is some references here 
+01:36 like the oauth one, there is a request-oauthlib, this one seems to be active,
+01:42 it works on both versions of Python and so on, 
+01:45 similarly, there is a number for open id, number of libraries, 
+01:48 and some of them be careful they don't support Python 3, 
+01:51 they are only Python 2, and they are kind of outdated, 
+01:54 but this one pyoidc seems to be good 
+01:57 for supporting both Python 2 and Python 3 and is active, 
+02:00 and they say the full implementation of open id 
+02:03 also includes as a subset an implementation of oauth, 
+02:07 so that one might work well for you and then 
+02:10 here is the certificate documentation showing you how to do this with requests,
+02:13 alright, finally, before we get into it, let's just realize that 
+02:17 authentication is not all of security, we have authentication, 
+02:20 we have authorization and we have auditing, so the three As of security, 
+02:24 right now we are just focusing on proving to the server who we are, 
+02:28 but it's up to the server to decide well, given that I know who you are, 
+02:32 what can you do authorization and logging and auditing of what did you do. 
+02:37 The 3 As while they are great, don't cover everything, 
+02:42 be sure to consider privacy running your services 
+02:45 only talking to services over ssl and the services if you are controlling them 
+02:48 obviously you need to validate their data, anything coming in over our service
+02:52 should be totally entrusted and maybe even to a lesser degree 
+02:55 how much do you trust what comes back from that service. 
+02:58 With all that laid out, let's get started to see 
+03:01 how we can do authentication in our services. 

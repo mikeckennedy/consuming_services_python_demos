@@ -1,0 +1,20 @@
+00:01 So let's work with some services that 
+00:04 require us to supply a username and password. 
+00:07 This type of authentication is often referred to as basic auth, 
+00:10 or a basic authentication.
+00:13 Now, you need to be very careful when using basic authentication, 
+00:16 the reason is, it gets sent across to the server, 
+00:19 if you look at the actual header, 
+00:21 it looks like it might be encrypted or something, 
+00:23 but in fact, all it is is just the bytes basic c4 encoded,
+00:26 and there is no encryption there, you can just unencode it 
+00:29 and it turns out it shows you username and password
+00:32 basically in plain text, so for that reason, 
+00:34 you should only use basic auth over trusted connections, 
+00:38 so ssl or your vpn maybe, or an intranet, 
+00:42 vpn intranet those are kind of equivalent to the extent that hopefully, 
+00:46 what I mean is a corporate vpn, a public vpn you are still sending this stuff 
+00:51 around the internet, it's probably better, in fact, 
+00:53 I am sure it's better than like sending it through your local coffee shop wi-fi
+00:57 but still, make sure that this is most of the time I would just say require this
+01:00 to be over ssl or something internal if you trust people on the network. 

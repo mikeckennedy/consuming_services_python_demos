@@ -1,0 +1,33 @@
+00:01 You've seen on our service here that we've had 
+00:04 the basic unauthenticated http restful service, 
+00:06 but you probably also noticed that we have a secured version, 
+00:09 and that's a debatable measure, but let's say it requires authentication version,
+00:14 like this one is actually not going over ssl but again, 
+00:17 it's not actually protecting any real data, right, 
+00:20 but if I do click on it, it says oh you have to enter your username and password, 
+00:23 and if I just say cancel, I get a basic auth username, password is required, 
+00:27 if I try it again, you can see down here I could type kennedy and super_lockdown 
+00:33 because we are all about security here, then it will actually let us in, okay. 
+00:38 So, we can see over here, this is postman, I've made a little request here 
+00:43 that is going to go get the restricted blog data here, 
+00:46 and it has no authentication setup right now, so I am going to hit send, 
+00:50 and same thing, you must authenticate with the username and a password, 
+00:55 so we come down here and we say basic auth 
+00:57 and we can put the username and the password in, kennedy and super_lockdown 
+01:03 and we can update the request, and save, and now, we get our data back, 
+01:07 beautiful, right, and you can see these are 
+01:10 the responses we got back from the server, and so on. 
+01:13 We can also go to the headers and see what we are going to send across 
+01:16 so I could send this authorization and we could not use postman to generate this 
+01:21 but we could just literally type in basic and then this, 
+01:24 and this is the base 64 encoded version of username:password as a byte array, 
+01:31 so as long as we send that across we get data back, we go to the body, 
+01:36 if we don't send that across, and we take away authorization as well, 
+01:40 none, right, nothing turn this back on, allow authorization to be sent, 
+01:44 we're in, okay, so that is how basic authentication works, it just sends that string, 
+01:49 which like I said, that is plain text, username and password 
+01:52 so be super careful about that.
+01:55 Alright, so we are going to see that we can do this both in Requests, 
+01:58 and we can do this in the builtins, it's super easy in the request, 
+02:01 it's super non obvious and not particularly easy in the builtins, 
+02:04 but I'll show you how to do it for both. 

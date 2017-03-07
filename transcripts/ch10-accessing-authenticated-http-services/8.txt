@@ -1,0 +1,29 @@
+00:01 If you are working with a Soap service, that has important business data 
+00:04 and if you are working with Soap service 
+00:07 you are probably doing something internal in an enterprise, 
+00:09 chances are it's going to require a username and password, 
+00:12 so I am going to show you now how to work with suds 
+00:15 and add basic authentication to all of your Soap operations. 
+00:18 So we've seen that the way we get started with suds is we say suds.client 
+00:22 and we import suds.cleint and we create a client class from that 
+00:27 and we pass the wsdl and then we just start calling operations, 
+00:29 like all posts, update posts, and whatnot, well, if we want to add authentication, 
+00:33 we have to import suds.transport.http and then from there,
+00:38 we are going to create an http authenticated transport layer, 
+00:41 and we are going to set the username and password on the layer, 
+00:44 then all we got to do when we create the client 
+00:47 in addition to passing the wsdl say transport= this new trends,
+00:50 thing that we've created, and all the subsequent operations 
+00:53 will be using that username and password. 
+00:55 Remember you really kind of want to minimize the number of times 
+00:57 you create this client because it dynamically downloads and parses the wsdl, 
+01:01 so you don't want to do that every single time, right, 
+01:04 you are going to probably do this once at the beginning, 
+01:06 and reuse this client throughout your app, now, 
+01:09 be aware if this was an https transport layer 
+01:14 so if the service lived at an https end point,
+01:17 you'd want to import suds.transport.https, 
+01:20 you want to create an https authenticated transport, things like that. 
+01:24 So be sure to make that adjustment based on the transport layer 
+01:27 of secure versus insecure http, but add this little transport layer 
+01:30 and everything works just like before. 

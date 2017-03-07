@@ -1,0 +1,53 @@
+00:01 Now let's look at how we add authentication to the builtin version 
+00:04 of the http library which is of course urllib. 
+00:08 So let's go over here and run this new version Python 3 
+00:12 and let's try to do a list again, unauthorized, not the best user experience, was it. 
+00:18 Ok, so I guess we should probably add some try except handling  
+00:22 around all those things, but, we are just going to add the username and password for now.
+00:27 You can see at the top we've got the username and password set here, 
+00:30 and on request, we set this every time we created a request 
+00:33 we would set the username and password, but this time, what we are going to do instead 
+00:36 is we are going to register some global authentication for our app, 
+00:41 so if you log in to this url, always use this username and this authentication scheme, 
+00:45 okay, so we'll have a register auth, something like that, 
+00:50 we are going to call that at the beginning, so what we are going to do is 
+00:53 notice, up here, importing urllib.request and in urllib.request 
+00:59 we can get a thing called a password_manager, notice, 
+01:04 here we have a http password manager one with prior auth, one with default realm, 
+01:09 all of those things okay, so we are going to use this one, 
+01:12 we are going to create this thing, 
+01:15 we are going to say password_manager.add_password, then it wants the realm, 
+01:19 this is like the domain sort of thing so we'll say none 
+01:21 and then we're going to give it the base url 
+01:24 and then we just give it the user and the password, okay, 
+01:28 and then we need to whenever we need to work with this, 
+01:30 we are going to create a handler that is based on this, 
+01:33 okay, so up here, let's have an authenticated handler, 
+01:40 
+01:45 and we are going to set that here, we'll say urllib.request.http basic auth handler, 
+01:53 and and it's going to take a password manager, 
+01:56 okay, you can see this is totally obvious, right, 
+01:59 like you wouldn't want to just pass this informational log, 
+02:01 okay, and then we can build an opener, right, 
+02:05 so we'll say opener=urllib.request.build_opener,
+02:11 I want to give it the authenticated handler, 
+02:13 actually I don't think we need to store that globally,
+02:16 okay, and then we'll say urllib.requests.install opener, 
+02:22 okay, so we have a password manager, we set the password and the url 
+02:26 that we are going to authenticate for, so whenever it sees that url 
+02:30 it's going to use that password, we want to create the authenticated handler 
+02:36 for that password manager, create an authenticated opener and install this globally, 
+02:39 so now, when we go and run this, let's see what happens, 
+02:42 let's try to list it, oh, authenticated, 
+02:45 now of course, just to show you that it had some effect, 
+02:49 if we don't do this, you saw that 401 unauthorized, okay, 
+02:51 so this is super non obvious, one of the benefits is you can register this globally, 
+02:56 and then just forget about it, but I don't know, that's super clumsy to me 
+03:01 but there you have it, so let's try to add another one, 
+03:04 I'll call this Py3 builtin doomed post because we are going to ultimately delete it,
+03:09 and put some content, it has one view, great, listed again, there is number 2, 
+03:14 it's going to update it, it's got a few more views, 
+03:18 see authentication is totally working, finally, let's try to delete it, 
+03:21 we want to delete number 2, and is number 2 gone- it's gone. 
+03:25 Well, there is a new number 2, how about that, alright, 
+03:27 so that is authentication with the Python builtins. 

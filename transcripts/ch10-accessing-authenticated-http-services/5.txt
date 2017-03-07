@@ -1,0 +1,11 @@
+00:01 Now you've seen how to use requests 
+00:04 to access restricted authorization requiring services, 
+00:09 so what we have to pass is that authorization header with the basic value 
+00:13 set to the basic c4 encoded version of username:password, 
+00:18 but remember, it's not encrypted, it's just obscured, 
+00:21 so how does this work, of course, everything more or less is the same, 
+00:25 other than the authentication, so we import request, we come up with the url, 
+00:28 we try to do a get against the service and we saw oh 401, not so amazing, 
+00:33 401 is you didn't log in, you are unauthorized, right, 
+00:37 so we just go and set the auth as a tuple, username,password, 
+00:43 and then ta- da, everything is 200 ok. 

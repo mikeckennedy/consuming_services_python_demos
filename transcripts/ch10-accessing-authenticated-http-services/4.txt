@@ -1,0 +1,33 @@
+00:01 So let's add the ability to access the restricted blog service with requests. 
+00:06 So you can see up here that I have updated the base url, 
+00:10 I've actually moved this section of the url, up into the top so I tweaked the code just slightly, 
+00:15 but you can see most importantly this is the restricted version, 
+00:18 so if we come down here to this part where we get post, this should look familiar, 
+00:21 I want to come over here and say we are looking for application json 
+00:24 we are going to do a get just against that url, and let's see what we get here, 
+00:28 so try a list, it says no, no 401 you must authenticate with basic auth, 
+00:33 okay, so I am going to show you this in request and it is going to seem super easy, 
+00:38 and then when we go look at this at the builtins, you are going to be 
+00:41 like oh my gosh, why do they do it that way; so, remember 
+00:44 we had our username is kennedy and the password was super_lockdown, 
+00:51 alright, and then, all we have to do is come over here 
+00:54 and say auth=(user, password)
+01:00 okay, and let's tell PyCharm that lockdown is actually a word, 
+01:05 okay, let's run this again, and we'll try our list, boom, ta- da, it's working,
+01:08 of course, we can't delete anything so if I try to delete one, it says 401 
+01:12 you must authenticate, okay, so this is really all that is required, 
+01:16 and maybe we would even move this somewhere else, just in case it changes, 
+01:20 I could put this up here as global, I could write a function that is going to return it, 
+01:24 something to that effect, but let me just copy this over, and we will put in the other one, 
+01:30 so here when we are doing a post, again, we just say auth is this, 
+01:33 when we are doing a put, we just say the auth is this, and last but not least, 
+01:41 when we're doing a delete, we are going to say this, alright, let's try to list again,
+01:45 okay, that works, let's try to add one, we call this doomed post, 
+01:51 I am going to try to delete it, okay so perfect, that woks, 
+01:55 let's see yeah, doomed post, let's try to update it, 
+01:58 I am just going to increment the count so number 2, 
+02:01 same, same, view count 1999, try to list it, 
+02:05 it was updated, now let's delete it, alright, which one is 2, goodbye 2, 2 is gone.
+02:09 Okay, so authentication with requests, super easy, auth username:password, 
+02:15 but remember, make sure this url is something that is going to keep your data safe, 
+02:20 either something internal you trust, or something over ssl. 
