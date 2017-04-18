@@ -2,25 +2,25 @@
 00:05 and I am sure many of you are happy to hear it's Python 3, not Python 2, 
 00:10 and you might as well use Python 3.6 
 00:13 but if you have 3.5 or something like that installed, that's totally good, 
-00:16 if you are on windows, there is a good chance 
+00:16 if you are on Windows, there is a good chance 
 00:20 you have no version of Python and you'll need to install Python 3; 
 00:23 if you are on OS 10 or Mac OS as it's called these days,
 00:26 you probably have Python 2 which ships with it, but not Python 3. 
 00:30 If you are on Ubuntu, chances are that both Python 2 and Python 3 are there, 
 00:34 so check your system, see what it is that you need, 
-00:37 but we are using Python 3 and we are not using neither of the 3.6 features, 
+00:37 but we are using Python 3 and we are not using either of the 3.6 features, 
 00:41 so if you have 3.5 or 3.4 that's totally fine. 
 00:43 Now, there is a very small segment where we do talk about using Python 2 
-00:47 because the way the built ins work in Python 2 and Python 3 are different, 
+00:47 because the way the built-ins work in Python 2 and Python 3 are different, 
 00:50 so we do touch on Python 2 just for a moment, 
 00:53 if you are on Windows, you are going to need to install that as well, 
 00:56 but only if you want to do that little piece, you don't technically have to do it. 
-01:00 Some of you may be thinking oh should we do this on 3, should we do it on 2,
+01:00 Some of you may be thinking 'Oh should we do this on 3? Should we do it on 2?',
 01:03 I think the debate about Python 3 and Python 2 is pretty much at the end. 
 01:07 If you look at the last several PyCon keynotes done by Guido Van Rossum 
-01:12 he always opens up with there is going to be no new versions of Python 2, 
-01:16 no Python 2.8. 
+01:12 he always opens up with 'There is going to be no new versions of Python 2, 
+01:16 no Python 2.8.' 
 01:19 So I think certainly going forward Python 3 is the place where it's at, 
-01:23 that said, the actual differences except for the built in sections are extremely small, 
-01:27 so really, it's either way we'll work but the code we are writing is technically Python 3 
+01:23 that said, the actual differences except for the built-in sections are extremely small, 
+01:27 so really, it's either way will work but the code we are writing is technically Python 3 
 01:32 so you want to have that installed. 
