@@ -1,17 +1,17 @@
 00:01 The editor and the IDE that I am going to be using throughout this course is called PyCharm.
 00:05 In my opinion, this is hands down the best tooling for writing Python applications; 
-00:10 you don't have to use PyCharm, if you do want to just go to jetbrains.com/pycharm, 
-00:15 they have two basic versions, you can get the community edition 
+00:10 you don't have to use PyCharm, if you do want to just go to jetbrains.com/pycharm. 
+00:15 They have two basic versions. You can get the community edition 
 00:19 which is free and open source, 
-00:22 or you can get the pro version which costs some money,
-00:24 it's not super expensive but does cost some money. 
+00:22 or you can get the pro version which costs some money.
+00:24 It's not super expensive but does cost some money. 
 00:26 For this course, I don't believe there is anything in there that is required 
 00:30 that is only in the pro version, so the community edition should be totally fine, 
-00:33 for taking this course, if you have the pro version, 
+00:33 for taking this course. If you have the pro version, 
 00:37 hey you have some other cool features and that's great. 
-00:39 If you don't want to use PyCharm, that's fine, 
-00:42 the code we are working with is not that complex, it's pretty self contained, 
-00:45 you can use Sublime text, you can use Visual Studio Code with the Python plugin 
+00:39 If you don't want to use PyCharm, that's fine. 
+00:42 The code we are working with is not that complex, it's pretty self contained. 
+00:45 You can use Sublime text, you can use Visual Studio Code with the Python plugin 
 00:49 or extension, you can use Emacs, you can use Vim, 
 00:52 but the demos I am doing are going to be in PyCharm 
 00:56 so if you want to follow exactly along- get PyCharm. 
