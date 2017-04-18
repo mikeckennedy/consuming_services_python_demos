@@ -1,10 +1,10 @@
 00:00 We are also going to be using a API exploration tool called Postman, 
-00:04 so Postman is a cross platform gui for interacting, analyzing 
+00:04 so Postman is a cross-platform GUI for interacting, analyzing 
 00:09 and just generally recording and playing with APIs. 
-00:13 We won't make heavy use of it, 
-00:16 you don't have to install it if you don't want to play with it, 
+00:13 We won't make heavy use of it. 
+00:16 You don't have to install it if you don't want to play with it, 
 00:19 but I find working with APIs sometimes is great to get a good understanding 
-00:22 and play with is and then implement it in code, 
+00:22 and play with it and then implement it in code, 
 00:25 and you'll see me do that a few times in the course, 
 00:27 and we are going to be using Postman so Postman is cool, and free, 
 00:30 so it's worth checking out. 
