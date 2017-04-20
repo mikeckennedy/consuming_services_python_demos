@@ -1,38 +1,38 @@
 00:00 Alright, next up, the majority of services that you are going to see, 
-00:03 are going to be HTTP restful services. 
-00:06 Be careful using the word restful because just certain people 
-00:10 restful means very specific set of criteria, 
-00:13 that most HTTP Json based services don't actually meet. 
-00:17 Maybe they are 75% restful or whatever, so I am going to try to use HTTP services 
-00:22 but these are more or less restful services for their features, 
+00:03 are going to be HTTP RESTful services. 
+00:06 Be careful using the word RESTful because to just certain people 
+00:10 RESTful means a very specific set of criteria, 
+00:13 that most HTTP JSON based services don't actually meet. 
+00:17 Maybe they are 75% RESTful or whatever. So I am going to try to use HTTP services, 
+00:22 but these are more or less RESTful services for their features, 
 00:26 even if they are not entirely complete. 
-00:29 So how does this work, well, we have our app, and again we are going to do 
-00:32 an HTTP request and again, this is going to go over HTTP 
-00:34 but this time it's going to be a get request and it's going to be a get request 
+00:29 So how does this work? Well, we have our app, and again we are going to do 
+00:32 an HTTP request and, again, this is going to go over HTTP 
+00:34 but this time it's going to be a GET request and it's going to be a GET request 
 00:38 against something that is a noun not a verb. 
-00:41 And this time we are going to request API/users/7 
-00:44 indicating we want the details about user 7 and what we are going to get back 
-00:48 from the server, is going to be a Json message with the name Michael and id 7, 
-00:54 presumably, we even get more information, 
+00:41 And this time we are going to request API/users/7 .
+00:44 Indicating we want the details about user 7 and what we are going to get back 
+00:48 from the server is going to be a JSON message with the name 'Michael' and id '7'. 
+00:54 Presumably, we even get more information, 
 00:57 but just keeping it simple for the slides here.
 00:59 So what are the benefits? Well, there are many. 
-01:02 This is universally accessible, this service is universally accessible, 
-01:06 almost every platform has decent support for basic HTTP string exchange. 
-01:13 This is super easy to do from Python, this is super easy to do from Javascript, 
-01:17 as well as C, ObjectiveC, swift, you name it, we can call this function 
+01:02 This is universally accessible. This service is universally accessible.
+01:06 Almost every platform has decent support for basic HTTP string exchange. 
+01:13 This is super easy to do from Python. This is super easy to do from Javascript, 
+01:17 as well as C, Objective-C, Swift, you name it, we can call this function 
 01:23 from basically anything that will talk to a network. 
-01:28 Because it's HTTP and it follows the get post put standard HTTP verbs, 
-01:31 it's firewall friendly, proxy friendly and for example this request is potentially cashable.
-01:36 Reading this message name Michael id 7, is ridiculously easy, 
-01:41 it's entirely human readable, and while it's not as light weight 
-01:45 as the binary exchange it's dramatically more lightweight than what we would get 
-01:51 if this was a Soap message, 
-01:53 I've put this in the relatively light weight bandwidth story. 
-01:57 There is some drawbacks, it's often that you will find these services 
-02:02 that are not self-describing, there is some tooling called swagger 
+01:26 Because it's HTTP and it follows the GET, POST, PUT standard HTTP verbs, 
+01:31 it's firewall friendly, proxy friendly and, for example, this request is potentially cacheable.
+01:36 Reading this message name 'Michael' id '7', is ridiculously easy. 
+01:41 It's entirely human readable, and while it's not as lightweight 
+01:45 as the binary exchange, it's dramatically more lightweight than what we would get 
+01:51 if this was a SOAP message. 
+01:53 I've put this in the relatively lightweight bandwidth story. 
+01:57 There is some drawbacks. It's often that you will find these services 
+02:02 that are not self-describing. There is some tooling called Swagger 
 02:05 that you can add to the server's side and then use some tooling on the client side 
 02:09 to help describe and generate proxies and things like that 
-02:13 but, generally speaking, these services are not self-describing and like I said, 
+02:13 but, generally speaking, these services are not self-describing and, like I said, 
 02:17 if the thing you are absolutely maximizing is bandwidth exchange, 
 02:21 well maybe raw sockets would be that, but if it's got to go over the internet, 
 02:25 this is about as good as it's going to get.
