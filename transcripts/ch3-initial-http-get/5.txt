@@ -1,21 +1,21 @@
 00:02 Now that we're up and running with Requests, 
-00:05 let's make a simple get to a web page. 
-00:08 So first of all, we are going to need the Python script to run aren't we, 
-00:11 so let's go create a new Python file and we'll just call this simple get, 
+00:05 let's make a simple GET to a web page. 
+00:08 So first of all, we are going to need the Python script to run aren't we? 
+00:11 So let's go create a new Python file and we'll just call this 'simple_get', 
 00:15 and PyCharm is asking should this go into the github repository, yes, it should. 
 00:21 Okay, so what we are going to do is we are going to start by importing Requests 
 00:25 and that is coming out of our virtual environment that we wired into PyCharm here, 
 00:30 and let's just make sure that works, 
 00:33 so we'll just do a little print here and we can make, 
-00:35 over here there is no our little run button, it's grey, 
+00:35 over here there is no, our little run button, it's grey, 
 00:38 that's because there is no what is called a run configuration, 
 00:40 so let's create that by right clicking here, and saying run, 
 00:44 and notice it's using our virtual environment Python here, and it just says hello. 
 00:49 And so import, that worked well, our environment is working, 
-00:52 everything is looking great so far, so the first thing we are going to need is a url. 
+00:52 everything is looking great so far. So the first thing we are going to need is a url. 
 00:56 And let's just go to talkpython.fm and do a download there, 
 01:00 so what we are going to do is we are going to use requests 
-01:04 we are going to do a get, we are going to issue that get to a url, 
+01:04 we are going to do a get, we are going to issue that get to a URL, 
 01:07 we are going to capture that into a variable called response, or resp, 
 01:11 now we can come over here and just print out 
 01:13 and see what happens, see if this works, 
@@ -25,19 +25,19 @@
 01:25 So, let's actually add a little check to make sure this works, 
 01:29 so suppose I had something wrong here, we should have 
 01:31 a 404 or something to that effect, or even worse, something worse. 
-01:35 Okay, so it looks like the response came out great, so let's do a little test, 
-01:39 we'll say if resp.status_code ! = to 200, then something went bad, 
-01:45 we'll print error requesting url, 
+01:35 Okay, so it looks like the response came out great, so let's do a little test. 
+01:39 We'll say if 'resp.status_code != 200', then something went bad, 
+01:45 we'll 'print("Error requesting URL")', 
 01:50 maybe we'll put the little response code here, something like that. 
-01:54 And then, I like to return or break, I can do an else here, 
+01:54 And then, I like to 'return' or 'break', I can do an else here, 
 01:57 but let's go ahead and make this a little nicer, I am going to define a main method, 
 02:00 which is this, and that is going to be the code, and we'll just run this main method, 
 02:03 if and only if it's time, so here we can say return and we'll be out of here, 
-02:08 so we'll cancel a lot of this execution if there is an error but if there is not, 
-02:13 we are going to print out, let's just print out resp.text. 
+02:08 so we'll cancel out of this execution if there is an error but if there is not, 
+02:13 we are going to print out, let's just print out 'resp.text'. 
 02:18 Now, that is going to show the entire page, you'll see it's screen by, 
-02:22 maybe we just want the first 500 characters, just to see the title, 
-02:25 so of course we can use a slice on the string, which is nice, here we go, 
-02:29 so let's see the title here, talk python to me podcast- alright, it looks like this works, 
-02:34 so super easy, request.get, give it the url, 
+02:22 maybe we just want the first 500 characters, just to see the title. 
+02:25 So of course we can use a slice on the string which is nice. Here we go.
+02:29 So let's see the title here - 'Talk Python To Me podcast.' Alright, it looks like this works. 
+02:34 So super easy, 'request.get', give it the URL, 
 02:38 check the status code and work with the text. 
