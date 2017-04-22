@@ -1,11 +1,11 @@
-00:00 So let's review installing requests, we had already created a virtual environment, 
-00:04 but don't forget to activate it, so . (dot, space) the path activate on Windows, 
-00:11 you don't have to do the dot and this is just activate.batch. 
+00:00 So let's review installing Requests. We had already created a virtual environment, 
+00:04 but don't forget to activate it, so '.  [the path activate]'. On Windows, 
+00:11 you don't have to do the dot and this is just 'activate.batch'. 
 00:14 So either way, our prompt will change
-00:17 and then we'll have access to the packaging tools for that environment. 
-00:20 Then of course, we are going to do pip install requests, 
+00:16 and then we'll have access to the packaging tools for that environment. 
+00:20 Then of course, we are going to do 'pip install requests', 
 00:23 that is going to download and install it 
-00:26 and then just to make sure you can make a quick pip list to see what you've got, 
-00:29 and here we can see that requests 2.13.0
-00:32 that is the latest at the time of this recording 
+00:26 and then just to make sure you can make a quick 'pip list' to see what you've got, 
+00:29 and here we can see that requests 2.13.0,
+00:32 that is the latest at the time of this recording, 
 00:35 was successfully installed and ready to roll.

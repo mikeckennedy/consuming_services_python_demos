@@ -1,21 +1,21 @@
 00:01 The first type of services that we are going to focus on, 
-00:04 not surprisingly are the most popular type, that is HTTP restful services, 
+00:04 not surprisingly, are the most popular type, that is HTTP RESTful services, 
 00:08 and we are going to use a very popular package called Requests 
 00:12 for our first look at it and then we'll come back later 
-00:14 and look at it through the eyes of the built ins. 
+00:14 and look at it through the eyes of the built-ins. 
 00:17 So where are we in our overall course map? 
 00:20 Well, we are talking about HTTP clients and right now we are focused on Requests. 
-00:24 You may have heard of Requests, Requests or HTTP for Humans as Kenneth puts it
+00:24 You may have heard of Requests. Requests, or HTTP for Humans as Kenneth puts it,
 00:29 is the most popular package for Python, not the most popular networking package, 
 00:32 it's the most popular package, it's been downloaded seven million times a month. 
 00:38 So, it's really popular, and you can see that it has a very simple API 
-00:43 and the reason this exists is the built in urllib and urllib2 have some really funky APIs 
+00:43 and the reason this exists is the built-in urllib and urllib2 have some really funky APIs 
 00:51 and it's generally hard to work with, there is a lot of funkiness and it even gets less good, 
-00:56 if you will, in Python 3, rather than Python 2, so the built ins are not super joyous. 
+00:56 if you will, in Python 3, rather than Python 2, so the built-ins are not super joyous. 
 01:01 There are reasons to use them and we will talk about what those are and when, 
-01:05 but for our first look at HTTP services, we are going to absolutely use Requests. 
-01:10 Like most Python packages, we are going to install Requests via pip, 
-01:15 so here you can see its projects page on PyPi, 
+01:05 but for our first pass at looking at HTTP services, we are going to absolutely use Requests. 
+01:10 Like most Python packages, we are going to install Requests via pip. 
+01:15 So here you can see its projects page on PyPi, 
 01:18 this is the newer version of PyPi at pypi.org/projects/requests 
-01:21 and it says to install it, we are just going to pip install requests, 
+01:21 and it says to install it, we are just going to 'pip install requests', 
 01:24 that's pretty straightforward, so let's go do that now. 
