@@ -1,71 +1,71 @@
-00:01 Now, we are going to need to install some packages, during this class, 
-00:03 in particular we need to install Requests, 
+00:01 Now, we are going to need to install some packages during this class. 
+00:03 In particular, we need to install Requests, 
 00:06 we are going to need to install Beautiful Soup, 
 00:08 and some of the other foundational or dependent packages there. 
 00:11 Now, one thing we could do is 
-00:13 we could say pip install requests or something to this effect,
+00:13 we could say 'pip install requests' or something to this effect;
 00:15 however, if we do, this is going to modify our global system, 
-00:19 and there is a couple of drawbacks to that, 
-00:22 we don't want to modify our global system 
-00:25 because it requires us to run these installers as admin, 
-00:29 and this is kind of running arbitrary code off the internet as admin, not super recommended, 
+00:19 and there is a couple of drawbacks to that. 
+00:22 We don't want to modify our global system 
+00:24 because it requires us to run these installers as admin, 
+00:28 and this is kind of running arbitrary code off the internet as admin, not super recommended, 
 00:32 it also means that we are going to use the same version of the library 
 00:35 across every project we run, on our computer, 
 00:38 so maybe we want to use the newest request for this, 
 00:41 but some other projects it's old and it needs to use an older request
 00:44 because there is some kind of change, how do you manage those two environments? 
-00:47 So the answer of course is to use virtual environments, 
-00:50 so let's just ask which pip or which pip 3 is really what we want, 
-00:53 so we want to say, see this is obviously the global one, 
+00:47 So the answer of course is to use virtual environments. 
+00:49 So let's just ask which pip, or which pip 3 is really what we want. 
+00:53 So we want to say, see this is obviously the global one, 
 00:56 and if we ask it what is installed, you'll see that there is a bunch of stuff installed, 
 01:00 so, let's actually create what is called a virtual environment 
 01:03 that we'll use for the rest of this class, 
-01:06 so I am in a directory called /pyhton/environments,
-01:08 there is a lot of conventions around this actually, there is different locations for different people, 
-01:13 sometimes you put it in your project directory, sometimes you put these outside, 
+01:05 so I am in a directory called /python/environments.
+01:08 There is a lot of conventions around this actually, there is different locations for different people, 
+01:12 sometimes you put it in your project directory, sometimes you put these outside, 
 01:16 I am going to put them in this folder in my user profile. 
-01:18 In Python 3, there is a built in way to create a virtual directory, 
-01:21 so we can say python 3, now on Windows, there is no python 3 just be aware,
+01:18 In Python 3, there is a built-in way to create a virtual directory. 
+01:21 So we can say python 3. Now on Windows there is no python 3, just be aware,
 01:25 you just have to have the path to python 3 versus python 2.
 01:29 So that is a little tricky, but on Linux and OS 10 we can say python 3 
 01:32 and that is pretty straightforward, and we want to run the module, venv, 
 01:36 and we want to give it some sort of path, 
-01:39 so let's say we'll go to consuming services venv. Now, this will totally work,
-01:44 however, just one word of caution here- if your are on a Mac, 
+01:39 so let's say we'll go to 'consuming_svc_env'. Now, this will totally work;
+01:44 however, just one word of caution here - if you are on a Mac, 
 01:47 and you are going to use PyCharm, both of these things need to be true, 
 01:52 if you are on a Mac and you are going to use PyCharm, 
 01:55 there is a problem with PyCharm understanding the type 
 01:58 of basically following the symlinks too far when you set up a virtual directory this way, 
-02:03 and so what you need to do for the time being, is add a copies flag here
+02:03 and so what you need to do, for the time being, is add a '--copies' flag here
 02:09 to say don't create symlinks, create just a copy of the Python file 
 02:13 that we can link to directly in this environment. 
 02:16 So, because I am going to be using PyCharm, 
-02:19 I am going to put --copies and I am on a Mac, it's up to you, 
-02:22 but, I recommend doing the --copies for the time being. 
+02:18 I am going to put '--copies' and I am on a Mac, it's up to you, 
+02:22 but, I recommend doing the '--copies' for the time being. 
 02:27 Okay, great, we've created it, how does this change our pip story? 
-02:30 Not at all, because notice my prompt, it still says Mac Book Pro, 
+02:31 Not at all, because notice my prompt, it still says MacBookPro, 
 02:34 just standard prompt there, so what we need to do is we need to activate this, 
 02:38 we need to basically change this individual shell temporarily
-02:42 to know only about that Python, so I can come over here and say . (dot)
+02:42 to know only about that Python, so I can come over here and say '.' (dot),
 02:47 so apply this what I am about to do to this shell,
-02:50 and I am going to run ./consuming_svc_env/bin/activate
-02:53 on Windows, you don't need the dot and this is activate.patch. 
-02:56 Notice, my prompt changed, if I ask which pip, now it's this one, again, 
-03:01 if I ask which Python, it's now this one from this environment. 
+02:50 and I am going to run './consuming_svc_env/bin/activate'.
+02:53 On Windows, you don't need the dot and this is 'activate.patch'. 
+02:56 Notice, my prompt changed, if I ask 'which pip', now it's this one, again, 
+03:01 if I ask 'which python', it's now this one from this environment. 
 03:04 Great. So, most importantly, what we are after, we were asking for a clean environment, 
 03:09 and here we have a brand new fresh clean virtual environment, with pip and setup tools. 
 03:13 So now we can start installing things that we are going to use for this project,
-03:17 here, so let's say pip install requests. 
-03:22 And it either uses a cash version or downloads it from the internet, 
-03:26 and then installs it, 
-03:29 and now if we ask pip list we can see, yeey, requests is installed, 
-03:33 so let's just verify that everything is hanging together, we'll do a quick little thing here, 
+03:17 here, so let's say 'pip install requests'. 
+03:22 And it either uses a cache version or downloads it from the internet, 
+03:28 and then installs it, 
+03:29 and now if we ask 'pip list' we can see, yay, Requests is installed. 
+03:33 So let's just verify that everything is hanging together, we'll do a quick little thing here, 
 03:37 we can come over and import requests, and because that didn't break, 
 03:41 things are looking good, and then we can just make sure
 03:44 that there is actually something reasonable here, there we go. 
 03:49 So we've got cookies, sessions, get, post, those kinds of things. 
-03:52 Alright, so it looks like requests was installed successfully. 
+03:52 Alright, so it looks like Requests was installed successfully. 
 03:56 Now we are ready to use this environment, 
-03:59 this clean environment which does not require admin rights on the machine 
-04:02 and is just dedicated to our little project here, 
-04:04 we can use this clean environment for the rest of the class. 
+03:58 this clean environment, which does not require admin rights to the machine 
+04:02 and is just dedicated to our little project here. 
+04:04 We can use this clean environment for the rest of the class. 
