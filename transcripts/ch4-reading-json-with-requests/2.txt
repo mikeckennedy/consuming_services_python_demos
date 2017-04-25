@@ -1,83 +1,83 @@
-00:00 So here I have a little bit of Json text. So, this Json string, 
-00:06 if converted to Json or to other objects has a demo field 
-00:10 and that says processing Json in Python, 
-00:13 and the instructor is Michael and the duration is 5, presumably minutes. 
+00:00 So here I have a little bit of JSON text. So, this JSON string, 
+00:06 if converted to JSON or to other objects has a demo field 
+00:10 and that says 'Processing JSON in Python', 
+00:13 and the instructor is 'Michael' and the duration is '5', presumably minutes. 
 00:17 So let's start working with this, let me just print this thing out for a second, 
 00:22 now, notice this is still running the old one so I am going to right click 
 00:25 and run that and it prints it out and it's kind of indistinguishable 
-00:28 from say like a python dictionary, 
-00:31 which actually means working with Json from python is super natural 
-00:34 because the mapping between Json as something in Javascript or text 
-00:38 mapped over to Python as dictionaries is nearly one to one, 
-00:42 it's not exactly but very close, but let's just make sure that that is actually a string 
-00:47 so I'll say what is the type of this things as well, now you could see,
-00:50 okay it is a str, it is, so how do we load this? 
+00:28 from say like a Python dictionary, 
+00:31 which actually means working with JSON from Python is super natural 
+00:34 because the mapping between JSON as something in Javascript or text 
+00:38 mapped over to Python as dictionaries is nearly one to one. 
+00:42 It's not exactly but very close, but let's just make sure that that is actually a string. 
+00:47 So I'll say what is the type of this thing as well, now you could see,
+00:50 okay it is a str. It is. So how do we load this? 
 00:54 Well, Python comes with what is described as 'batteries included'
-00:59 and that means it has a rich standard library including support for Json, 
-01:03 you could see that is coming straight out of the library, 
-01:06 so we don't need anything external,
-01:08 we don't need to pip install anything, to work with this,
-01:11 so what we are going to do is we are going to come over here 
-01:13 and we are going to parse this Json so we'll say data, 
-01:17 so there is a couple of things we can do, we can load or we can load s, 
-01:23 now, I think the naming choices here were super poor
-01:28 how about load from string, or load from file, or something to that effect, 
-01:31 but load you can see fp for file pointer and load s, s for string 
-01:36 so much for good variable naming, but the one we are looking for 
-01:40 is we have some text in memory, we want to turn that from text in the form of Json
-01:44 into Python dictionaries in the form of data, 
-01:47 so we are going to use this and this is the one you are going to use most of the time 
-01:50 when you are doing services because you will make an http request 
-01:53 and you will have text in memory, so text Json and then we can print this out again, 
-01:57 we'll just print out data and if I run this, you could see it looks really similar, 
-02:00 it's different it has single quotes instead of double, 
+00:59 and that means it has a rich standard library including support for JSON. 
+01:03 You could see that is coming straight out of the library, 
+01:06 so we don't need anything external.
+01:08 We don't need to 'pip install' anything to work with this.
+01:11 So what we are going to do is we are going to come over here 
+01:13 and we are going to parse this JSON. So we'll say 'data.' 
+01:17 So there is a couple of things we can do. We can load or we can 'loads'. 
+01:23 Now, I think the naming choices here were super poor.
+01:27 Like how about load from string, or load from file, or something to that effect, 
+01:31 but load you can see 'fp' for file pointer and 'loads', 's' for string. 
+01:36 So much for good variable naming but the one we are looking for 
+01:40 is we have some text in memory. We want to turn that from text in the form of JSON
+01:44 into Python dictionaries in the form of data. 
+01:47 So we are going to use this and this is the one you are going to use most of the time 
+01:50 when you are doing services because you will make an HTTP request 
+01:53 and you will have text in memory. So 'text_json' and then we can print this out again. 
+01:57 We'll just print out 'data' and if I run this, you could see it looks really similar. 
+02:00 It's different in that it has single quotes instead of double, 
 02:03 because that is the way Python dictionaries represent themself,
 02:06 and it's all in one line, again, because of that. 
 02:09 But if I gave you that string there, you couldn't really be sure 
-02:13 that that didn't come from some sort of service, 
-02:15 so let's go and do type again, here we go, str says it's string, now it's a dictionary 
+02:13 that that didn't come from some sort of service. 
+02:15 So let's go and do 'type' again. Here we go, str says it's string, now it's a dictionary 
 02:23 and you can see that actually the duration is a number, 
-02:26 it doesn't have quotes on it, and that is pretty cool, 
-02:28 let's get a few pieces of information here, 
-02:31 we'll say in structure= now we want to get information, 
-02:34 we want to get something on this dictionary, so that is standard Python,
-02:37 you just do that by indexing in with the key so we'll say instructor 
-02:41 and then I'll print your instructor is { }.format, maybe I'll even spell it right, 
+02:26 it doesn't have quotes on it, and that is pretty cool. 
+02:28 Let's get a few pieces of information here. 
+02:31 We'll say 'instructor ='. Now we want to get information. 
+02:34 We want to get something on this dictionary, so that is standard Python.
+02:37 You just do that by indexing in with the key. So we'll say instructor 
+02:41 and then I'll 'print("Your instructor is { }".format)', maybe I'll even spell it right, 
 02:50 how about that? Now if we run it, you can see your instructor is Michael, 
-02:53 now this is usually good, but sometimes this isn't so good, 
-02:56 so for example if this doesn't appear we are going to get something super bad, 
-03:01 we are going to get a KeyError, right, it sort of interspersed throughout here 
-03:05 but somewhere in here, there we go, KeyError instructor, 
-03:08 so we can use a different format, different style of getting the value, 
-03:11 so that is probably recommended because the internet you never know, 
-03:14 we can say get me an instructor like this and then it just says 
-03:15 oh, your instructor is none, or we can even ply 
-03:19 a default here saying substitute if there is not instructor
+02:53 now this is usually good, but sometimes this isn't so good. 
+02:56 So for example if this doesn't appear we are going to get something super bad. 
+03:01 We are going to get a KeyError, right, it is sort of interspersed throughout here, 
+03:05 but somewhere in here, there we go, KeyError 'instructor'. 
+03:08 So we can use a different format, a different style of getting the value. 
+03:11 So that is probably recommended because the internet, you never know. 
+03:14 We can say get me an instructor like this and then it just says 
+03:16 oh, your instructor is None, or we can even apply 
+03:19 a default here saying 'SUBSTITUTE' if there is not an instructor
 03:24 presented or we are just going hey look, you are getting a substitute teacher. 
-03:28 Alright, right now it's substitute, so if I go and put that back, 
-03:30 now, hey your instructor is Michael, very cool, okay, so that is great,
-03:34 final thing let's make a change to this data, let's say you know what, 
+03:28 Alright, right now it's 'SUBSTITUTE', so if I go and put that back, 
+03:30 now, hey your instructor is Michael. Very cool. Okay, so that is great.
+03:34 Final thing, let's make a change to this data, let's say you know what, 
 03:38 your new instructor is going to be Jeff, and somehow I want to 
-03:43 let's go and just print out the data and see that is changed, 
-03:48 oops, don't need that twice, do we, we have your instructor is Jeff, okay, 
-03:52 so here we are processing this, instructor Jeff, 
-03:55 but this is actually a Python dictionary, right, it's a dict, 
-03:59 we want this back serialized as Json, so how do we get this back, 
-04:03 we'll say new Json and then we have a reverse of load s to dump s, 
-04:10 again, naming is really kind of unfortunate but it is what it is, 
-04:14 you can dump Json to a file pointer, or you can dump s into memory 
-04:18 for the same reason that we frequently use the load s in services, 
-04:21 we are going to use dump s in services as well, 
-04:24 and then let's just print out both the type of new Json and also new Json itself. 
-04:28 Let her run, boom, there it is at the end we have class str and now this is the Json,
-04:34 notice the double quotes and our class is still called the same 
+03:43 let's go and just print out the data and see that is changed. 
+03:48 Oops, don't need that twice, do we? We have your instructor is Jeff, okay. 
+03:52 So here we are processing this, instructor Jeff, 
+03:55 but this is actually a Python dictionary, right? It's a dict. 
+03:59 We want this back serialized as JSON. So how do we get this back? 
+04:03 We'll say new JSON and then we have a reverse of 'loads' to 'dumps'. 
+04:10 Again, naming is really kind of unfortunate but it is what it is. 
+04:14 You can dump JSON to a file pointer, or you can 'dumps' into memory. 
+04:18 For the same reason that we frequently use the 'loads' in services, 
+04:21 we are going to use 'dumps' in services as well, 
+04:24 and then let's just print out both the type of new JSON and also new JSON itself. 
+04:28 Let her run, boom. There it is at the end. We have class str and now this is the JSON.
+04:34 Notice the double quotes and our class is still called the same 
 04:38 but our instructor is Jeff, same duration. 
-04:42 So that is basically it, working with Json from Python, 
-04:45 really it comes down to the Json module, load s, dump s, 
-04:49 and then somewhere in the middle, just working with straight up Python dictionaries,
-04:54 one thing that may become some sort of hangup for you 
-04:58 and there are ways to work around it, 
-05:02 with the Json module is that is there was some kind of date in here,
+04:42 So that is basically it, working with JSON from Python. 
+04:45 Really it comes down to the JSON module, 'loads', 'dumps', 
+04:49 and then somewhere in the middle, just working with straight up Python dictionaries.
+04:54 One thing that may become some sort of hangup for you 
+05:00 and there are ways to work around it, 
+05:02 with the JSON module, is that if there was some kind of date in here,
 05:06 this would not work so for example, if we come over here,
 05:09 and this has a datetime like now, 
 05:15 and we'll just put str time or something like that, 
@@ -86,7 +86,7 @@
 05:26 and you could also just do like a string representation, 
 05:31 so you could choose like what string or representation you want, 
 05:33 and then we'll store it like that, okay. 
-05:36 But dates themselves are not supported in Json, just be careful of that. 
-05:40 Alright, now you know about Json and working with it from Python, 
-05:44 let's go get it from somewhere way more interesting than an in memory static string, 
-05:48 let's go get it from a web service, somewhere like gihub. 
+05:36 But dates themselves are not supported in JSON, just be careful of that. 
+05:40 Alright, now you know about JSON and working with it from Python. 
+05:44 Let's go get it from somewhere way more interesting than an in-memory static string. 
+05:48 Let's go get it from a web service, somewhere like github. 
