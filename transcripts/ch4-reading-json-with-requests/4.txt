@@ -1,124 +1,124 @@
-00:00 I bet by now you are ready to actually consume some real services, 
-00:03 we've made some requests and we played with Json, 
-00:07 but we haven't really put it all together 
-00:09 and we are going to start by doing that with github, 
-00:12 so github is a public API and we can use request issue a get to it 
-00:16 and then what we'll come back is some kind of Json document 
-00:18 that we can work with in our code, 
-00:22 so let's switch over to PyCharm and do that now. 
-00:24 So, I've made a new file here first to work with and let's go ahead 
-00:27 and just set that as he run configuration, 
-00:30 notice we are running out of our virtual environment and we'll just start by adding a little structure, 
-00:34 so we are going to import requests and then let's have a main method, 
-00:39 and let's conditionally call this, we can use PyCharm's little template
-00:42 to help us out there, there are live template. 
-00:45 Okay, so we are going to need to get the url here for the API 
-00:49 and then of course we are going to do something like this, 
-00:52 maybe we are going to need to add some headers, 
-00:55 maybe we are going to need to do some other things, 
+0:00 I bet by now you are ready to actually consume some real services. 
+00:03 We've made some requests and we played with JSON, 
+00:07 but we haven't really put it all together, and 
+00:09 we are going to start by doing that with github. 
+00:12 So github is a public API and we can use a request to issue a git to it 
+00:16 and then what will come back is some kind of JSON document 
+00:18 that we can work with in our code. 
+00:22 So let's switch over to PyCharm and do that now. 
+00:24 So I've made a new file here for us to work with and let's go ahead 
+00:26 and just set that as the run configuration, 
+00:30 notice we are running out of our virtual environment, and we'll just start by adding a little structure. 
+00:34 So we are going to import requests and then let's have a main method
+00:39 and let's conditionally call this. We can use PyCharm's little template
+00:42 to help us out there, through a live template. 
+00:45 Okay, so we are going to need to get the URL here for the API 
+00:49 and then of course we are going to do something like this. 
+00:52 Maybe we are going to need to add some headers. 
+00:55 Maybe we are going to need to do some other things, 
 00:57 but we are going to need to start by knowing what is the API we are going to actually work with. 
-01:02 So let's drop in on developer.github,com and check out through API 
-01:05 so if you scroll down there is a little bit of a getting started guide, 
-01:07 authentication, and so on, we are just going to go over here 
-01:10 and let's suppose we want to work with repositories, 
-01:13 so if we want to get information about like say repository here, 
-01:17 we could go to twitter bootstrap/bootstrap, 
-01:19 we could also go to the github repository for this project, 
-01:23 so we are going to access https://api.github.com/repos/ let's get the repo for this course, 
-01:31 so it would be mikeyckennedy that's the username 
-01:34 and then it's going to be the repo name, so over here, let me paste that, 
-01:38 okay so now we have our url, we are going to go to the repo 
+01:02 So let's drop in on developer.github.com and check out their API. 
+01:05 So if you scroll down there is a little bit of a getting started guide, 
+01:07 authentication, and so on. We are just going to go over here 
+01:10 and let's suppose we want to work with repositories. 
+01:13 So if we want to get information about like say a repository here, 
+01:17 we could go to 'twbs/bootstrap' (Twitter bootstrap/bootstrap). 
+01:19 We could also go to the github repository for this project. 
+01:23 So we are going to access 'https://api.github.com/repos/'. Let's get the repo for this course, 
+01:31 so it would be 'mikeckennedy', that's the username, 
+01:34 and then it's going to be the repo name. So over here, let me paste that. 
+01:38 Okay so now we have our URL. We are going to go to the repo 
 01:42 which basically contains well, literally this source code, that is kind of meta isn't it, 
-01:45 and we are going to go get our own thing here, now the question is what are we going to get back, 
-01:50 we can start by exploring this in a real simple way, we already know how to do this request here 
-01:55 and we can just print out the response.text okay, so this is kind of the lowest level, 
-02:00 let's go ahead and run that and see if this works,
-02:03 cool, it looks like we've got something here, now I don't know about you, 
-02:06 this is a little hard to read, if you look at this scroll bar it's huge okay,
-02:10 so that's not great, we technically could do this, import json.loads 
-02:18 and we can give it this, and we could then say json.dumps, 
-02:22 this might seem a little bizzare but then of course we could say indent=true,
-02:25 run this and we get at least formated Json, 
-02:29 but, let's have a better way to explore this, shall we? 
+01:46 and we are going to go get our own thing here, now the question is what are we going to get back? 
+01:50 We can start by exploring this in a real simple way. We already know how to do this request here 
+01:55 and we can just print out the 'resp.text' (response dot text). Okay, so this is kind of the lowest level. 
+02:00 Let's go ahead and run that and see if this works.
+02:03 Cool. It looks like we've got something here. Now I don't know about yo., 
+02:06 this is a little hard to read. If you look at this scroll bar it's huge, okay,
+02:10 so that's not great. We technically could do this - 'import JSON'.  Let's say 'json.loads' 
+02:18 and we can give it this, and we could then say 'json.dumps'. 
+02:22 This might seem a little bizzare but then of course we could say 'indent=true'.
+02:25 Run this, and we get at least formated JSON.
+02:29 But, let's have a better way to explore this, shall we? 
 02:32 So let's jump over here and run postman. 
-02:35 Postman is great for exploring APIs, see I've got some saved ones, 
+02:35 Postman is great for exploring APIs. See I've got some saved ones, 
 02:39 that we are going to work with later for more complex interaction 
 02:42 when we get to modifying data on interesting APIs and so on, 
-02:46 but we can just put this url in here and notice, we can do a get put post 
-02:50 but this is just a get and we could set like headers, 
-02:53 for authentication if we needed it but we'll just go and send this off,
-02:57 here we get what came back, so you can see we have information 
+02:46 but we can just put this URL in here and notice, we can do a GET, PUT, POST, 
+02:50 but this is just a GET and we could set like headers, 
+02:53 for authentication if we needed it, but we'll just go ahead and send this off.
+02:57 Here we get what came back. So you can see we have information 
 03:00 about the full name of the repository, its id, the number of teams, 
 03:04 the number of forks, all sorts of stuff whether or not it has issues and so on, 
-03:08 okay, so we could print out the get url, the clone url, so let's do this, 
-03:13 let's say what we want to do is given the name of a repository and the user, 
+03:08 okay, so we could print out the 'git_url', the 'clone_url'. So let's do this. 
+03:13 Let's say what we want to do is given the name of a repository and a user, 
 03:17 we would like to go and actually get the clone command in order to clone it, 
-03:22 or maybe get the url to open its documentation or homepage, okay? 
-03:26 So we are going to be doing that, by going and downloading this, 
-03:29 converting to Json and then let's say access the clone url. 
+03:22 or maybe get the URL to open its documentation or homepage, okay? 
+03:27 So we are going to be doing that, by going and downloading this, 
+03:29 converting it to JSON and then, let's say, access the clone URL. 
 03:33 Okay, so we've seen we've already gotten the text and we can also parse it like this, 
 03:38 but of course we should really check that this works, right, 
 03:41 and let's also get some input here so we'll do this. 
-03:47 So we'll write a little function here called get_repo_info 
+03:47 So we'll write a little function here called 'get_repo_info' 
 03:53 and we'll write that down here above the dunder main check, 
-03:56 and this is going to get two things, this is going to get the user, it's going to be input, 
-04:02 we'll just ask whoever is typing here, what is the username, 
-04:05 and then we'll do the same for the repo, and then we'll return user, repo. 
+03:56 and this is going to get two things. This is going to get the user, it's going to be input, 
+04:02 we'll just ask whoever is typing here, 'What is the username?', 
+04:05 and then we'll do the same for the repo, and then we'll 'return user, repo'. 
 04:14 Okay, great, so I am going to put this in a comment up here so we always have it, 
-04:19 in case you forget what the name especially this right here. 
-04:23 Alright, so we are going to do a little bit of formatting like so, 
-04:29 okay so that  again is going to get what we need, 
-04:35 let's format that a little bit and tell PyCharm that no, my name is not misspelled. 
-04:40 Alright, so let's run it make sure this little step is working, what is username, 
-04:43 what is a repo name, this is going to be a copy paste, 
+04:19 in case you forget what the name, especially this right here. 
+04:23 Alright, so we are going to do a little bit of formatting like so. 
+04:29 Okay so that, again, is going to get what we need. 
+04:35 Let's format that a little bit and tell PyCharm that no, my name is not misspelled. 
+04:40 Alright, so let's run it make sure this little step is working, 'What is username?', 
+04:43 'What is a repo name?', this is going to be a copy paste, 
 04:47 and it looks like it still works, great. So the next step is to actually check, 
-04:52 because it could have gotten a 404 all sorts of things. 
-04:56 So, we'll do this, we'll say if resp.status_code != 200 
-05:01 then we'll print error accessing repo and then we'll just bale, 
-05:11 so if we put in stuff that's wrong, error accessing repo 404, 
-05:17 if we put in stuff that's right, everything is working, okay. 
+04:52 because it could have gotten a 404, all sorts of things. 
+04:56 So, we'll do this, we'll say 'if resp.status_code != 200' 
+05:01 then we'll 'print("Error accessing repo: {}")' and then we'll just bale. 
+05:11 So if we put in stuff that's wrong, "Error accessing repo: 404". 
+05:17 If we put in stuff that's right, everything is working, okay? 
 05:22 So this is great, we've got our information, 
-05:26 and maybe we should check that the format is Json, 
-05:29 but we are more or less guaranteed through the API that we are going to get Json, 
-05:34 so we could avoid this whole step and we can actually avoid 
-05:37 even using the Json module whatsoever, because requests actually already supports this, 
-05:44 so what we are going to do is we are going to have a repo data 
+05:26 and maybe we should check that the format is JSON, 
+05:29 but we are more or less guaranteed through the API that we are going to get JSON. 
+05:34 So we could avoid this whole step and we can actually avoid 
+05:37 even using the JSON module whatsoever, because requests actually already supports this. 
+05:44 So what we are going to do is we are going to have 'repo_data' 
 05:48 and we are just going to go to the response 
-05:51 and if we know that the inbound data is Json, 
-05:54 we can just say Json and that will actually convert this to a Python dictionary
-05:59 so if I just print the type of repo data and we run this, 
+05:51 and if we know that the inbound data is JSON, 
+05:54 we can just say '.json' and that will actually convert this to a Python dictionary.
+05:59 So if I just print the type of 'repo_data' and we run this, 
 06:07 and we put in something legitimate, we get a dictionary. 
 06:12 So the final thing, what we were trying to do the whole time 
 06:16 is we were going to say this, 
-06:19 print to clone this person's repo named let's just put a little bit info here, 
-06:25 so we'll say user repo print the command is get clone 
-06:34 and then whatever the clone url is here, so we'll say format 
-06:37 and let's just store this for a moment, so what we need to do to get this 
+06:19 print to clone this person's repo named, let's just put a little bit info here, 
+06:25 so we'll say 'user,repo', 'print("The command is:")', "git clone"
+06:34 and then whatever the clone url is here. So we'll say format 
+06:37 and let's just store this for a moment. So what we need to do to get this,
 06:41 if we go back over to postman, is we need to go to the dictionary 
-06:47 and get the thing called clone url, so we can just go to the repo data 
-06:52 and say either like this, this is a little bit dangerous 
-06:57 because who knows what you are going to get, you might get a key error, 
-07:00 so we could do a get and this will just return nothing, if it doesn't exist, 
-07:02 we'll say error no data, something like that, 
-07:08 so we are going to get this clone url, we can get rid of this 
+06:47 and get the thing called 'clone_url', so we can just go to the 'repo_data' 
+06:52 and say either, like this, this is a little bit dangerous 
+06:57 because who knows what you are going to get, you might get a KeyError. 
+07:00 So we could do a GET and this will just return nothing, if it doesn't exist, 
+07:02 we'll say error no data, something like that. 
+07:08 So we are going to get this clone url. We can get rid of this 
 07:11 and we are going to come down here and just say here is the clone url to go. 
 07:14 Alright, so let's put this all together, we are going to run this username is mine, 
-07:18 repo name is the repo from this class consuming services python demos 
-07:23 and if I hit go, the clone command is get clone such and such. 
+07:20 the repo name is the repo from this class 'consuming_services_python_demos',
+07:23 and if I hit go, the clone command is 'git clone' such and such. 
 07:29 Well, let's see if that is going to work. 
-07:38 Get clone that, oh it looks like it works. 
-07:43 I guess our service is working perfectly, so that is how we consume services that are Json based, 
-07:49 HTTP services at least read only get pay services with requests,
-07:54 we just do basically construct the url we do a get 
+07:38 'git clone' that, oh it looks like it works. 
+07:43 I guess our service is working perfectly. So that is how we consume services that are JSON based. 
+07:49 HTTP services, at least read only get pay services with requests,
+07:54 we just do basically construct the URL, we do a GET, 
 07:57 we make sure the status code is whatever we expect, 
 08:01 200 is not always what is expected, 
-08:05 sometimes if we were doing a post and creating thing,
+08:04 sometimes if we were doing a POST and creating a thing,
 08:07 201 would be expected but you check for what is the success code if you will,
-08:11 and then we can call just the Json function right on the response 
-08:15 and it converts that straight to a dictionary, it's a not a huge step to save,
-08:18 that we are skipping over using the Json module, 
-08:21 but it's just one less thing to think about 
-08:23 how do you work with Json from this other thing, 
+08:11 and then we can call just the '.json' function right on the response 
+08:15 and it converts that straight to a dictionary. It's a not a huge step to save,
+08:18 that we are skipping over using the JSON module, 
+08:21 but it's just one less thing to think about, 
+08:23 how do you work with JSON from this other thing, 
 08:26 we just work with it straight from requests and then, 
 08:28 once you have it as a dictionary in memory, 
 08:31 well, it's no longer a web service it's a problem, it's just data in Python, go. 
