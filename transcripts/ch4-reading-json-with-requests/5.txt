@@ -1,11 +1,11 @@
-00:00 Let's review the core concepts about accessing Json services with Requests, 
-00:03 of course we are going to start by importing Request, 
-00:06 I have to have the url to the service that we are going to call, 
-00:10 in this case we are just going to do a basic get so we say request.get given the url, 
+00:00 Let's review the core concepts about accessing JSON services with Requests. 
+00:03 Of course we are going to start by importing Requests. 
+00:06 I have to have the URL to the service that we are going to call. 
+00:10 In this case, we are just going to do a basic GET. So we say 'request.get' given the URL, 
 00:13 we get our response back and we've worked with this already,
-00:16 but the thing that is new this time is we now can call .json 
+00:16 but the thing that is new this time is we now can call '.json' 
 00:20 and that will directly translate the text, 
 00:23 string representation of Json into a Python dictionary 
-00:27 and then we just work with the data in there 
-00:29 in our example we got the clone url for the get clone command 
+00:27 and then we just work with the data in there. 
+00:29 In our example, we got the clone URL for the get clone command 
 00:33 from wherever repository we were pointing at in the API. 
