@@ -1,149 +1,149 @@
-00:02 Let's work with some xml data from Python. 
+00:02 Let's work with some XML data from Python. 
 00:05 So here at the University of Washington,
-00:07 they've got some xml data that we can go grab, 
-00:09 and they happen to have something from the course catalogue at Reed College 
-00:14 which is fancy university here in Portland Oregon, 
-00:17 it happens to be where Steve Jobs went; 
-00:19 so we are going to import this xml file and we are going to do something interesting, 
-00:23 we are going to be able to answer some interesting questions
-00:26 about these courses using xml processing in Python. 
-00:29 Now, in the beginning, we are just going to read the file, 
-00:32 we are not going to do any sort of web service, 
-00:34 although technically we could sort of point directly at that xml file, 
-00:36 later we are going to come back and do this sort of processing from Requests, 
-00:40 calling services that actually return xml. 
-00:44 Alright, so let's go add a file here, process xml, 
-00:47 and I happen to have already downloaded that Reed file, 
-00:50 this xml data that we can look at it here, it's what it looks like. 
-00:55 So, we are going to just work with this locally, in order to get started with xml in Python, 
-00:59 we are going to work with a particular class called Elementary, 
-01:02 and it's going to come from xml.etree,
-01:06 okay and we are also going to need to work with the file system a little bit, 
-01:10 to get to our file, let's get a little structure, alright, 
-01:14 so the first thing that we need to do is actually find that file, 
-01:17 so let's go and create a variable called folder, 
+00:07 they've got some XML data that we can go grab, 
+00:09 and they happen to have something from the course catalogue at Reed College, 
+00:14 which is a fancy university here in Portland, Oregon. 
+00:17 It happens to be where Steve Jobs went. 
+00:19 So we are going to import this XML file and we are going to do something interesting. 
+00:23 We are going to be able to answer some interesting questions
+00:26 about these courses using XML processing in Python. 
+00:29 Now, in the beginning, we are just going to read the file. 
+00:32 We are not going to do any sort of web service, 
+00:34 although technically we could sort of point directly at that XML file. 
+00:36 Later we are going to come back and do this sort of processing from Requests, 
+00:40 calling services that actually return XML. 
+00:44 Alright, so let's go add a file here, process XML, 
+00:47 and I happen to have already downloaded that Reed file. 
+00:50 This XML data that we can look at it here, it's what it looks like. 
+00:55 So, we are going to just work with this locally, in order to get started with XML in Python, 
+00:59 we are going to work with a particular class called ElementTree, 
+01:02 and it's going to come from xml.etree.
+01:06 Okay, and we are also going to need to work with the file system a little bit 
+01:10 to get to our file. Let's get a little structure, alright. 
+01:14 So the first thing that we need to do is actually find that file. 
+01:17 So let's go and create a variable called folder, 
 01:21 and this is going to be os.path.basename(__file__) of wherever this particular file is. 
-01:25 Okay, dunder file will say the name of this executing Python module, 
-01:29 so process.xml is a full path, this will give us the folder where that lives, 
-01:34 and then we can reach and sign xml data and lad up reed
-01:37 so we'll say file=os.path.join and we want to give it the folder, the xml data and reed.xml, 
+01:25 Okay, dunder file will say the name of this executing Python module. 
+01:29 So process.xml is a full path. This will give us the folder where that lives, 
+01:34 and then we can reach and sign XML data and load up reed.
+01:37 So we'll say file=os.path.join and we want to give it the folder, the xml data and reed.xml, 
 01:46 so this works in a nice platform independent way for example 
 01:49 this is going to be like /xml/ on OS 10 and on Linux, 
-01:54 but on Windows it would be back slashes, perfect, okay, 
-01:57 so then what we need to do is just load this up so we'll say xml text, 
-02:01 let's go and just put this a width block, width open(file) as fin: 
-02:05 and then we'll just say xml_text = fin.read() that is going to read all of the text, 
-02:14 so now that we have that loaded up, we are going to want to load, 
-02:16 start working with the xml, just like we used Json before, 
-02:19 we are going to use the xml element tree, 
-02:22 so we are going to say ElementTree. now there is a parse, 
+01:54 but on Windows it would be backslashes. Perfect. Okay. 
+01:57 So then what we need to do is just load this up. So we'll say xml_text, 
+02:01 let's go and just put this in a with block, 'with open(file) as fin:' 
+02:05 and then we'll just say xml_text = fin.read() that is going to read all of the text. 
+02:14 So now that we have that loaded up, we are going to want to load, 
+02:16 start working with the XML. Just like we used JSON before, 
+02:19 we are going to use the XML ElementTree. 
+02:22 So we are going to say ElementTree, now there is a parse, 
 02:25 but, again, I don't know what the deal is with these sort of file format modules 
-02:29 but they kind of suck in names, again, so parse actually loads like a file type thing, 
-02:35 so what we want is ElementTree.fromstring, 
-02:39 so it seems to me like there could have been a more clear way to name these things
-02:42 but it doesn't matter, xml text is what we want 
+02:29 but they kind of suck in names, again. So parse actually loads like a file type thing. 
+02:35 So what we want is ElementTree.fromstring. 
+02:39 So it seems to me like there could have been a more clear way to name these things
+02:42 but it doesn't matter. xml_text is what we want 
 02:45 and then we could just print out the DOM just to make sure that this works, 
 02:48 and notice we are running the github one from before 
 02:50 so let's go ahead and run this one now.
-02:54 Not a directory, yes, oh I said base name, I meant dir name, let's try that again. 
-03:04 There we go, element at route and so whatever this is element route 
-03:08 if we look you'll see that's this, so what we want to do is 
-03:12 we actually want to get these little individual courses here, 
-03:15 so you see there is a course, more courses, lots of these courses. 
+02:54 Not a directory, yes, oh I said basename, I meant dirname, let's try that again. 
+03:04 There we go, element at root and so whatever this is element root 
+03:08 if we look you'll see that's this. So what we want to do is, 
+03:12 we actually want to get these little individual courses here. 
+03:15 So you see there is a course, more courses, lots of these courses. 
 03:18 So, we are going to read in these courses, and we want to answer questions 
-03:21 like what course is running and Eliot, in this room at a given time 
-03:25 or something like that okay, you can see this is not a huge file but it's decent, 
-03:30 it's 13 thousand lines, so it's got a lot of data about these courses, 
-03:33 so we've already loaded these up 
+03:21 like what course is running in Eliot, in this room, at a given time 
+03:25 or something like that. Okay, you can see this is not a huge file but it's decent. 
+03:30 It's thirteen thousand lines. So it's got a lot of data about these courses. 
+03:33 So we've already loaded these up 
 03:35 and the way that we can access these course pieces here 
-03:37 is we can use what is called an xpath expression, 
-03:41 so what I want to do is actually say courses, 
+03:37 is we can use what is called an xpath expression. 
+03:41 So what I want to do is actually say courses, 
 03:44 we can say dom.findall and we can just say course. 
-03:48 Now we could find, let's find the course titles, just to show you more interesting, 
-03:51 so we have course and then we can navigate down to title, 
-03:54 so I could do course/title and then I could do something like this, 
-03:57 for c in courses: print (c.text), let's try this. 
+03:48 Now we could find, let's find the course titles, just to show you a more interesting version. 
+03:51 So we have course and then we can navigate down to title. 
+03:54 So I could do course/title and then I could do something like this, 
+03:57 'for c in courses: print (c.text)'. Let's try this. 
 04:04 Alright, so there is all the course titles, we've done a search 
 04:06 and we've lost some of the information like what room was that course in, 
-04:10 I don't know, its title is Genetics and Molecular Biology, but that is really all I know, 
-04:13 so we are going to take a step back 
+04:10 I don't know, its title is 'Genetics and Molecular Biology', but that is really all I know. 
+04:13 So we are going to take a step back 
 04:15 and we are going to actually get that entire course node here 
-04:18 like this little bit right there, little pop up and then we'll be able 
-04:21 to answer questions about it, okay, so this is going to give our courses, 
-04:25 and now it's cool that this is an xml thing, I'll call this course_nods,   
-04:30 something to that effect but I want a richer container for this, 
-04:33 so I am going to import something else up here, 
-04:36 we are going to import the collections module and here I am going to create a thing, 
+04:18 like this little bit right there, that little pop-up, and then we'll be able 
+04:21 to answer questions about it. Okay. So this is going to give our courses, 
+04:25 and now it's cool that this is an XML thing. I'll call this 'course_nodes',   
+04:30 something to that effect but I want a richer container for this 
+04:33 so I am going to import something else up here. 
+04:36 We are going to import the collections module and here I am going to create a thing, 
 04:39 actually I'll do it outside this method call, although it's called once 
 04:41 so it didn't really matter, I am going to create a thing called a course, 
-04:44 and I'll create that as a collection.named collection, so normally what we get back is just an xml node 
-04:47 and we could maybe stick in the dictionary but a named tuple is much nicer, 
-04:52 so we have course and then we just say the variable, 
-04:54 so let's say we want the title, the room and the building, those three things, 
-04:58 so if we do that, and we come down here we can do something more interesting, 
+04:44 and I'll create that as a collection.named collection. So normally what we get back is just an XML node 
+04:47 and we could maybe stick in the dictionary but a named tuple is much nicer. 
+04:52 So we have course and then we just say the variable, 
+04:54 so let's say we want the title, the room and the building, those three things. 
+04:58 So if we do that, and we come down here we can do something more interesting, 
 05:02 I can say the courses are going to be equal to, now we can do this as a loop, 
-05:05 I'll write it as a loop first, and I'll do a list comprehension in a minute 
-05:09 so I'll say for n in course_nodes, and then I am going to create a course, 
-05:12 I want to pass some stuff to it and then I'll say courses.append, 
-05:17 of course, now we can just come down here print out the course is, 
-05:22 okay, so what goes in here, well first the title, then a room, then a building, 
-05:27 so the title like this, back over here we are going to need 
+05:05 I'll write it as a loop first, and I'll do a list comprehension in a minute. 
+05:09 So I'll say 'for n in course_nodes', and then I am going to create a 'Course'. 
+05:12 I want to pass some stuff to it and then I'll say courses.append. 
+05:17 Of course, now we can just come down here and print out what the course is. 
+05:22 Okay, so what goes in here, well first the title, then a room, then a building. 
+05:27 So the title, let's do it like this, back over here we are going to need 
 05:31 we are kind of working with an element at this level 
 05:33 we are going to need to do another query to get this, 
 05:36 one to go to the place and find the building one to go to place to find the room.
 05:40 So those are the three things that we need, first thing is the title, that's easy, 
-05:43 so n.find('title') and we can say text,
-05:47 and let's just print that out, and see if that works, 
-05:50 oh it's missing its arguments, okay, no worries, we'll do that next. 
+05:43 so 'n.find('title')' and we can say 'text',
+05:47 and let's just print that out, and see if that works. 
+05:50 Oh, it's missing its arguments, okay, no worries, we'll do that next. 
 05:53 The next thing we need to do is we need to find the place, then the room, 
 05:56 and then the next one, the last one is building, 
 06:02 let's see if they call it room, building room, they do. 
-06:07 So here you go, this is working perfectly, 
-06:09 we've loaded up the xml, using elementary.from string, 
-06:14 we've done an xpath query, a very simple one but you saw
+06:07 So here you go, this is working perfectly. 
+06:09 We've loaded up the XML, using 'ElementTree.fromString'. 
+06:14 We've done an xpath query, a very simple one but you saw
 06:17 that we could do more interesting ones, like for example the place 
 06:20 and then we got a bunch of nodes back and for each node we did a little bit of work 
-06:24 to transform that node from just a bunch of xml nodes that we could still work with, 
+06:24 to transform that node from just a bunch of XML nodes that we could still work with, 
 06:29 down to actual almost a class to one of these named tuples and then afterwards, 
 06:34 we can do interesting things like we can answer the question 
-06:37 like what are the classes running in the building Eliot, okay, so this is pretty cool, 
-06:42 but we still have a little bit more work to do, let's go over here and I'll just print it out, 
-06:46 it seems like it's working, let's do one final thing, let's go and say building= 
-06:52 and we'll do an input from the user, we'll say what building are you in, 
-06:57 so maybe somebody sit in there like wait, 
-07:00 what class is running in this room right now, 
-07:02 and then we'll ask what room are they looking for, what room are you next to 
-07:07 and then I could do some kind of query here so I could say room courses, 
-07:11 and we'll just write this as a simple list comprehension, so I'll say c.title for 
-07:17 so we are going to say for c in courses, and we are going to pull out the title, 
-07:24 but only the c where the building, c.building=building, 
-07:27 notice the incompletion here, that's beautiful, and c.room=room. 
-07:32 Okay, so these are the ones we are looking for, 
-07:38 so then we'll say for c in room courses, print, let's do a little star like this, 
-07:46 see that title, actually we just put in the title, so we'll go like that, alright, 
-07:52 so let's go and run this and see if this works. 
-07:56 First of all, I'm in Eliot, I'm in room 414, boom, those are the rooms where this is, 
-08:03 not that many, just ten or so, let's just double check, 
-08:07 go to xml file here and just make sure if I go find this course 
-08:11 that it's actually in that room.
-08:13 And that there are courses that are in other rooms, so here, 
-08:16 so those will be 234, let's try this again, I'm in that room, 234, boom, 
-08:22 Topics in French Enlightenment, First Year Russian, very cool, right. 
+06:37 like what are the classes running in the building Eliot. Okay, so this is pretty cool, 
+06:42 but we still have a little bit more work to do. Let's go over here and I'll just print it out. 
+06:46 It seems like it's working. Let's do one final thing. Let's go and say 'building= '
+06:52 and we'll do an input from the user, we'll say 'What building are you in?', 
+06:57 So maybe somebody is sitting in there like 'Wait, 
+07:00 what class is running in this room right now?', 
+07:02 and then we'll ask what room are they looking for, 'What room are you next to?' 
+07:07 and then I could do some kind of query here so I could say 'room_courses', 
+07:11 and we'll just write this as a simple list comprehension. So I'll say 'c.title for' 
+07:17 so we are going to say for 'c in courses', and we are going to pull out the title, 
+07:24 but only the 'c' where the building, 'c.building=building', 
+07:27 notice the completion here, that's beautiful, and 'c.room=room'. 
+07:32 Okay, so these are the ones we are looking for.
+07:38 So then we'll say for 'c in room_courses', 'print', let's do a little star like this. 
+07:46 See that title? Actually we just put in the title, so we'll go like that, alright. 
+07:52 So let's go and run this and see if this works. 
+07:56 First of all, I'm in Eliot, I'm in room 414. Boom! Those are the rooms where this is, 
+08:03 not that many, just ten or so. Let's just double check. 
+08:07 Go to our XML file here and just make sure if I go find this course 
+08:11 that it's actually in that room
+08:13 and that there are courses that are in other rooms. So here, 
+08:16 so those will be 234. Let's try this again. I'm in that room, 234, boom, 
+08:22 'Topics in French Enlightenment', 'First Year Russian', very cool, right? 
 08:27 So that's all there is to it, we are just going to somehow magically get a hold of the text,
 08:33 later we are going to do this off of the web but right now we just got off the file system, 
-08:37 we are going to create an element tree, we are going to parse it from a string, 
-08:41 then we are going to run possibly as sequence or series of xpath expressions, 
+08:37 we are going to create an ElementTree, we are going to parse it from a string, 
+08:41 then we are going to run possibly a sequence or series of xpath expressions, 
 08:45 one to find the course nodes and then once we have all the course nodes, 
-08:49 to pull the individual pieces of data out of them, right, and then finally,
+08:49 to pull the individual pieces of data out of them. Alright? And then finally,
 08:52 once you have the data like from here on down, this is pure Python, 
 08:56 once you have that loaded as a bunch of named tuples, 
 08:59 well, it's just a matter or writing code against them. 
-09:02 I did say we can improve this a little bit here, so let's work on this, 
-09:05 so I can take that and say okay for n in the nodes, 
-09:08 what I want to create and send back is one of these, and that's that, right, 
-09:15 so that will simplify that a little bit there, just see that it still works, 
+09:02 I did say we can improve this a little bit here, so let's work on this. 
+09:05 So I can take that and say okay for n in the nodes, 
+09:08 what I want to create and send back is one of these, and that's that. Alright.
+09:15 So that will simplify that a little bit there, just see that it still works, 
 09:19 Eliot, 414 boom- still working. 
-09:24 Okay, so maybe that is cleaner, maybe it's not, I don't know, 
-09:27 it's up to you but here is just two nice little list comprehensions 
-09:31 working across and in memory xml dom. 
+09:24 Okay, so maybe that is cleaner, maybe it's not, I don't know. 
+09:27 It's up to you but here is just two nice little list comprehensions 
+09:31 working across and in-memory XML DOM. 
 09:34 Next up we are going to apply this to some web services. 

@@ -1,7 +1,7 @@
-00:01 Now let's focus on xml as a data exchange format, 
-00:05 we are still going to be using HTTP clients, 
-00:08 we are going to be using rest in particular 
-00:11 although this equally applies to urllib once you get the text representation of xml downloaded,
-00:16 we are going to focus on how to work with xml for basic read only services. 
-00:21 Now this is not Soap, this is just straight up xml, 
-00:24 things like rss feed and other xml data sources out on the internet. 
+00:01 Now let's focus on XML as a data exchange format. 
+00:05 We are still going to be using HTTP clients. 
+00:08 We are going to be using REST in particular, 
+00:11 although this equally applies to urllib once you get the text representation of XML downloaded.
+00:16 We are going to focus on how to work with XML for basic read-only services. 
+00:21 Now this is not SOAP. This is just straight up XML, 
+00:24 Things like RSS feeds and other XML data sources out on the internet. 
