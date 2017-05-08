@@ -1,11 +1,11 @@
 00:02 We've worked with a number of the text data types. 
-00:07 Now, let's talk about binary data, so again we are going to use requests, 
+00:07 Now, let's talk about binary data, so again we are going to use Requests, 
 00:10 but this time we are going to focus on downloading and saving, 
-00:14 or even a memory processing binary data, 
+00:14 or even in-memory processing binary data, 
 00:17 this could be things like zip files, it could be images or a whole bunch of stuff, 
-00:23 In the demo, we are going to is actually mp3 files, 
-00:26 those are fairly large binary files that we can work with. 
-00:29 So a lot of things with requests are really straightforward, 
+00:23 In the demo, we are going to do is actually mp3 files. 
+00:26 Those are fairly large binary files that we can work with. 
+00:29 So a lot of things with Requests are really straightforward, 
 00:32 this one is a little less straightforward, 
 00:34 but not too bad once you see a couple of techniques 
 00:37 that will make this much easier. 
