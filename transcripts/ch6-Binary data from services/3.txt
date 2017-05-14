@@ -1,5 +1,5 @@
 00:01 Now that you've seen how we can download binary data, 
-00:05 like mp3s and whatnot, with request, let's review he core concepts. 
+00:03 like mp3s and whatnot, with Requests, let's review the core concepts. 
 00:08 Of course, we are going to have to import requests, 
 00:11 and then we saw that we had to enable streaming for this to work, 
 00:15 we got weird results, it looked like it was downloading but not really, 
