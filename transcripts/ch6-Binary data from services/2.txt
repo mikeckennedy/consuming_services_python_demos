@@ -1,78 +1,79 @@
 00:01 In this demo, we are going to go and access 
-00:04 a binary resource off of the internet using requests. 
-00:07 So, I am going to get you a get request,  
+00:04 a binary resource off of the internet using Requests. 
+00:07 So, we're going to issue a GET request,  
 00:09 but this time to some kind of binary resource, 
-00:12 and what we'll get back is a bunch of bytes, 
-00:14 we want to bring this back to our app and while we could work with them in memory, 
+00:12 and what we'll get back is a bunch of bytes. 
+00:14 We want to bring this back to our app and while we could work with them in-memory, 
 00:17 we are actually going to write them down to disk. 
-00:20 Okay, so let's see what's involved in making request do this whole round trip. 
+00:20 Okay, so let's see what's involved in making a request do this whole round trip. 
 00:24 Now you've seen me create a number of these little starter file projects 
 00:27 throughout this class so far and I decided we are just going to start 
-00:30 from something that is kind of already structured, 
-00:33 so we are going to have a function called get_episode_files  
-00:36 it's going to take a random rss url, this could work for any podcast, 
+00:30 from something that is kind of already structured. 
+00:33 So we are going to have a function called get_episode_files,  
+00:36 it's going to take a random RSS URL, this could work for any podcast, 
 00:39 I just happen to be picking on my own and we are going to say 
 00:42 for file in these files here, maybe file url or something like that, 
-00:47 we are going to call this function download file, 
-00:50 so there is going to be two parts to this, 
-00:52 we are going to go and work with xml, here, right, 
-00:56 this is standard xml so we are going to need to add an import at the top, 
-00:59 so we'll have our ElementTree of course we are going to use request to download it,
+00:47 we are going to call this function download_file. 
+00:50 So there is going to be two parts to this.
+00:52 We are going to go and work with XML, here, right? 
+00:56 This is standard XML so we are going to need to add an import at the top. 
+00:59 So we'll have our ElementTree, of course we are going to use Requests to download it,
 01:07 ElementTree to parse it, and then we are going to use OS and some other modules 
 01:11 we are going to talk about in a moment to actually put it on disk. 
-01:14 Okay, great, let's do it, let's write the download part,
-01:18 now this is not going to download the files, it's going to download the xml 
-01:22 which will tell us where the files live, so we'll begin like this, 
-01:25 so we'll again do a get request against the main rss url 
+01:14 Okay, great, let's do it, let's write the download part.
+01:18 Now, this is not going to download the files, it's going to download the XML 
+01:22 which will tell us where the files live. So we'll begin like this, 
+01:25 so we'll again do a get request against the main RSS URL 
 01:32 and we should check the status code but you guys know how that goes, 
-01:35 we've done it a lot, so we are going to assume that the xml text is response.text 
-01:41 and then we are going to load it up into a dom, ElementTree.fromstring(xml_text) 
+01:35 we've done it a lot. So we are going to assume that the XML text is response.text 
+01:41 and then we are going to load it up into a DOM, ElementTree.fromstring(xml_text) 
 01:48 and then we just need to write some kind of list comprehension here 
-01:51 that is going to say given a dom get me all of the links, so remember, 
+01:51 that is going to say given a DOM, get me all of the links. So remember, 
 01:57 it went channel/item and in the item we had a link, 
-02:01 we can just use that as our xpath query, 
-02:04 so for link let's say link_node.text 
+02:01 we can just use that as our xpath query. 
+02:04 So for link, let's say link_node.text 
 02:09 for link node in dom.findall('channel/item/link') like that and that should do it, 
-02:14 let's just run this bit real quick and we can go ahead and print the file, 
-02:19 so run boom, so that is actually not the right xpath query this while decent, 
+02:14 let's just run this bit real quick and we can go ahead and print the file. 
+02:19 So, run boom. So that is actually not the right xpath query. This, while decent, 
 02:27 this is going to show us the actual episode page 
-02:30 what we want is the actual episode rss. 
-02:34 So, I need a different one, let's look at the xml real quick. 
+02:30 what we want is the actual episode RSS. 
+02:34 So, I need a different one, let's look at the XML real quick. 
 02:38 So what we actually want is we want this thing called an enclosure, not a link, 
-02:41 so then in there you can see we have the url which is an attribute, 
-02:47 so we haven't really talked about that, so we are going to do this, 
+02:41 so then in there you can see we have the URL which is an attribute. 
+02:47 So we haven't really talked about that. So we are going to do this, 
 02:50 enclosure and let's call this enclosure_node here and instead of getting the text, 
 02:56 we are going to get the attribute here, which is url. So we'll do url,
 03:02 let's run this again, see if we got it right this time. 
 03:05 Oh, oops, this has to be attrib, so here we have all of the actual mp3 files, 
-03:13 so there we go, now I got exactly what we were looking for, 
-03:17 so channel item enclosure, get the attribute from the attrib dictionary called url. 
-03:21 Perfect, So now it's really down to the binary data part, 
-03:25 how are we going to download these files once we have them, right, 
-03:29 we are passing them off of this download file function, how does that work? 
-03:33 Well, now it's time to start doing the interesting things, 
-03:36 so for each file that comes in here, let's just put a little print here 
+03:13 so there we go, now I got exactly what we were looking for. 
+03:17 So channel item enclosure, get the attribute from the attrib dictionary called url. 
+03:21 Perfect. So now it's really down to the binary data part, 
+03:25 how are we going to download these files once we have them, right? 
+03:29 We are passing them off of this download file function, how does that work? 
+03:33 Well, now it's time to start doing the interesting things. 
+03:36 So for each file that comes in here, let's just put a little print here 
 03:40 and actually let's go say we only want the last three files downloaded, 
 03:45 or the last three episodes to be downloaded, 
 03:49 just because we don't want this to go crazy and just download a GB or whatever, 
 03:53 okay so over here we are going to say given a file I want to download it 
 03:57 and let's just go with a naive way of doing things 
-03:59 with requests and then we'll do something,
-04:02 but we'll set a few settings to make this work better, so again, we'll say
+03:59 with Requests and then we'll do something,
+04:02 but we'll set a few settings to make this work better. So again, we'll say
 04:04 response=request.get and this file maybe we should call it url, whatever, 
-04:09 we are going to get it, and then on the response, we have a text, we have a json, 
-04:15 but we also have a raw, and the raw is what we can use to get to that actual data,
-04:23 so we are going to get this and we would like to write that to this file, 
-04:26 so I'll say dest file = now we need to get a few things here, 
-04:31 we need to get just the ending off of this, and so we'll say I'll call it base file, 
+04:09 we are going to get it, and then on the response, we have a text, we have a JSON, 
+04:15 but we also have a raw, and the raw is what we can use to get to that actual data.
+04:23 So we are going to get this and we would like to write that to this file, 
+04:26 so I'll say 'dest_file = '. Now we need to get a few things here. 
+04:31 We need to get just the ending off of this, and so we'll say, I'll call it base_file, 
 04:38 we'll say os.path.basename(file), not sure if that will work with the http on it, 
 04:43 we might have to do little string in place but we are going to give it a try 
 04:46 and then the destination is going to be path.join, 
-04:51 well, we are going to take the destination folder, we want to make sure it's an absolute path 
-04:54 so we'll say os.path.absoulte_path(dest_foder), 
+04:51 well, we are going to take the destination folder, we want to make sure it's an absolute path. 
+04:54 So we'll say 'os.path.abs_path(dest_foder)' [absolute path], 
 04:57 and we want to join that with the base_file, like so,
-05:02 
-05:14 okay, so here is the just the ending like filename.mp3 not the full path, 
+05:05 (typing)
+05:12 dest_folder, base_file. 
+05:14 Okay, so here is the just the ending like filename.mp3 not the full path, 
 05:21 and this is the full path to where on my folder 
 05:24 is going which we've set on my desktop in this mp3s folder. 
 05:27 Let's just print really quick, the base_file and the dest_file,
@@ -84,62 +85,62 @@
 05:51 it looks like besides that little squiggly bit that went crazy, 
 05:54 we got the base_file, and this should work. 
 05:57 Okay great, I am taking that file and saving it here, 
-05:59 it looks like exactly what we want to do, 
-06:02 so let's just do a print downloading and saving the base_file, 
-06:10 okay, so we can create a context manager, a width block, we'll say open, 
+05:59 it looks like exactly what we want to do. 
+06:02 So let's just do a print downloading and saving the base_file. 
+06:10 Okay, so we can create a context manager, a with block. We'll say open, 
 06:14 I want to open up the destination file and I want to write to this as a binary file, 
-06:18 and I am just going to say fout.write, I am going to give it the response.raw. 
+06:18 and I am just going to say fout.write, I am going to give it the resp.raw [response.raw]. 
 06:24 Now, I do not believe this is going to work, in fact, I am quite sure it's not, 
-06:29 but let's go and see what happens, so we'll run it, it downloads the xml, 
+06:29 but let's go and see what happens. So we'll run it, it downloads the XML, 
 06:32 and, yes a byte like object. Now, that is not great. 
 06:37 So, let's take a different approach here, 
-06:40 let's come up here and import thin thing called shell util, 
-06:43 now shell util has a cool feature, so we can say here copy file object 
-06:47 so I want to go through something like response.raw 
+06:40 let's come up here and import this thing called shutil [shell util]. 
+06:43 Now shell util has a cool feature, so we can say here copyfileobj [copy file object]. 
+06:47 So I want to go through something like resp.raw [response.raw]
 06:51 and I want to write it to fout.
 06:54 Okay, so this will basically handle all the read from this stream,
 06:57 write to that stream business for us. 
 07:00 So let's do it again. 
-07:03 How exciting it looks like it's working, let's go over here while that is dong that, 
+07:03 How exciting it looks like it's working, let's go over here while that is doing that, 
 07:08 and let's have a look and see what's in that folder. 
-07:11 okay, so it's already downloaded, exploring awesome Python,
+07:11 Okay, so it's already downloaded, exploring awesome Python,
 07:14 it's downloaded running grumpy on Python, 
 07:17 now each one of these should be around 50 MBs let's see how we're doing. 
 07:20 Oh, zero bytes, really- that doesn't seem fantastic, zero bytes, zero bytes,
 07:25 and I can tell you if we try to play them, not so amazing, what went wrong?
 07:29 Well, when we are working with binary data, 
-07:32 we can't just grab the response and write it, what we need to do is 
-07:36 we need to do two things, we need to tell the response
-07:40 to decode the content and say true,
-07:43 okay so we needed to decode the content, let's see how that works, 
-07:47 alright, let's see how we did, did it work, no, still zero bytes, 
-07:52 there is one more thing we have to do for all this stream stuff to work, 
+07:32 we can't just grab the response and write it. What we need to do is, 
+07:36 we need to do two things. We need to tell the response
+07:40 to decode the content and say true.
+07:43 Okay so we needed to decode the content, let's see how that works. 
+07:47 Alright, let's see how we did, did it work? No, still zero bytes. 
+07:52 There is one more thing we have to do for all this stream stuff to work, 
 07:55 so I am going to go ahead and stop it. 
 07:57 The other thing we need to do is just say look, 
-07:59 I want you to stream as binary data as you get this request, 
-08:02 okay, so stream is true, deco content is true, 
-08:05 one more time, let's see what we get- look at that, 
-08:08 it's got some kind of a little header thing at the top, 
+07:59 I want you to stream as binary data as you get this request. 
+08:02 Okay so, stream is true, deco content is true. 
+08:05 One more time, let's see what we get- look at that. 
+08:08 It's got some kind of a little header thing at the top, 
 08:12 and right now we are downloading saving awesome Python 
 08:16 and grumpy is not here yet, 
 08:18 oh, just in time, okay, let's go look at this one, oh 50.6 MB and if we hit play, 
-08:21 you probably can't hear that but I can and you can see all the data needed is right there,
-08:25 again, looking great, it says four minutes, now it knows how long it is, 
+08:21 you probably can't hear that but I can and you can see all the data needed is right there.
+08:25 Again, looking great. It says four minutes. Now it knows how long it is, 
 08:29 okay, just got downloaded. 
 08:32 But now everything is working, we are downloading our binary data, 
 08:35 okay so let's just review what that took. 
 08:38 There was a little bit of work to actually find the link to the binary file,
-08:41 we did that by getting the xml file, parsing it with xpath,
-08:45 doing some list comprehension magic there, pulling off the attribute url, 
+08:41 we did that by getting the XML file, parsing it with xpath,
+08:45 doing some list comprehension magic there, pulling off the attribute URL, 
 08:49 but that is not that important, right, that varies per service, 
 08:54 but once you have a link to a binary thing you want to download, 
-08:57 here is what we do; we go and we do a request.get on it, and we say stream=true, 
-09:04 just stream that from the server, and while you are at it, decode the content, 
-09:08 okay, and then we did a little bit of juggling to take the remote name 
+08:57 here is what we do; we go and we do a requests.get on it, and we say stream=true, 
+09:04 just stream that from the server, and while you are at it, decode the content. 
+09:08 Okay, and then we did a little bit of juggling to take the remote name 
 09:12 and a local folder and combine those into a destination file, 
 09:15 put some downloading message here so we know what is going on, 
-09:19 and then we create file stream it's important, it's binary 
-09:23 and raidable, and then to save us the work of juggling, 
+09:19 and then we create a file stream, it's important it's binary 
+09:23 and writeable, and then to save us the work of juggling, 
 09:26 reading from one stream and writing to the other, 
 09:29 we say shell copy file object from this remote stream to this local stream- 
 09:33 boom, we're done. And that is working with binary files and requests as web services. 
