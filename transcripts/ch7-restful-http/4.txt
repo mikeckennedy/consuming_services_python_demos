@@ -1,7 +1,7 @@
 00:02 Now we've come to the part of the course
-00:04 where we are talking about http clients doing non trivial service work. 
-00:08 So, as we've seen with requests, it's really quite easy to do a basic get, 
-00:13 against an open public url. 
+00:04 where we are talking about HTTP clients doing nontrivial service work. 
+00:08 So, as we've seen with Requests, it's really quite easy to do a basic GET 
+00:13 against an open public URL. 
 00:16 However, if we want to modify data, 
 00:19 if we want to access authenticated request, things like that get more interesting, 
-00:24 so right now we are going to focus in on modifying data using the http verbs. 
+00:24 so right now we are going to focus in on modifying data using the HTTP verbs. 
