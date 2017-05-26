@@ -4,46 +4,46 @@
 00:12 and do all sorts of stuff with various people's APIs 
 00:15 and I know that those APIs might change over time 
 00:18 and I don't necessarily want to ask everyone to go create a github API 
-00:23 and the access key and maybe modify their own github data 
+00:23 and the access key and maybe modify their own github data, 
 00:27 that might go terribly wrong somehow, I don't know how, 
 00:29 but I just don't want to depend on these other services, 
 00:31 and it's totally easy to find read only services out there 
 00:34 that are publicly accessible without authentication. 
 00:37 But, as we get into more complicated, more realistic interactions, 
-00:40 we are going to need something we can binge on without that changing 
+00:40 we are going to need something we can bing on without that changing 
 00:45 and without that ever becoming a problem. 
 00:48 So I'd like to introduce you to the service that we are going to use 
-00:51 for much of the rest of this course, now this service has at least three aspects to it, 
+00:51 for much of the rest of this course. Now this service has at least three aspects to it, 
 00:56 we have this blog API here and as you can guess, 
 00:59 we are going to just model a blog but it could be anything right, 
 01:03 the blog part is just something to make it concrete. 
-01:06 Here is an http somewhat restful service and this is publicly accessible,
-01:10 so if I click this we get Json back, now we also have a restricted version, 
+01:06 Here is an HTTP somewhat RESTful service and this is publicly accessible,
+01:10 so if I click this we get JSON back. Now we also have a restricted version, 
 01:14 we are not going to talk about authentication now, that is its own section, 
 01:18 but when we get to it, you are going to see that this service requires basic authentication 
 01:23 and so we'll learn how to do that from Python, how to access that service. 
-01:28 we have not entered, by the way, if you want to see what it looks like, 
+01:28 We have not entered, by the way, if you want to see what it looks like, 
 01:32 there is username and password it looks like this one, 
 01:35 it just won't let you access it without logging in. 
 01:37 So down here I have outlined the various operations, 
-01:39 like you can get all the post from the blog like this, 
-01:42 you can you can get a particular blog post by going to api/blog/post id 7 or whatever, 
-01:47 you can create a new blog post by doing an http post to /api/blog,
-01:53 you can update an existing post by doing a put to that blog's specific resource id 
-02:00 or that url that goes to that blog and similarly you can delete it. 
-02:04 Also we have a Soap service here, 
-02:07 now we are going to leave the Soap stuff to its own section,
+01:39 like you can get all the posts from the blog like this, 
+01:42 you can you can get a particular blog post by going to api/blog/post id 7 or whatever. 
+01:47 You can create a new blog post by doing an HTTP POST to /api/blog.
+01:53 You can update an existing post by doing a PUT to that blog's specific resource id 
+02:00 or that URL that goes to that blog and similarly you can DELETE it. 
+02:04 Also we have a SOAP service here. 
+02:07 Now we are going to leave the SOAP stuff to its own section,
 02:10 just like we are authentication but the same service, 
-02:12 the same set of services I guess we should call them, will do Soap, 
-02:16 so if we click on here you can see all the crazy stuff, 
+02:12 the same set of services I guess we should call them, will do SOAP. 
+02:16 So if we click on here you can see all the crazy stuff, 
 02:19 we'll talk about what that means later but you can see 
 02:22 that there is a set of operations that we can work with 
-02:25 here that are more Soap service like, they work in terms of nouns and actions, 
+02:25 here that are more SOAP service like, they work in terms of nouns and actions, 
 02:28 and they return rich objects as real objects, we'll come back to that so for now, 
 02:34 what we are going to do is we are going to focus on api/blog and these operations. 
 02:38 This is publicly accessible, consumer_services_api.talkpython.fm 
-02:46 and you will be allowed without even logging in to modify the data here. 
-02:51 It works in a pretty constraint way, so you can create some post 
+02:46 and you will be allowed, without even logging in, to modify the data here. 
+02:51 It works in a pretty constrained way, so you can create some post 
 02:54 and it won't be shared with other users, 
 02:57 and they will expire after a little while, things like that. 
-03:00 But this is a service that you can binge on and will use for much of the rest of this course. 
+03:00 But this is a service that you can bing on and will use for much of the rest of this course. 
