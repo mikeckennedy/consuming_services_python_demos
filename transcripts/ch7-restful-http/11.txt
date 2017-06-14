@@ -1,9 +1,9 @@
 00:01 In our service, to update a blog post, 
-00:04 we are going to do an http put to the particular url 
+00:04 we are going to do an HTTP PUT to the particular URL 
 00:07 that represents that blog post, and the body of that post is going to contain 
-00:12 the details in json form to replace the value on the server, 
-00:15 so we want to do a put/api/blog/id and pass the title and the content, things like that. 
-00:21 The response is going to be just an http status code 204, no content, 
+00:12 the details in JSON form to replace the value on the server. 
+00:15 So we want to do a put/api/blog/id and pass the title and the content, things like that. 
+00:21 The response is going to be just an HTTP status code 204, no content, 
 00:25 everything worked, thank you. 
 00:28 In code, what does that look like? 
 00:30 Well, we start by creating a dictionary that is going to be the body of our post, 
@@ -14,11 +14,11 @@
 00:49 requires all the new values to be passed or it will like null them out on the server. 
 00:54 So, we are going to pass them all but it could be possible if you just want to change the title
 00:58 you might just have to pass the title, that is up to the API. 
-01:01 Then we come up with the post url that we are going to update, 
-01:05 API/blog the id of that post, and then what we do is we do a request.put,
-01:10 so we send a put request, or http request with a put verb to that url 
-01:14 and we pass the json body as the updated post details, 
-01:18 remember, that is going to take the dictionary and convert it to a json string 
+01:01 Then we come up with the post_url that we are going to update, 
+01:05 API/blog the id of that post, and then what we do is we do a requests.put.
+01:10 So we send a PUT request, or HTTP request with a PUT verb to that URL 
+01:14 and we pass the JSON body as the updated post details, 
+01:18 remember, that is going to take the dictionary and convert it to a JSON string 
 01:21 and set the content type of the put to be application/json. 
 01:27 And then of course we want to check the status code, and make sure that worked,
 01:31 in our case, the contract we have with the servers 204 is good,
