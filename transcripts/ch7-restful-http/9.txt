@@ -1,6 +1,6 @@
-00:01 To create a post we do an http post, one is blog post one is a verb, 
-00:08 an http post against the general blog collection, 
-00:11 so we do an http post against api/blog and the body of that post is a json document
+00:01 To create a post we do an HTTP POST. One is blog post. One is a verb, 
+00:08 an HTTP POST against the general blog collection.
+00:11 So we do an HTTP POST against api/blog and the body of that POST is a JSON document
 00:17 containing all the details we want to use as part of that post creation, 
 00:21 the title, the content, things like that. 
 00:24 Then what comes back is the actual thing that the server created, 
@@ -9,22 +9,22 @@
 00:34 and it sent that back for us to continue to work with in our application. 
 00:37 Now, throughout the rest of these concepts in this chapter, 
 00:41 we are going to assume that we have always written import requests 
-00:45 and that the base url is that public url of our service  
+00:45 and that the base_url is that public URL of our service  
 00:49 http://consumer_services_api.talkpython.fm
 00:52 that will mean we just have a little less to look at at each of the detailed steps. 
 00:57 Okay, to create a new post, in code, what we are going to do is 
-01:00 we are going to create a new post dictionary and set the values 
+01:00 we are going to create a new_post dictionary and set the values 
 01:03 that we have control over, title, content, view count and published. 
 01:07 Remember, there is also id but that is server generated 
 01:10 so there is no point in passing it or trying to come up with one 
 01:13 because it's just going to be created by the database anyway,
-01:15 then we set the url to be the base url/api/blog, 
+01:15 then we set the URL to be the base_url + '/api/blog', 
 01:19 not a particular id, just the general collection, and then we are going to do 
-01:22 an http post to that url and the body is going to be the dictionary, 
-01:27 we say the json objects, the dictionary is going to be converted to json, 
-01:31 now, one note is I actually in my code when I did the demos, 
-01:35 I set the headers and set the body type, where the content type is json 
-01:40 actually if we set the json property request knows that that has to be the case 
+01:22 an HTTP POST to that URL and the body is going to be the dictionary, 
+01:27 we say the JSON objects, the dictionary is going to be converted to JSON. 
+01:31 Now, one note is I actually, in my code when I did the demos, 
+01:35 I set the headers and set the body type, where the content type is JSON.
+01:40 Actually if we set the JSON property request knows that that has to be the case 
 01:44 and it's going to set it for us so we can skip that header step it turns out. 
 01:48 Now, when we are done, we better check the response code, 
 01:51 the standard response code for some sort of post like this is 201 created, 

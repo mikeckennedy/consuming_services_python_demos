@@ -1,6 +1,6 @@
-00:01 Our blog explorer lets us list post and add new ones, 
-00:04 now it's time to make them editable, 
-00:07 so I've added just a little bit of I guess you could call this user interface code,
+00:01 Our blog explorer lets us lists post and add new ones, 
+00:04 now it's time to make them editable. 
+00:07 So I've added just a little bit of, I guess you could call this user interface code,
 00:11 like some interaction with the user to ask them
 00:13 show me the posts that you would like
 00:16 basically I am going to list them out and put numbers by them,
@@ -15,7 +15,7 @@
 00:43 alright I could but the view count this thing has gone crazy, it looks like this, 
 00:47 and of course, nothing happens because that is the part we are going to write right now.
 00:51 Okay, but that is what this user interaction bit here is, so we have the data, 
-00:54 I'll say post data again that we want to update 
+00:54 I'll say post_data again that we want to update 
 00:58 and I am going to put this into a dictionary just like before, 
 01:02 now we don't have published, we are not asking them when it was published, 
 01:06 that part can't be changed, so I am going to say post.published 
@@ -29,50 +29,50 @@
 01:32 but maybe they updated the content 
 01:34 and we are going to send a new version of content, or whatever. 
 01:38 So, what do we need to do to update it? 
-01:40 First of all, we're going to need the url, that's going to be base url plus, 
+01:40 First of all, we're going to need the URL, that's going to be base_url plus, 
 01:44 what we had to forward is api/blog but in our service, over here, 
 01:49 if we are going to do an update, we have to do a put request 
 01:53 to /api/blog/the id of the post so let's make that happen, 
-01:58 so it's going to be like so, and then we have post.id, like that,
-02:03 okay, now remember, these are named tuples that are coming back from our get post 
-02:08 so we can access them just like .id and .publish, 
-02:11 we are going to have to use dictionary, okay so we have this, 
-02:15 we want to say the response is going to be request.put 
-02:19 and again we have url and data now this time I don't think we have a json 
-02:22 so we're going to have to be a little more careful, so we have url data=json.dump s 
-02:30 so that is going to do the stringification of the post data, 
+01:58 so it's going to be like so, and then we have post.id, like that.
+02:03 Okay, now remember, these are named tuples that are coming back from our GET post 
+02:08 so we can access them just like .id and .publish. 
+02:11 We are going to have to use dictionary style. Okay so we have this, 
+02:15 we want to say the response is going to be requests.put 
+02:19 and again we have URL and data now this time I don't think we have a JSON
+02:22 so we're going to have to be a little more careful. So we have 'url,data=json.dumps', 
+02:30 so that is going to do the stringification of the post_data, 
 02:34 and if we had any headers, we could set the headers as well here. 
 02:37 Okay, we want to do this put, and then we'll say if we got to test for success, 
 02:41 status code what does success mean, for an update command. 
 02:46 Well, it might be 200 if they are not very careful with their codes, 
 02:49 but it turns out that the most precise response from the server should be 204. 
 02:55 So 204 means the server has successfully fulfilled the request 
-03:00 and that there is no additional data for you to get, if we've given it the new data, 
+03:00 and that there is no additional data for you to get. If we've given it the new data, 
 03:04 we already know the id, we already have the server representation of the post, 
-03:07 if we really want it back we can ask for it, so if it's not equal to this, 
-03:11 we are going to print as always maybe there is text, 
+03:07 if we really want it back we can ask for it. So if it's not equal to this, 
+03:11 we are going to print as always, maybe there is text 
 03:14 if there was an error, who knows, but if there is not, 
-03:18 we are just going to say print, so this is status does equal 204,
+03:18 we are just going to say print. So this is 'Does status code equal 204?',
 03:22 successfully updated and I'll just print out the title. 
 03:26 Okay, I think that's going to do it, we probably want to consider the headers,
-03:32 but let's go and just run with this, okay, so let's do a list and we still have our data,
-03:37 remember, this is a stateful server, so it has our success story and it has,
-03:42 this is our attempt to create a first post, okay, now, the first attempt, 
+03:32 but let's go and just run with this. Okay, so let's do a list and we still have our data.
+03:37 Remember, this is a stateful server, so it has our success story and it has,
+03:42 'This is our attempt to create a first post.' Okay, now, the first attempt, 
 03:47 people love getting started stories so maybe it's been viewed a lot 
 03:50 and maybe we want to change the title or the body just a little bit 
-03:53 so let's say we want to update a post, alright, which number do we want to edit? 
+03:53 so let's say we want to update a post. Alright, which number do we want to edit? 
 03:57 We want to edit this one which is 4, okay, this is our first attempt, 
-04:01 let's take the default title, say "I knew all along that this demo would work the first time" 
-04:10 of course I did, and like I said, that's been viewed 1001 times,
+04:01 let's take the default title, say 'I knew all along that this demo would work the first time.' 
+04:10 of course I did, and like I said, that's been viewed 1001 times.
 04:16 I don't know if this demo worked, but the one that created that post, 
-04:18 that one I can be sure it did actually work the first time, I think this is going to work, 
-04:22 let's see, we've got a request.put data as stringified json and url 
+04:18 that one I can be sure it did actually work the first time, I think this is going to work. 
+04:22 Let's see, we've got a requests.put data as stringified JSON and url 
 04:29 to the particular post, I think it's going to work, let's give it a shot. 
-04:32 Successfully updated, our first post. How cool is that; 
-04:36 now, if I do a list, we'll know this worked if it went from what it was before, 
+04:32 Successfully updated, our first post. How cool is that? 
+04:36 Now, if I do a list, we'll know this worked if it went from what it was before, 
 04:40 scroll, scroll, from 10 to a 1001, let's do a list and find out. 
 04:45 Boom, 1001, alright, let's do that one more time, we'll pick number 4 again, 
-04:52 this first attempt was a winner, and we'll just take these defaults here 
+04:52 'This first attempt was a winner', and we'll just take these defaults here 
 04:59 and update it again, let's do another list, see this first attempt was a winner, 
 05:03 it took those values and of course, 
-05:06 we are doing a put back to the url specified by that id. 
+05:06 we are doing a PUT back to the URL specified by that id. 

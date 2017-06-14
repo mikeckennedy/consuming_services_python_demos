@@ -1,50 +1,50 @@
-00:02 Let's look at these http verbs in a couple of ways, 
-00:05 here we are going to play around with just a generic example and then later, 
+00:02 Let's look at these HTTP verbs in a couple of ways. 
+00:05 Here we are going to play around with just a generic example and then later, 
 00:08 we are going to go look at a public very thought out API. 
 00:12 So imagine we have some service running that someservice.com/api 
 00:16 and it has a certain number of resources and its specifications, 
-00:19 so users and then users/ some kind of id based on what you are looking for 
+00:19 so users and then users/ some kind of id based on what users you are looking for 
 00:25 and maybe even /id/picture to get their picture. 
-00:28 also projects and project details, so project 11 and even files about them, 
-00:32 so we might issue a get request against projects 
-00:36 and that would return let's just say there is always going to be json 
-00:38 and give us a json representation of maybe the id and title of every project 
+00:28 also projects and project details, so project 11 and even files about them. 
+00:32 So we might issue a GET request against projects 
+00:36 and that would return, let's just say this is always going to be JSON, 
+00:38 and give us a JSON representation of maybe the id and title of every project 
 00:43 that you have access to. 
 00:46 Then maybe in there somewhere is project 11 
-00:48 and that is the one you want details at so you could do a get against project 11. 
-00:51 Now, maybe you don't have any projects, you want to create one, 
-00:55 well typically the way these http services would do that 
-00:58 is we would do an http post against /project 
-01:04 and we'll see that that would tell the service hey I would like to create a project 
-01:08 and the body of that post, the data in that post would be the required details 
+00:48 and that is the one you want details at so you could do a GET against project 11. 
+00:51 Now, maybe you don't have any projects, you want to create one. 
+00:55 Well typically the way these HTTP services would do that 
+00:58 is we would do an HTTP POST against /project 
+01:04 and we'll see that that would tell the service, 'Hey I would like to create a project,'
+01:08 and the body of that POST, the data in that POST would be the required details 
 01:12 to create a service, maybe not everything about it, but things like its name, 
 01:15 who the owners are, stuff like that. 
 01:17 Similarly, if we wanted to update a user, we might go to /users, 
-01:21 we know we want to update user 42, we need to do an http put against that, 
-01:26 so you see we combine the verbs with the resources to get all the behaviors 
-01:30 that you are looking for, not all services work this way, 
-01:34 put and delete is becoming increasingly popular people use these,
-01:38 but get and post those are the mains of http services. 
-01:42 So, how do I know that doing a put against users/42 is supposed to update it 
-01:49 and doing a post against users should create a new user in the first place. 
-01:54 Well, if we are following these http services 
+01:21 we know we want to update user 42, we need to do an HTTP PUT against that. 
+01:26 So you see we combine the verbs with the resources to get all the behaviors 
+01:30 that you are looking for, not all services work this way. 
+01:34 Put and delete, it's becoming increasingly popular people use these,
+01:38 but GET and POST those are the mainstay of HTTP services. 
+01:42 So, how do I know that doing a PUT against users/42 is supposed to update it 
+01:49 and doing a POST against users should create a new user in the first place?
+01:54 Well, if we are following these HTTP services 
 01:57 and we are trying to use these verbs to have these meanings, 
-02:00 we just have to look at the actual definition of get, post, put and delete. 
+02:00 we just have to look at the actual definition of GET, POST, PUT and DELETE. 
 02:03 So if we go over to the Wikipedia entry for the hypertext protocol 
-02:07 we'll see we have four verbs that I pulled out here 
-02:12 there are actually many more patch and whatnot that could be used 
+02:07 we'll see we have four verbs that I pulled out here. 
+02:12 There are actually many more, PATCH and whatnot, that could be used 
 02:15 but these are the real main players in these services, 
-02:18 and notice, only get is what is called item potent. 
-02:21 Item potent means that if you apply it one time, something may happen, 
-02:25 if you apply it five more times, it will be exactly as if you've only applied it once, 
-02:30 so basically it means you can apply it to itself as many times as you want, 
-02:34 whereas post, put and delete applying them a second time 
+02:18 and notice, only GET is what is called idempotent. 
+02:21 Idempotent means that if you apply it one time, something may happen, 
+02:25 if you apply it five more times, it will be exactly as if you've only applied it once. 
+02:30 Basically it means you can apply it to itself as many times as you want, 
+02:34 whereas POST, PUT and DELETE applying them a second time 
 02:38 might actually have a separate meaning, okay. 
-02:41 So if we look at get, it should only retrieve the data and basically have no other effect, 
-02:46 if we look at post, this should tell the server to accept the entity enclosed in the body, 
-02:51 and create as a subordinate, so if I want to create a user with id 42, 
-02:55 I would do a post of that user to /users and then we theoretically have 
-03:00 /user/42 was created as part of that action 
-03:04 whereas put is supposed to replace or update the entity at that location, 
-03:09 so do a put to /user/42 should update user 42. 
-03:13 And finally, doing a delete against user/42 well, you can bet that user is gone. 
+02:41 So if we look at GET, it should only retrieve the data and basically have no other effect, 
+02:46 if we look at POST, this should tell the server to accept the entity enclosed in the body, 
+02:51 and create as a subordinate. So if I want to create a user with id 42, 
+02:55 I would do a POST of that user to /users and then we theoretically have 
+03:00 /user/42 was created as part of that action. 
+03:04 Whereas PUT is supposed to replace or update the entity at that location, 
+03:09 so do a PUT to /user/42 should update user 42. 
+03:13 And finally, doing a DELETE against user/42 well, you can bet that user is gone. 
