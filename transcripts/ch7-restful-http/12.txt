@@ -1,17 +1,17 @@
 00:01 The last thing that we need for our blog explorer to be complete, 
-00:04 well, as a silly little command line crud app for API anyway,
-00:09 is to be able to remove a post, 
-00:12 so we are going to implement delete a post and it kind of works like 
+00:04 well, as a silly little command line CRUD app for API anyway,
+00:09 is to be able to remove a post. 
+00:12 So we are going to implement delete a post and it kind of works like 
 00:15 it's going to get the post and ask you which one do you want to delete, 
-00:17 number of posts to delete and then it's going to say we're deleting that post 
-00:23 now the action that we actually have to do here is to implement that. 
-00:26 So the url according to our API if we go back, to our specification is 
-00:31 to issue a delete verb to api/blog/id, 
-00:36 we have the post right here, so that's cool, 
-00:39 and we're going to say it's going to be base_url + 'api/blog' + post_id
-00:46 so that is the url, and we are going to a request.delete against it, 
-00:50 the url is going to be that, and I don't think we need to enter anything else, 
-00:56 of course, in a real system we might want to add some headers 
+00:17 number of posts to delete and then it's going to say we're deleting that post. 
+00:23 Now the action that we actually have to do here is to implement that. 
+00:26 So the URL according to our API if we go back, to our specification is 
+00:31 to issue a DELETE verb to api/blog/id. 
+00:36 We have the post right here, so that's cool, 
+00:39 and we're going to say it's going to be base_url + 'api/blog' + post_id.
+00:46 So that is the URL, and we are going to a requests.delete against it. 
+00:50 The URL is going to be that, and I don't think we need to enter anything else. 
+00:56 Of course, in a real system we might want to add some headers 
 00:58 or add authentication in various ways, but, 
 01:00 this simple example we are just going to do like so 
 01:03 and we want to check that the status code is successful. 
@@ -23,26 +23,26 @@
 01:28 So if we don't get a 202, we are going to assume that something went wrong 
 01:35 and we'll print this out, and if this accepted it, then we are all good, so deleted, 
 01:40 and we'll just put the title here, 
-01:46 deleted this thing, whatever, okay, 
-01:48 so let's go and run this, and let's go and just see what is here, we'll do a list, 
-01:52 we have easy breezy Python clients, this is success story, 
-01:58 we have this one right here, notice this sucker, this post is doomed from the start, 
-02:02 it has zero views, that seems like a perfect candidate to send a little delete to, right, 
-02:06 so let's issue our delete command, and it's going to show us that list again 
-02:10 and say alright, which one is doomed, number 3, number 3 is very doomed, alright. 
+01:46 deleted this thing, whatever, okay. 
+01:48 So let's go and run this, and let's go and just see what is here, we'll do a list. 
+01:52 We have 'Easy Breezy Python Clients', 'This is a success story.' 
+01:58 We have this one right here. Notice this sucker, 'This post is doomed from the start.' 
+02:02 It has zero views. That seems like a perfect candidate to send a little delete to, right? 
+02:06 So let's issue our delete command, and it's going to show us that list again 
+02:10 and say alright, which one is doomed? Number 3. Number 3 is very doomed, alright. 
 02:14 And, if we move up a little here, we are going to come back and say 
-02:19 deleting this post is doomed, it's going to create the url straight to that post 
-02:22 using this id and it's going to issue a delete verb to that url 
+02:19 deleting this post is doome. It's going to create the URL straight to that post 
+02:22 using this id and it's going to issue a DELETE verb to that URL 
 02:27 and then we'll just check the status code and see how it comes out, here we go. 
-02:31 Deleting this post doomed from the start, boom, deleted it, successfully, 
-02:35 and if we do a list, is it still in the list, no, it was doomed, it's gone. 
+02:31 'Deleting this post doomed from the start', boom, deleted it, successfully, 
+02:35 and if we do a list, is it still in the list? No. It was doomed. It's gone. 
 02:40 Let's try to delete one more, just for the heck of it, let's try to delete number one.
-02:44 Easy breezy Python http clients, what happens if we do this
-02:49 - error deleting, 403, this post is read only. 
+02:44 'Easy Breezy Python HTTP clients', what happens if we do this?
+02:49 'Error deleting: 403,' this post is read only. 
 02:54 So, it's really good that we have our status code checking error handling, 
-02:57 because, it's not guaranteed that we can delete everything that it's always going to work, 
+02:57 because it's not guaranteed that we can delete everything that it's always going to work, 
 03:02 but if I add a post here that is going to go away,
 03:06 I can go and delete this goodbye one right here, 
 03:11 deleted, goodbye, list, it is now gone. 
-03:14 Alright, so those are the crud operations, and how we do all of this work, 
-03:17 with requests and basic http restful services. 
+03:14 Alright, so those are the CRUD operations, and how we do all of this work, 
+03:17 with requests and basic HTTP RESTful services. 
