@@ -1,5 +1,6 @@
 # import datetime
 from suds.client import Client
+from suds.transport import http
 
 
 def main():
@@ -34,6 +35,7 @@ def create_client():
         return __suds_client
 
     wsdl = 'http://consumer_services_api.talkpython.fm/soap?wsdl'
+    trans = http.HttpAuthenticated(username='kennedy', password='super_lockdown')
     __suds_client = Client(wsdl, transport=trans)
 
     return __suds_client
