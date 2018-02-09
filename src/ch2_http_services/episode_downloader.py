@@ -36,5 +36,6 @@ def download_file(file, dest_folder):
     with open(dest_file, 'wb') as fout:
         shutil.copyfileobj(resp.raw, fout)
 
+
 if __name__ == '__main__':
     main()
