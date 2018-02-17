@@ -61,7 +61,7 @@ def blog_post_create(request):
     try:
         post_data = request.json_body
     except Exception as x:
-        return Response('{"error":"Bad request '+str(x)+'"}', status=400)
+        return Response('{"error":"Bad request ' + str(x) + '"}', status=400)
 
     post = Post(
         post_data.get('title'),
@@ -91,8 +91,8 @@ def update_blog_post(request):
     post_id = data.get('post_id')
 
     if MemoryDb.is_post_read_only(post_id):
-        return Response('{"error":"The post with id '+str(post_id)+' is read-only. '
-                        'You can only edit posts that you have created yourself via this API."}',
+        return Response('{"error":"The post with id ' + str(post_id) + ' is read-only. '
+                                                                       'You can only edit posts that you have created yourself via this API."}',
                         status=403)
 
     post = MemoryDb.get_post(post_id, get_ip(request))
@@ -128,8 +128,8 @@ def delete_blog_post(request):
     post_id = data.get('post_id')
 
     if MemoryDb.is_post_read_only(post_id):
-        return Response('{"error":"The post with id '+str(post_id)+' is read-only. '
-                        'You can only delete posts that you have created yourself via this API."}',
+        return Response('{"error":"The post with id ' + str(post_id) + ' is read-only. '
+                                                                       'You can only delete posts that you have created yourself via this API."}',
                         status=403)
 
     post = MemoryDb.get_post(post_id, get_ip(request))
@@ -171,7 +171,7 @@ def build_dict(request):
 def try_int(val, default: int):
     try:
         return int(val)
-    except:
+    except:  # noqa
         return default
 
 
