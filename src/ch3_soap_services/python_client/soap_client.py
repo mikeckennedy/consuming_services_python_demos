@@ -10,7 +10,7 @@ def main():
     print(create_client())
 
     while True:
-        action = input('What to do with this blog api? [l]ist, [a]dd, [u]pdate, [d]elete, e[x]it: ')
+        action = input('What to do with this blog api? [l]ist, [a]dd, [u]pdate, [d]elete, e[x]it: ')  # noqa
         if action == 'x':
             print("Exiting...")
             break
@@ -35,7 +35,7 @@ def create_client():
         return __suds_client
 
     wsdl = 'http://consumer_services_api.talkpython.fm/soap?wsdl'
-    trans = http.HttpAuthenticated(username='kennedy', password='super_lockdown')
+    trans = http.HttpAuthenticated(username='kennedy', password='super_lockdown')  # noqa
     __suds_client = Client(wsdl, transport=trans)
 
     return __suds_client
@@ -46,11 +46,11 @@ def show_posts(posts):
         print("Sorry, no posts to show.")
         return
 
-    print("------------------------------ BLOG POSTS -----------------------------------")
+    print("------------------------------ BLOG POSTS -----------------------------------")  # noqa
     max_width = max((len('{:,}'.format(int(p.ViewCount))) for p in posts))
     for idx, p in enumerate(posts):
         padded = ' ' * (max_width - len('{:,}'.format(int(p.ViewCount))))
-        print("{}. {} [{}{:,}]: {}".format(idx + 1, p.Id, padded, int(p.ViewCount), p.Title))
+        print("{}. {} [{}{:,}]: {}".format(idx + 1, p.Id, padded, int(p.ViewCount), p.Title))  # noqa
     print()
 
 
@@ -63,7 +63,7 @@ def get_posts():
 
 def add_post():
     # now = datetime.datetime.now()
-    # published_text = '{}-{}-{}'.format(now.year, str(now.month).zfill(2), str(now.day).zfill(2))
+    # published_text = '{}-{}-{}'.format(now.year, str(now.month).zfill(2), str(now.day).zfill(2)) # noqa
 
     title = input('title: ')
     content = input('content: ')

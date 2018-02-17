@@ -11,14 +11,14 @@ from consuming_services_apis.data.memory_db import MemoryDb
 
 @view_config(route_name='soap')
 def blog_posts(request):
-    print("Processing {} request from {} for the SOAP service: {}, ua: {}".format(
+    print("Processing {} request from {} for the SOAP service: {}, ua: {}".format(  # noqa
         request.method, get_ip(request), request.url, request.user_agent
     ))
 
     if "WSDL" in request.GET or "wsdl" in request.GET:
-        return Response(body=build_wsdl(request), content_type='application/xml')
+        return Response(body=build_wsdl(request), content_type='application/xml')  # noqa
 
-    action = request.headers.get('Soapaction').replace('http://tempuri.org/', '').lower().strip("\"")
+    action = request.headers.get('Soapaction').replace('http://tempuri.org/', '').lower().strip("\"")  # noqa
     if action == 'getpost':
         body = clean_namespaces(request.body.decode('utf-8'))
         dom = ElementTree.fromstring(body)
@@ -57,9 +57,9 @@ def all_post_response(request):
     </Post>"""
 
     posts_fragments = [
-        post_template.format(p.id, p.title, p.published, p.content, p.view_count)
+        post_template.format(p.id, p.title, p.published, p.content, p.view_count)  # noqa
         for p in posts
-        ]
+    ]
 
     resp_xml = """<?xml version="1.0" encoding="utf-8"?>
         <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
@@ -72,7 +72,7 @@ def all_post_response(request):
               </AllPostsResult>
             </AllPostsResponse>
           </soap:Body>
-        </soap:Envelope>""".format("\n".join(posts_fragments))
+        </soap:Envelope>""".format("\n".join(posts_fragments))  # noqa
 
     return Response(body=resp_xml, content_type='text/xml')
 
@@ -96,7 +96,7 @@ def get_post_response(dom, request):
               </GetPostResult>
             </GetPostResponse>
           </soap:Body>
-        </soap:Envelope>""".format(post.id, post.title, post.published, post.content, post.view_count)
+        </soap:Envelope>""".format(post.id, post.title, post.published, post.content, post.view_count)  # noqa
 
     return Response(body=resp_xml, content_type='text/xml')
 
@@ -117,7 +117,7 @@ def delete_post_response(dom, request):
                   <soap:Body>
                     <DeletePostResponse xmlns="http://tempuri.org/" />
                   </soap:Body>
-                </soap:Envelope>"""
+                </soap:Envelope>"""  # noqa
 
     return Response(body=resp_xml, content_type='text/xml')
 
@@ -128,7 +128,7 @@ def create_post(dom, request):
     view_count = int(dom.find('Body/CreatePost/viewCount').text)
 
     now = datetime.now()
-    published = "{}-{}-{}".format(now.year, str(now.month).zfill(2), str(now.day).zfill(2))
+    published = "{}-{}-{}".format(now.year, str(now.month).zfill(2), str(now.day).zfill(2))  # noqa
 
     post = Post(
         title,
@@ -152,7 +152,7 @@ def create_post(dom, request):
       </CreatePostResult>
     </CreatePostResponse>
   </soap:Body>
-</soap:Envelope>""".format(post.id, post.title, post.published, post.content, post.view_count)
+</soap:Envelope>""".format(post.id, post.title, post.published, post.content, post.view_count)  # noqa
 
     return Response(body=resp_xml, content_type='text/xml')
 
@@ -184,7 +184,7 @@ def update_post(dom, request):
       </UpdatePostResult>
     </UpdatePostResponse>
   </soap:Body>
-</soap:Envelope>""".format(post.id, post.title, post.published, post.content, post.view_count)
+</soap:Envelope>""".format(post.id, post.title, post.published, post.content, post.view_count)  # noqa
 
     return Response(body=resp_xml, content_type='text/xml')
 
@@ -203,21 +203,21 @@ def get_ip(request):
 
 
 def clean_namespaces(body):
-    return body \
-        .replace('SOAP-ENV:', '') \
-        .replace('xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"', '') \
-        .replace('xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"', '') \
-        .replace('xmlns:ns0="http://schemas.xmlsoap.org/soap/envelope/"', '') \
-        .replace('xmlns:ns1="http://tempuri.org/"', '') \
-        .replace('xmlns:ns0="http://tempuri.org/"', '') \
-        .replace('xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/"', '') \
-        .replace('xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"', '') \
-        .replace('soap:', '') \
-        .replace('xmlns:xsd="http://www.w3.org/2001/XMLSchema"', '') \
-        .replace('xmlns="http://tempuri.org/"', '') \
-        .replace('SOAP-ENV:', '') \
-        .replace('ns0:', '') \
-        .replace('ns1:', '')
+    return (
+        body.replace('SOAP-ENV:', '')
+            .replace('xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"', '')  # noqa
+            .replace('xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"', '')  # noqa
+            .replace('xmlns:ns0="http://schemas.xmlsoap.org/soap/envelope/"', '')  # noqa
+            .replace('xmlns:ns1="http://tempuri.org/"', '')
+            .replace('xmlns:ns0="http://tempuri.org/"', '')
+            .replace('xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/"', '')  # noqa
+            .replace('xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"', '')  # noqa
+            .replace('soap:', '')
+            .replace('xmlns:xsd="http://www.w3.org/2001/XMLSchema"', '')
+            .replace('xmlns="http://tempuri.org/"', '')
+            .replace('SOAP-ENV:', '')
+            .replace('ns0:', '')
+            .replace('ns1:', ''))  # noqa
 
 
 def build_wsdl(request):
@@ -464,6 +464,6 @@ def build_wsdl(request):
     <soap12:address location="{0}/soap"/>
     </wsdl:port>
     </wsdl:service>
-    </wsdl:definitions>""".format(request.host_url)
+    </wsdl:definitions>""".format(request.host_url) # noqa
 
     return wsdl
