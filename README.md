@@ -1,4 +1,6 @@
-# Consuming HTTP and SOAP Services in Python 
+# Consuming HTTP and SOAP Services in Python
+
+[![https://api.travis-ci.org/mikeckennedy/consuming_services_python_demos.svg?branch=master]()](https://travis-ci.org/mikeckennedy/consuming_services_python_demos#) 
 
 ## Course Summary
 This course will show you how easy it is to consume a wide variety of web services using Python. You will be comfortable working with a variety of web and HTTP services. In addition to core package APIs, you will learn the ins-and-outs of HTTP RESTful services and their data types.
