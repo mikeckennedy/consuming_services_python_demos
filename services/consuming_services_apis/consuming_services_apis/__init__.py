@@ -28,6 +28,7 @@ def register_routes(config):
     config.add_route('blog_posts', '/api/blog')
     config.add_route('blog_posts/', '/api/blog/')
     config.add_route('blog_post/post', '/api/blog/{post_id}')
+    config.add_route('reset', '/api/reset')
 
     config.add_route('restricted_blog_posts', '/api/restricted/blog')
     config.add_route('restricted_blog_posts/', '/api/restricted/blog/')

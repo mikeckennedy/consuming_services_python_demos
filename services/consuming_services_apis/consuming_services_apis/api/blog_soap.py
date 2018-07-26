@@ -137,6 +137,8 @@ def create_post(dom, request):
         published
     )
 
+    trim_post_size(post)
+
     MemoryDb.add_post(post, get_ip(request))
 
     resp_xml = """<?xml version="1.0" encoding="utf-8"?>
@@ -464,6 +466,16 @@ def build_wsdl(request):
     <soap12:address location="{0}/soap"/>
     </wsdl:port>
     </wsdl:service>
-    </wsdl:definitions>""".format(request.host_url) # noqa
+    </wsdl:definitions>""".format(request.host_url)  # noqa
 
     return wsdl
+
+
+def trim_post_size(post):
+    text_limit = 500
+    if post.content and len(post.content) > text_limit:
+        post.content = post.content[:500]
+    if post.title and len(post.title) > text_limit:
+        post.title = post.title[:500]
+    if post.published and len(post.published) > text_limit:
+        post.published = post.published[:500]

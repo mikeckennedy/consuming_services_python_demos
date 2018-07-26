@@ -47,6 +47,13 @@
             Username: <strong>kennedy</strong> and Password: <strong>super_lockdown</strong>
         </div>
         <br/>
+
+        <div>
+            You can reset your private data if you want to start fresh:<br>
+            <a href="/api/reset" class="btn btn-danger" style="text-decoration: none;">Reset my data</a>
+        </div>
+        <br/>
+
         Operations:<br/>
         <ul>
             <li>

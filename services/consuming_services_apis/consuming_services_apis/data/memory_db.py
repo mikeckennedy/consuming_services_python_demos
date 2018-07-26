@@ -1,4 +1,7 @@
+import datetime
+
 from consuming_services_apis.data.post import Post
+from consuming_services_apis.infrastructure.conversions import try_date
 
 
 class MemoryDb:
@@ -9,6 +12,9 @@ class MemoryDb:
     def add_post(post, ip_address):
         if ip_address not in MemoryDb.data_lookup:
             MemoryDb.data_lookup[ip_address] = []
+
+        if not post.published:
+            post.published = try_date(post.published)
 
         MemoryDb.data_lookup[ip_address].append(post)
 

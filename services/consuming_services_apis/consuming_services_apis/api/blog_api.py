@@ -1,8 +1,11 @@
+import datetime
+
 from pyramid.view import view_config
 from pyramid.response import Response
 
 from consuming_services_apis.data.memory_db import MemoryDb
 from consuming_services_apis.data.post import Post
+from consuming_services_apis.infrastructure.conversions import try_int, try_date
 
 POST_LIMIT_PER_USER = 100
 
@@ -67,7 +70,7 @@ def blog_post_create(request):
         post_data.get('title'),
         post_data.get('content'),
         try_int(post_data.get('view_count', 0), 0),
-        post_data.get('published')
+        try_date(post_data.get('published'), datetime.date.today().isoformat())
     )
     trim_post_size(post)
 
@@ -91,8 +94,9 @@ def update_blog_post(request):
     post_id = data.get('post_id')
 
     if MemoryDb.is_post_read_only(post_id):
-        return Response('{"error":"The post with id ' + str(post_id) + ' is read-only. '
-                                                                       'You can only edit posts that you have created yourself via this API."}',
+        return Response('{"error":"The post with id ' + str(post_id) +
+                        ' is read-only. '
+                        'You can only edit posts that you have created yourself via this API."}',
                         status=403)
 
     post = MemoryDb.get_post(post_id, get_ip(request))
@@ -107,7 +111,7 @@ def update_blog_post(request):
     post.title = post_data.get('title', post.title)
     post.content = post_data.get('content', post.content)
     post.view_count = try_int(post_data.get('view_count', post.view_count), post.view_count)
-    post.published = post_data.get('published', post.published)
+    post.published = try_date(post_data.get('published', post.published), datetime.date.today().isoformat())
     trim_post_size(post)
 
     request.response.status_code = 204
@@ -128,8 +132,9 @@ def delete_blog_post(request):
     post_id = data.get('post_id')
 
     if MemoryDb.is_post_read_only(post_id):
-        return Response('{"error":"The post with id ' + str(post_id) + ' is read-only. '
-                                                                       'You can only delete posts that you have created yourself via this API."}',
+        return Response('{"error":"The post with id ' + str(post_id) +
+                        ' is read-only. '
+                        'You can only delete posts that you have created yourself via this API."}',
                         status=403)
 
     post = MemoryDb.get_post(post_id, get_ip(request))
@@ -140,6 +145,19 @@ def delete_blog_post(request):
     request.response.status_code = 202
 
     return {'deleted': post_id}
+
+
+################################################################################
+# GET /api/reset
+#
+@view_config(route_name='reset', renderer='pretty_json')
+def reset(request):
+    print("Processing reset request from {} for the HTTP service: {}, ua: {}".format(
+        get_ip(request), request.url, request.user_agent
+    ))
+
+    MemoryDb.clear_posts(get_ip(request))
+    return {"status": "All private data reset."}
 
 
 ################################################################################
@@ -165,14 +183,6 @@ def build_dict(request):
     data.update(request.POST)
     data.update(request.matchdict)
     return data
-
-
-# noinspection PyBroadException
-def try_int(val, default: int):
-    try:
-        return int(val)
-    except:  # noqa
-        return default
 
 
 def trim_post_size(post):
