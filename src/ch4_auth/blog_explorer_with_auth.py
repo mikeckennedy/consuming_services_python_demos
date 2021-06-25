@@ -4,7 +4,7 @@ import collections
 
 Post = collections.namedtuple("Post", 'id title content published view_count')
 
-base_url = 'http://consumer_services_api.talkpython.fm/api/restricted/blog/'
+base_url = 'https://consumerservicesapi.talkpython.fm/api/restricted/blog/'
 
 user = 'kennedy'
 password = 'super_lockdown'

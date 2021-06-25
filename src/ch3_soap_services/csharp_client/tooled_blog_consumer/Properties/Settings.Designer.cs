@@ -26,7 +26,7 @@ namespace tooled_blog_consumer.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://consumer_services_api.talkpython.fm/soap")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://consumerservicesapi.talkpython.fm/soap")]
         public string tooled_blog_consumer_svc_Blog {
             get {
                 return ((string)(this["tooled_blog_consumer_svc_Blog"]));

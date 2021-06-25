@@ -11,7 +11,7 @@ print('uncomment this code if you want to run it...')
 #
 # Post = collections.namedtuple("Post", 'id title content published view_count')
 #
-# base_url = 'http://consumer_services_api.talkpython.fm/'
+# base_url = 'https://consumerservicesapi.talkpython.fm/'
 #
 #
 # def main():

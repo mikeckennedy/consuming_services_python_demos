@@ -34,7 +34,7 @@ def create_client():
     if __suds_client:
         return __suds_client
 
-    wsdl = 'http://consumer_services_api.talkpython.fm/soap?wsdl'
+    wsdl = 'https://consumerservicesapi.talkpython.fm/soap?wsdl'
     trans = http.HttpAuthenticated(username='kennedy', password='super_lockdown')  # noqa
     __suds_client = Client(wsdl, transport=trans)
 

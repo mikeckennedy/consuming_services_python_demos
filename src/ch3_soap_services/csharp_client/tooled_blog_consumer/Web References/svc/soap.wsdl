@@ -235,10 +235,10 @@
   </wsdl:binding>
   <wsdl:service name="Blog">
     <wsdl:port name="BlogSoap" binding="tns:BlogSoap">
-      <soap:address location="http://consumer_services_api.talkpython.fm/soap" />
+      <soap:address location="https://consumerservicesapi.talkpython.fm/soap" />
     </wsdl:port>
     <wsdl:port name="BlogSoap12" binding="tns:BlogSoap12">
-      <soap12:address location="http://consumer_services_api.talkpython.fm/soap" />
+      <soap12:address location="https://consumerservicesapi.talkpython.fm/soap" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

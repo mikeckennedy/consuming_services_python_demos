@@ -1,6 +1,6 @@
 # Public service for modifying demos
 
-This service is running at [consumer_services_api.talkpython.fm](http://consumer_services_api.talkpython.fm/). You can work entirely against the public, deployed version.
+This service is running at [consumerservicesapi.talkpython.fm](https://consumerservicesapi.talkpython.fm/). You can work entirely against the public, deployed version.
 
 I'm just including the code so you have a local version. 
 

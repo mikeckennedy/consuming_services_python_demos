@@ -7,7 +7,7 @@ import sys
 
 Post = collections.namedtuple("Post", 'id title content published view_count')
 
-base_url = 'http://consumer_services_api.talkpython.fm/'
+base_url = 'https://consumerservicesapi.talkpython.fm/'
 
 
 def main():

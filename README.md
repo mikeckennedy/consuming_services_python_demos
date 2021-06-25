@@ -38,7 +38,7 @@ We will create a number of demo applications in Python throughout this course. T
 * [api.github.com](https://api.github.com/)
 
 ### Blog explorer (three versions: requests, py2, py3)
-* [consumer_services_api.talkpython.fm](http://consumer_services_api.talkpython.fm/)
+* [consumer_services_api.talkpython.fm](https://consumerservicesapi.talkpython.fm/)
 
 ### RSS Feed Reader
 * [talkpython.fm/rss](https://talkpython.fm/rss)

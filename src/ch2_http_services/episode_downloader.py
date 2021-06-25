@@ -7,7 +7,7 @@ import shutil
 def main():
     mp3_files = get_episode_files('https://talkpython.fm/rss')
     for file in mp3_files[:3]:
-        download_file(file, '/Users/screeencaster/Desktop/mp3s/')
+        download_file(file, '/Users/screencaster/Desktop/mp3s/')
 
 
 def get_episode_files(url):
