@@ -10,8 +10,8 @@
 00:37 Now, throughout the rest of these concepts in this chapter, 
 00:41 we are going to assume that we have always written import requests 
 00:45 and that the base_url is that public URL of our service  
-00:49 http://consumer_services_api.talkpython.fm
-00:52 that will mean we just have a little less to look at at each of the detailed steps. 
+00:49 https://consumerservicesapi.talkpython.fm
+00:52 that will mean we just have a little less to look at each of the detailed steps. 
 00:57 Okay, to create a new post, in code, what we are going to do is 
 01:00 we are going to create a new_post dictionary and set the values 
 01:03 that we have control over, title, content, view count and published. 

@@ -38,7 +38,7 @@ We will create a number of demo applications in Python throughout this course. T
 * [api.github.com](https://api.github.com/)
 
 ### Blog explorer (three versions: requests, py2, py3)
-* [consumer_services_api.talkpython.fm](https://consumerservicesapi.talkpython.fm/)
+* [consumerservicesapi.talkpython.fm](https://consumerservicesapi.talkpython.fm/)
 
 ### RSS Feed Reader
 * [talkpython.fm/rss](https://talkpython.fm/rss)
@@ -46,9 +46,9 @@ MP3 / podcast downloader (binary file examples)
 * [talkpython.fm](https://talkpython.fm)
 
 ### Course Playground Service
-HTTP / REST version: [/api/blog](https://training.talkpython.fm/courses/explore_http_reset_client_course/consuming-http-and-soap-services-in-python-with-json-xml-and-screen-scraping)
-HTTP / REST version (auth): [/api/restricted/blog](https://training.talkpython.fm/courses/explore_http_reset_client_course/consuming-http-and-soap-services-in-python-with-json-xml-and-screen-scraping)
-SOAP version: [/soap?wsdl](https://training.talkpython.fm/courses/explore_http_reset_client_course/consuming-http-and-soap-services-in-python-with-json-xml-and-screen-scraping)
+HTTP / REST version: [/api/blog](https://consumerservicesapi.talkpython.fm)
+HTTP / REST version (auth): [/api/restricted/blog](https://consumerservicesapi.talkpython.fm)
+SOAP version: [/soap?wsdl](https://consumerservicesapi.talkpython.fm)
 
 ### Scraping and analyzing 80 hours of transcripts on talkpython.fm
 E.g. [https://talkpython.fm/episodes/transcript/67/property-based-testing-with-hypothesis](https://talkpython.fm/episodes/transcript/67/property-based-testing-with-hypothesis)
