@@ -4,6 +4,8 @@
 #
 #    pip-compile requirements.piptools
 #
+attrs==23.1.0
+    # via zeep
 beautifulsoup4==4.12.2
     # via -r requirements.piptools
 certifi==2023.7.22
@@ -12,15 +14,36 @@ charset-normalizer==3.3.0
     # via requests
 idna==3.4
     # via requests
+isodate==0.6.1
+    # via zeep
 lxml==4.9.3
-    # via -r requirements.piptools
+    # via
+    #   -r requirements.piptools
+    #   zeep
+platformdirs==3.11.0
+    # via zeep
 python-dateutil==2.8.2
     # via -r requirements.piptools
+pytz==2023.3.post1
+    # via zeep
 requests==2.31.0
-    # via -r requirements.piptools
+    # via
+    #   -r requirements.piptools
+    #   requests-file
+    #   requests-toolbelt
+    #   zeep
+requests-file==1.5.1
+    # via zeep
+requests-toolbelt==1.0.0
+    # via zeep
 six==1.16.0
-    # via python-dateutil
+    # via
+    #   isodate
+    #   python-dateutil
+    #   requests-file
 soupsieve==2.5
     # via beautifulsoup4
 urllib3==2.0.6
     # via requests
+zeep==4.2.1
+    # via -r requirements.piptools
