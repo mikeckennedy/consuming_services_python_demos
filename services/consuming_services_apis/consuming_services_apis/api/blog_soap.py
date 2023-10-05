@@ -206,8 +206,7 @@ def get_ip(request):
 
 def clean_namespaces(body):
     return (
-        body.replace('SOAP-ENV:', '')
-            .replace('xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"', '')  # noqa
+        body.replace('xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"', '')  # noqa
             .replace('xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"', '')  # noqa
             .replace('xmlns:ns0="http://schemas.xmlsoap.org/soap/envelope/"', '')  # noqa
             .replace('xmlns:ns1="http://tempuri.org/"', '')
@@ -218,6 +217,7 @@ def clean_namespaces(body):
             .replace('xmlns:xsd="http://www.w3.org/2001/XMLSchema"', '')
             .replace('xmlns="http://tempuri.org/"', '')
             .replace('SOAP-ENV:', '')
+            .replace('soap-env:', '')
             .replace('ns0:', '')
             .replace('ns1:', ''))  # noqa
 
