@@ -1,0 +1,14 @@
+requests
+python-dateutil
+lxml
+beautifulsoup4
+
+##############################################################
+# Sorry folks, suds-jurko is no longer supported and
+# no longer works on supported Python versions.
+# If you *must* use it (it's great when it works), please
+# Use Python 3.3 to run it.
+#
+
+# suds-jurko
+
