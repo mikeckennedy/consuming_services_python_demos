@@ -11,4 +11,4 @@ beautifulsoup4
 #
 
 # suds-jurko
-
+zeep # <-- suds replacement
