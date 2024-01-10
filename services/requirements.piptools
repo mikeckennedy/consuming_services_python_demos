@@ -2,4 +2,4 @@ pyramid
 pyramid_chameleon
 pyramid_debugtoolbar
 waitress
-uwsgi
+# uwsgi # Leave this to the base docker image.
