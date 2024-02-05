@@ -1,3 +1,8 @@
+import os
+import sys
+
+import paste.deploy
+import setproctitle
 from pyramid.config import Configurator
 from pyramid.renderers import JSON
 
@@ -41,3 +46,22 @@ def register_json_renderer(config):
     json_renderer = JSON(indent=4)
     json_renderer.add_adapter(Post, lambda p, _: p.__dict__)
     config.add_renderer('pretty_json', json_renderer)
+
+
+def build_wsgi_app_if_needed():
+    root_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+    is_prod = any(':wsgi_app' in arg for arg in sys.argv)
+
+    if is_prod:
+        config_file = os.path.join(root_folder, 'configs', 'prod-docker.ini')
+        the_wsgi_app = paste.deploy.loadapp(f'config:{config_file}')
+        print(f'Using server config file {config_file}')
+        print(f'Command: {sys.argv}')
+        setproctitle.setproctitle('granian [talkpython]')
+        return the_wsgi_app
+
+    setproctitle.setproctitle('ConsumingService-Dev')
+    return None
+
+
+wsgi_app = build_wsgi_app_if_needed()

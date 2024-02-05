@@ -1,5 +1,8 @@
+setproctitle
+pastedeploy
+python-dateutil
 pyramid
 pyramid_chameleon
 pyramid_debugtoolbar
 waitress
-# uwsgi # Leave this to the base docker image.
+# uwsgi # Leave this to the base docker image for production.
