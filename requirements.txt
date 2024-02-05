@@ -6,9 +6,9 @@
 #
 attrs==23.2.0
     # via zeep
-beautifulsoup4==4.12.2
+beautifulsoup4==4.12.3
     # via -r requirements.piptools
-certifi==2023.11.17
+certifi==2024.2.2
     # via requests
 charset-normalizer==3.3.2
     # via requests
@@ -20,11 +20,11 @@ lxml==5.1.0
     # via
     #   -r requirements.piptools
     #   zeep
-platformdirs==4.1.0
+platformdirs==4.2.0
     # via zeep
 python-dateutil==2.8.2
     # via -r requirements.piptools
-pytz==2023.3.post1
+pytz==2024.1
     # via zeep
 requests==2.31.0
     # via
@@ -32,7 +32,7 @@ requests==2.31.0
     #   requests-file
     #   requests-toolbelt
     #   zeep
-requests-file==1.5.1
+requests-file==2.0.0
     # via zeep
 requests-toolbelt==1.0.0
     # via zeep
@@ -40,10 +40,9 @@ six==1.16.0
     # via
     #   isodate
     #   python-dateutil
-    #   requests-file
 soupsieve==2.5
     # via beautifulsoup4
-urllib3==2.1.0
+urllib3==2.2.0
     # via requests
 zeep==4.2.1
     # via -r requirements.piptools
