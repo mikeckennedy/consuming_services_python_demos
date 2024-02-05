@@ -53,7 +53,7 @@ def build_wsgi_app_if_needed():
     is_prod = any(':wsgi_app' in arg for arg in sys.argv)
 
     if is_prod:
-        config_file = os.path.join(root_folder, 'configs', 'prod-docker.ini')
+        config_file = os.path.join(root_folder, 'prod-docker.ini')
         the_wsgi_app = paste.deploy.loadapp(f'config:{config_file}')
         print(f'Using server config file {config_file}')
         print(f'Command: {sys.argv}')
