@@ -57,7 +57,7 @@ def build_wsgi_app_if_needed():
         the_wsgi_app = paste.deploy.loadapp(f'config:{config_file}')
         print(f'Using server config file {config_file}')
         print(f'Command: {sys.argv}')
-        setproctitle.setproctitle('granian [talkpython]')
+        setproctitle.setproctitle('granian [consuming-svcs]')
         return the_wsgi_app
 
     setproctitle.setproctitle('ConsumingService-Dev')
