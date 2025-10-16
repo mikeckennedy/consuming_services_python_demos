@@ -35,7 +35,7 @@
 02:00 Let's go ahead and run that and see if this works.
 02:03 Cool. It looks like we've got something here. Now I don't know about yo., 
 02:06 this is a little hard to read. If you look at this scroll bar it's huge, okay,
-02:10 so that's not great. We technically could do this - 'import JSON'.  Let's say 'json.loads' 
+02:10 so that's not great. We technically could do this - 'import JSON'. Let's say 'json.loads' 
 02:18 and we can give it this, and we could then say 'json.dumps'. 
 02:22 This might seem a little bizzare but then of course we could say 'indent=true'.
 02:25 Run this, and we get at least formated JSON.

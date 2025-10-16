@@ -1,5 +1,5 @@
 00:00 So let's review installing Requests. We had already created a virtual environment, 
-00:04 but don't forget to activate it, so '.  [the path activate]'. On Windows, 
+00:04 but don't forget to activate it, so '. [the path activate]'. On Windows, 
 00:11 you don't have to do the dot and this is just 'activate.batch'. 
 00:14 So either way, our prompt will change
 00:16 and then we'll have access to the packaging tools for that environment. 

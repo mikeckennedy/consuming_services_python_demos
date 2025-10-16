@@ -5,7 +5,7 @@
 00:13 So over here, I actually get cloned the service demos, 
 00:17 these are the demos that you have access to on github, 
 00:20 and I've actually just renamed them so the name isn't so super long. 
-00:24 And on OS 10 or Mac OS you can just drag and drop this 
+00:24 And on OS 10 or macOS you can just drag and drop this 
 00:27 into PyCharm or even Sublime text or Visual Studio Code,
 00:31 lots of these editors support that. And it will open the project. 
 00:35 Okay, cool, so here we are, now how do we take our virtual environment 

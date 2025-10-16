@@ -6,7 +6,7 @@
 00:16 the reason is, it gets sent across to the server, 
 00:19 if you look at the actual header, 
 00:21 it looks like it might be encrypted or something, 
-00:23 but in fact, all it is is just the bytes basic c4 encoded,
+00:23 but in fact, all it is just the bytes basic c4 encoded,
 00:26 and there is no encryption there, you can just unencode it 
 00:29 and it turns out it shows you username and password
 00:32 basically in plain text, so for that reason, 

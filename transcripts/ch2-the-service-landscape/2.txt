@@ -36,7 +36,7 @@
 02:17 but they do have a button press generate the server side, and client side tooling support, 
 02:21 and that way they make them easy but like I said, I don't think they are the best 
 02:25 and I definitely don't recommend using them if you can avoid them. 
-02:28 So what else is a drawback about SOAP services?  We talked about POST, 
+02:28 So what else is a drawback about SOAP services? We talked about POST, 
 02:31 and this POST only behavior means that it basically breaks the architecture of the internet. 
 02:36 The internet is built around GET, POST, PUT, various HTTP verbs, 
 02:41 and only HTTP GET is allowed to be cached, and that makes proxies work better, 

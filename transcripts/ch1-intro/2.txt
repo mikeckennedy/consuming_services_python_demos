@@ -4,7 +4,7 @@
 00:13 but if you have 3.5 or something like that installed, that's totally good, 
 00:16 if you are on Windows, there is a good chance 
 00:20 you have no version of Python and you'll need to install Python 3; 
-00:23 if you are on OS 10 or Mac OS as it's called these days,
+00:23 if you are on OS 10 or macOS as it's called these days,
 00:26 you probably have Python 2 which ships with it, but not Python 3. 
 00:30 If you are on Ubuntu, chances are that both Python 2 and Python 3 are there, 
 00:34 so check your system, see what it is that you need, 
