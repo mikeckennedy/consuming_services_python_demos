@@ -13,6 +13,7 @@ requires = [
     'pyramid_chameleon',
     'pyramid_debugtoolbar',
     'python-dateutil',
+    'setuptools',
     'waitress',
 ]
 

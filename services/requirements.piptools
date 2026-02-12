@@ -4,5 +4,6 @@ python-dateutil
 pyramid
 pyramid_chameleon
 pyramid_debugtoolbar
+setuptools
 waitress
 # uwsgi # Leave this to the base docker image for production.
