@@ -32,7 +32,7 @@ requests-toolbelt==1.0.0
     # via zeep
 six==1.17.0
     # via python-dateutil
-soupsieve==2.9.2
+soupsieve==2.10
     # via beautifulsoup4
 typing-extensions==4.16.0
     # via beautifulsoup4
