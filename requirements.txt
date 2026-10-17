@@ -16,7 +16,7 @@ lxml==6.1.3
     # via
     #   -r requirements.piptools
     #   zeep
-platformdirs==4.12.2
+platformdirs==4.12.4
     # via zeep
 python-dateutil==2.9.0.post0
     # via -r requirements.piptools
