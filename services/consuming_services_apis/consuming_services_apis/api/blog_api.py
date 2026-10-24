@@ -106,7 +106,7 @@ def update_blog_post(request):
     try:
         post_data = request.json_body
     except Exception as x:
-        return Response('{"error":"Bad request {0}"}'.format(x), status=400)
+        return Response('{"error":"Bad request ' + str(x) + '"}', status=400)
 
     post.title = post_data.get('title', post.title)
     post.content = post_data.get('content', post.content)

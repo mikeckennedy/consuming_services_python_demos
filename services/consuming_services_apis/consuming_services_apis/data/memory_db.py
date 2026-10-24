@@ -14,7 +14,7 @@ class MemoryDb:
             MemoryDb.data_lookup[ip_address] = []
 
         if not post.published:
-            post.published = try_date(post.published)
+            post.published = try_date(post.published, datetime.date.today().isoformat())
 
         MemoryDb.data_lookup[ip_address].append(post)
 

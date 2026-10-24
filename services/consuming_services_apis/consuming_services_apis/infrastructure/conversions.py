@@ -4,7 +4,7 @@ from dateutil.parser import parse
 def try_int(val, default: int):
     try:
         return int(val)
-    except:
+    except Exception:
         return default
 
 
@@ -15,5 +15,5 @@ def try_date(val, default: str) -> str:
             return default
 
         return parsed_date.date().isoformat()
-    except:
+    except Exception:
         return default

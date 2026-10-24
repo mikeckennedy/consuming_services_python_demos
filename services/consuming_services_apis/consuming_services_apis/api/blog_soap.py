@@ -4,6 +4,7 @@ from pyramid.httpexceptions import exception_response
 from pyramid.view import view_config
 from pyramid.response import Response
 from xml.etree import ElementTree
+from xml.sax.saxutils import escape
 
 from consuming_services_apis import Post
 from consuming_services_apis.data.memory_db import MemoryDb
@@ -18,7 +19,7 @@ def blog_posts(request):
     if "WSDL" in request.GET or "wsdl" in request.GET:
         return Response(body=build_wsdl(request), content_type='application/xml')  # noqa
 
-    action = request.headers.get('Soapaction').replace('http://tempuri.org/', '').lower().strip("\"")  # noqa
+    action = request.headers.get('Soapaction', '').replace('http://tempuri.org/', '').lower().strip("\"")  # noqa
     if action == 'getpost':
         body = clean_namespaces(request.body.decode('utf-8'))
         dom = ElementTree.fromstring(body)
@@ -57,7 +58,7 @@ def all_post_response(request):
     </Post>"""
 
     posts_fragments = [
-        post_template.format(p.id, p.title, p.published, p.content, p.view_count)  # noqa
+        post_template.format(*xml_values(p))  # noqa
         for p in posts
     ]
 
@@ -96,7 +97,7 @@ def get_post_response(dom, request):
               </GetPostResult>
             </GetPostResponse>
           </soap:Body>
-        </soap:Envelope>""".format(post.id, post.title, post.published, post.content, post.view_count)  # noqa
+        </soap:Envelope>""".format(*xml_values(post))  # noqa
 
     return Response(body=resp_xml, content_type='text/xml')
 
@@ -154,7 +155,7 @@ def create_post(dom, request):
       </CreatePostResult>
     </CreatePostResponse>
   </soap:Body>
-</soap:Envelope>""".format(post.id, post.title, post.published, post.content, post.view_count)  # noqa
+</soap:Envelope>""".format(*xml_values(post))  # noqa
 
     return Response(body=resp_xml, content_type='text/xml')
 
@@ -172,6 +173,7 @@ def update_post(dom, request):
     post.title = dom.find('Body/UpdatePost/title').text
     post.content = dom.find('Body/UpdatePost/content').text
     post.view_count = int(dom.find('Body/UpdatePost/viewCount').text)
+    trim_post_size(post)
 
     resp_xml = """<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
@@ -186,7 +188,7 @@ def update_post(dom, request):
       </UpdatePostResult>
     </UpdatePostResponse>
   </soap:Body>
-</soap:Envelope>""".format(post.id, post.title, post.published, post.content, post.view_count)  # noqa
+</soap:Envelope>""".format(*xml_values(post))  # noqa
 
     return Response(body=resp_xml, content_type='text/xml')
 
@@ -202,6 +204,16 @@ def get_ip(request):
         return request.remote_addr
     else:
         return request.client_addr
+
+
+def xml_values(post):
+    return [escape(str(v)) for v in (post.id, post.title, post.published, post.content, post.view_count)]
+
+
+def host_url(request):
+    # nginx terminates TLS, so honor the scheme it forwards or the WSDL advertises http://.
+    scheme = request.headers.get('X-Forwarded-Protocol') or request.headers.get('X-Forwarded-Proto')
+    return f'{scheme}://{request.host}' if scheme else request.host_url
 
 
 def clean_namespaces(body):
@@ -466,7 +478,7 @@ def build_wsdl(request):
     <soap12:address location="{0}/soap"/>
     </wsdl:port>
     </wsdl:service>
-    </wsdl:definitions>""".format(request.host_url)  # noqa
+    </wsdl:definitions>""".format(host_url(request))  # noqa
 
     return wsdl
 
