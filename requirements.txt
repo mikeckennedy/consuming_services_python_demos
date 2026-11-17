@@ -30,7 +30,7 @@ requests-file==3.0.1
     # via zeep
 requests-toolbelt==1.0.0
     # via zeep
-soupsieve==4.0.1
+soupsieve==4.1
     # via beautifulsoup4
 typing-extensions==4.16.0
     # via beautifulsoup4
